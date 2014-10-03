@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preferences>
+	<Preference DisplayWelcomeTab="True" />
+	<Preference ConfirmClose="True" />
+	<Preference BeepOnDelete="True" />
+	<Preference BeepOnError="False" />
+	<Preference Langage="Français" />
+	<Preference LIGDefaultValue="0" />
+	<Preference LIGFade="10" />
+	<Preference LIGToggleActionName="basculer" />
+	<Preference LIGTuneActionName="regler" />
+	<Preference LIGStopActionName="figer" />
+	<Preference LIGSetActionName="parametrer" />
+	<Preference SWIInverse="False" />
+	<Preference SWIImpusionTime="58" />
+	<Preference SWIClicActionName="clic" />
+	<Preference SWIDoubleClicActionName="dclic" />
+	<Preference SWIOnActionName="on" />
+	<Preference SWIOnFmActionName="on_fm" />
+	<Preference SWIOffActionName="off" />
+	<Preference SWIOffFmActionName="off_fd" />
+	<Preference SHUType="0" />
+	<Preference SHUTravelTime="864" />
+	<Preference SHUInitTime="42" />
+	<Preference SHUOpenActionName="ouvrir" />
+	<Preference SHUCloseActionName="fermer" />
+	<Preference SHUStopActionName="arret" />
+	<Preference SHUToggleActionName="basculer_volet" />
+	<Preference TEMPGetValue="Obtenir_Temp" />
+</Preferences>

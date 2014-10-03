@@ -1,0 +1,612 @@
+Cmp-Mod V01 Created by CvPcb (2011-nov-30)-testing date = dim. 30 sept. 2012 10:55:03 CEST
+
+BeginCmp
+TimeStamp = /5067601F;
+Reference = C1;
+ValeurCmp = C;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5067602E;
+Reference = C2;
+ValeurCmp = C;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50671F30;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50671F21;
+Reference = D2;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5067143C;
+Reference = D3;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DD1E;
+Reference = D10;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /506595CB;
+Reference = D11;
+ValeurCmp = DIODE;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DE5A;
+Reference = D20;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DE29;
+Reference = D21;
+ValeurCmp = DIODE;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF41;
+Reference = D30;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF10;
+Reference = D31;
+ValeurCmp = DIODE;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF8E;
+Reference = D40;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF5D;
+Reference = D41;
+ValeurCmp = DIODE;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /5066FC2A;
+Reference = D50;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5066FBD5;
+Reference = D51;
+ValeurCmp = DIODE;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670295;
+Reference = D60;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670277;
+Reference = D61;
+ValeurCmp = DIODE;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /506702F3;
+Reference = D70;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /506702D5;
+Reference = D71;
+ValeurCmp = DIODE;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670351;
+Reference = D80;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670333;
+Reference = D81;
+ValeurCmp = DIODE;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /506411C8;
+Reference = IC1;
+ValeurCmp = ATTINY2313-P;
+IdModule  = SO20L;
+EndCmp
+
+BeginCmp
+TimeStamp = /506593E3;
+Reference = K10;
+ValeurCmp = G5T-1-12VDC;
+IdModule  = G5T-1-12VDC;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DE23;
+Reference = K20;
+ValeurCmp = G5T-1-12VDC;
+IdModule  = G5T-1-12VDC;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF0A;
+Reference = K30;
+ValeurCmp = G5T-1-12VDC;
+IdModule  = G5T-1-12VDC;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF57;
+Reference = K40;
+ValeurCmp = G5T-1-12VDC;
+IdModule  = G5T-1-12VDC;
+EndCmp
+
+BeginCmp
+TimeStamp = /506455DB;
+Reference = P10;
+ValeurCmp = CONN_2;
+IdModule  = MOL_CONN_2_VH;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DE1D;
+Reference = P20;
+ValeurCmp = CONN_2;
+IdModule  = MOL_CONN_2_VH;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF04;
+Reference = P30;
+ValeurCmp = CONN_2;
+IdModule  = MOL_CONN_2_VH;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF51;
+Reference = P40;
+ValeurCmp = CONN_2;
+IdModule  = MOL_CONN_2_VH;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670127;
+Reference = P50;
+ValeurCmp = CONN_2;
+IdModule  = MOL_CONN_2_VH;
+EndCmp
+
+BeginCmp
+TimeStamp = /506702B9;
+Reference = P60;
+ValeurCmp = CONN_2;
+IdModule  = MOL_CONN_2_VH;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670317;
+Reference = P70;
+ValeurCmp = CONN_2;
+IdModule  = MOL_CONN_2_VH;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670375;
+Reference = P80;
+ValeurCmp = CONN_2;
+IdModule  = MOL_CONN_2_VH;
+EndCmp
+
+BeginCmp
+TimeStamp = /50674024;
+Reference = P100;
+ValeurCmp = CONN_2;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /50674033;
+Reference = P101;
+ValeurCmp = CONN_2;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /50674042;
+Reference = P102;
+ValeurCmp = CONN_2;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /50674051;
+Reference = P103;
+ValeurCmp = CONN_2;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /5067198C;
+Reference = P110;
+ValeurCmp = CONN_2;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /5067199B;
+Reference = P111;
+ValeurCmp = CONN_2;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /50672605;
+Reference = P120;
+ValeurCmp = CONN_6;
+IdModule  = HE10-6;
+EndCmp
+
+BeginCmp
+TimeStamp = /50672614;
+Reference = P121;
+ValeurCmp = CONN_6;
+IdModule  = HE10-6;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670675;
+Reference = P130;
+ValeurCmp = CONN_3X2;
+IdModule  = pin_array_3x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /506596E4;
+Reference = Q10;
+ValeurCmp = NPN;
+IdModule  = SOT23EBC;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DE35;
+Reference = Q20;
+ValeurCmp = NPN;
+IdModule  = SOT23EBC;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF1C;
+Reference = Q30;
+ValeurCmp = NPN;
+IdModule  = SOT23EBC;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF69;
+Reference = Q40;
+ValeurCmp = NPN;
+IdModule  = SOT23EBC;
+EndCmp
+
+BeginCmp
+TimeStamp = /50671F12;
+Reference = R1;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50671F03;
+Reference = R2;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5067144B;
+Reference = R3;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50659F9F;
+Reference = R4;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DD0F;
+Reference = R10;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DB07;
+Reference = R11;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DE54;
+Reference = R20;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DE4C;
+Reference = R21;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF3B;
+Reference = R30;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF33;
+Reference = R31;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF88;
+Reference = R40;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5065DF80;
+Reference = R41;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5066FC39;
+Reference = R50;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5066FBE4;
+Reference = R51;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5066FBF3;
+Reference = R52;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5066FC11;
+Reference = R53;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5066FC02;
+Reference = R54;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5066FB28;
+Reference = R55;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5067029B;
+Reference = R60;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5067027D;
+Reference = R61;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670283;
+Reference = R62;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5067028F;
+Reference = R63;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670289;
+Reference = R64;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670271;
+Reference = R65;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /506702F9;
+Reference = R70;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /506702DB;
+Reference = R71;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /506702E1;
+Reference = R72;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /506702ED;
+Reference = R73;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /506702E7;
+Reference = R74;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /506702CF;
+Reference = R75;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670357;
+Reference = R80;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670339;
+Reference = R81;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5067033F;
+Reference = R82;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5067034B;
+Reference = R83;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670345;
+Reference = R84;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5067032D;
+Reference = R85;
+ValeurCmp = R;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /50641918;
+Reference = U50;
+ValeurCmp = OPTO-TRANSISTOR;
+IdModule  = CMS-6;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670264;
+Reference = U60;
+ValeurCmp = OPTO-TRANSISTOR;
+IdModule  = CMS-6;
+EndCmp
+
+BeginCmp
+TimeStamp = /506702C2;
+Reference = U70;
+ValeurCmp = OPTO-TRANSISTOR;
+IdModule  = CMS-6;
+EndCmp
+
+BeginCmp
+TimeStamp = /50670320;
+Reference = U80;
+ValeurCmp = OPTO-TRANSISTOR;
+IdModule  = CMS-6;
+EndCmp
+
+EndListe

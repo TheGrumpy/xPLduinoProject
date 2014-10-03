@@ -1,0 +1,214 @@
+<!-- FSharpSyntaxMode.xml
+
+ Author:
+   Doug Blank <doug.blank@gmail.com>
+
+ Copyright (c) 2011 Doug Blank
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE. -->
+ 
+<SyntaxMode name = "FSharp" mimeTypes="text/x-fsharp">
+	<Property name="LineComment">//</Property>
+	<Property name="StringQuote">"</Property>
+	<Property name="StringQuote">'</Property>
+	
+	<EolSpan color = "comment" rule="Comment" tagColor="comment.tag">//</EolSpan>
+	
+	<Span color = "string" rule="String" stopateol = "true" escape='\'>
+		<Begin>"</Begin>
+		<End>"</End>
+	</Span>
+
+	<Span color = "string" rule="String" stopateol = "true" escape='\'>
+		<Begin>&apos;</Begin>
+		<End>&apos;</End>
+	</Span>
+	
+	<Span color = "string" rule="String" stopateol = "true" escape='\'>
+		<Begin>/</Begin>
+		<End>/</End>
+	</Span>
+
+	<Match color = "string">CSharpNumber</Match>
+
+	<!-- :symbol -->
+	<Match color = "string">(^|[^\w\d:]):[\w\d]+</Match>
+
+	<!-- @@class_variable -->
+	<Match color = "keyword.modifier">(^|[^@\w\d])@@\w[\w\d]*</Match>
+
+	<!-- @instance_variable -->
+	<Match color = "keyword.type">(^|[^@\w\d])@\w[\w\d]*</Match>
+	
+	<!-- $global_variable -->
+	<Match color = "keyword.jump">(^|[^\$\w\d])\$\w[\w\d]*</Match>
+	
+	<!-- CONSTant -->
+	<Match color = "comment.keyword.todo">(^|[^\w\d])(?-i)[A-Z][\w\d]*</Match>
+
+	<Keywords color = "keyword.access">
+	</Keywords>
+	
+	<Keywords color = "keyword.operator">
+	</Keywords>
+	
+	<Keywords color = "keyword.selection">
+	</Keywords>
+	
+	<Keywords color = "keyword.iteration">
+	</Keywords>
+	
+	<Keywords color = "keyword.jump">
+	</Keywords>
+	
+	<Keywords color = "keyword.exceptions">
+	</Keywords>
+	
+	<Keywords color = "constant.language">
+<!-- 
+In addition, the following tokens are reserved in F# because they are
+keywords in the OCaml language:
+-->
+                 <Word>asr</Word>
+                 <Word>land</Word>
+                 <Word>lor</Word>
+                 <Word>lsl</Word>
+                 <Word>lsr</Word>
+                 <Word>lxor</Word>
+                 <Word>mod</Word>
+                 <Word>sig</Word>
+	</Keywords>
+	
+	<Keywords color = "keyword.modifier">
+	</Keywords>
+	
+	<Keywords color = "keyword.namespace">
+                 <Word>abstract</Word>
+                 <Word>and</Word>
+                 <Word>as</Word>
+                 <Word>assert</Word>
+                 <Word>base</Word>
+                 <Word>begin</Word>
+                 <Word>class</Word>
+                 <Word>default</Word>
+                 <Word>delegate</Word>
+                 <Word>do</Word>
+                 <Word>done</Word>
+                 <Word>downcast</Word>
+                 <Word>downto</Word>
+                 <Word>elif</Word>
+                 <Word>else</Word>
+                 <Word>end</Word>
+                 <Word>exception</Word>
+                 <Word>extern</Word>
+                 <Word>false</Word>
+                 <Word>finally</Word>
+                 <Word>for</Word>
+                 <Word>fun</Word>
+                 <Word>function</Word>
+                 <Word>global</Word>
+                 <Word>if</Word>
+                 <Word>in</Word>
+                 <Word>inherit</Word>
+                 <Word>inline</Word>
+                 <Word>interface</Word>
+                 <Word>internal</Word>
+                 <Word>lazy</Word>
+                 <Word>let</Word>
+                 <Word>match</Word>
+                 <Word>member</Word>
+                 <Word>module</Word>
+                 <Word>mutable</Word>
+                 <Word>namespace</Word>
+                 <Word>new</Word>
+                 <Word>not</Word>
+                 <Word>null</Word>
+                 <Word>of</Word>
+                 <Word>open</Word>
+                 <Word>or</Word>
+                 <Word>override</Word>
+                 <Word>private</Word>
+                 <Word>public</Word>
+                 <Word>rec</Word>
+                 <Word>return</Word>
+                 <Word>static</Word>
+                 <Word>struct</Word>
+                 <Word>then</Word>
+                 <Word>to</Word>
+                 <Word>true</Word>
+                 <Word>try</Word>
+                 <Word>type</Word>
+                 <Word>upcast</Word>
+                 <Word>use</Word>
+                 <Word>val</Word>
+                 <Word>void</Word>
+                 <Word>when</Word>
+                 <Word>while</Word>
+                 <Word>with</Word>
+                 <Word>yield</Word>
+	</Keywords>
+	
+	<Keywords color = "keyword.property">		
+	</Keywords>
+	
+	<Keywords color = "keyword.declaration">
+<!-- 
+The following tokens are reserved as keywords for future
+expansion of the F# language:
+-->
+                 <Word>atomic</Word>
+                 <Word>break</Word>
+                 <Word>checked</Word>
+                 <Word>component</Word>
+                 <Word>const</Word>
+                 <Word>constraint</Word>
+                 <Word>constructor</Word>
+                 <Word>continue</Word>
+                 <Word>eager</Word>
+                 <Word>event</Word>
+                 <Word>external</Word>
+                 <Word>fixed</Word>
+                 <Word>functor</Word>
+                 <Word>include</Word>
+                 <Word>method</Word>
+                 <Word>mixin</Word>
+                 <Word>object</Word>
+                 <Word>parallel</Word>
+                 <Word>process</Word>
+                 <Word>protected</Word>
+                 <Word>pure</Word>
+                 <Word>sealed</Word>
+                 <Word>tailcall</Word>
+                 <Word>trait</Word>
+                 <Word>virtual</Word>
+                 <Word>volatile</Word>
+	</Keywords>
+	
+	<Rule name = "Comment">
+		<Keywords color="comment.keyword.todo" ignorecase="True">
+			<Word>TODO</Word>
+			<Word>FIXME</Word>
+			<Word>HACK</Word>
+			<Word>UNDONE</Word>
+		</Keywords>	
+	</Rule>
+	
+	<Rule name = "String">
+	</Rule>
+</SyntaxMode>

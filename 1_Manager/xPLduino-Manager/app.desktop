@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=xPLduino-Manager
+Exec=xplduino-manager
+Terminal=false

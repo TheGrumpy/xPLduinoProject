@@ -1,0 +1,28 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State />
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>ipad</Value>
+          <Value>UdpEndpoint</Value>
+          <Value>UdpSocketListener</Value>
+          <Value>client</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint enabled="false" file="/home/ludovic/Documents/xPLduino-Manager/xPLduino-Manager/xPLduino-Manager/Windows/ExternOutputAndHistoric.cs" line="19" />
+      <Breakpoint enabled="false" file="/home/ludovic/Documents/xPLduino-Manager/xPLduino-Manager/Class/DataManagement.cs" line="1609" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

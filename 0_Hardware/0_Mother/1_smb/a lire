@@ -1,0 +1,8 @@
+*****************************************************
+xplduino dossier carte smb 
+*****************************************************
+Ouvrir avec kicad
+
+sudo add-apt-repository ppa:adamwolf/kicad-testing-daily
+sudo apt-get update
+sudo apt-get install kicad

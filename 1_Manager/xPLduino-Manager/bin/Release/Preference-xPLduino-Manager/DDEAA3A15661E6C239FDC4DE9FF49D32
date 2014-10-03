@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preferences>
+	<Preference DisplayWelcomeTab="True" />
+	<Preference ConfirmClose="True" />
+	<Preference BeepOnDelete="True" />
+	<Preference BeepOnError="True" />
+	<Preference Langage="Français" />
+	<Preference LIGDefaultValue="8" />
+	<Preference LIGFade="8" />
+	<Preference SWIInverse="False" />
+	<Preference SWIImpusionTime="4" />
+</Preferences>

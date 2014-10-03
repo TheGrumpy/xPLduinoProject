@@ -1,0 +1,197 @@
+<!-- SchemeSyntaxMode.xml
+
+ Author:
+   Doug Blank <doug.blank@gmail.com>
+
+ Copyright (c) 2011 Doug Blank
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE. -->
+ 
+<SyntaxMode name="Scheme" mimeTypes="text/x-scheme">
+  <Delimiters>()[]`"' ,	</Delimiters>
+  <Property name="LineComment">;</Property>
+  <Property name="StringQuote">"</Property>
+  
+  <EolSpan color="comment" rule="Comment" tagColor="comment.tag">;</EolSpan>
+
+  <Span color="string" rule="String" stopateol="true" escape='\'>
+    <Begin>"</Begin>
+    <End>"</End>
+  </Span>
+
+  <Match color="string">CSharpNumber</Match>
+
+  <Keywords color="keyword.operator">
+    <Word>and</Word>
+    <Word>or</Word>
+    <Word>not</Word>
+  </Keywords>
+
+  <Keywords color="text.preprocessor">
+    <Word>append</Word>
+    <Word>apply</Word>
+    <Word>caaaar</Word>
+    <Word>caaadr</Word>
+    <Word>caaar</Word>
+    <Word>caadar</Word>
+    <Word>caaddr</Word>
+    <Word>caadr</Word>
+    <Word>caar</Word>
+    <Word>cadaar</Word>
+    <Word>cadadr</Word>
+    <Word>cadar</Word>
+    <Word>caddar</Word>
+    <Word>cadddr</Word>
+    <Word>caddr</Word>
+    <Word>cadr</Word>
+    <Word>call/cc</Word>
+    <Word>call-with-current-continuation</Word>
+    <Word>car</Word>
+    <Word>cdaaar</Word>
+    <Word>cdaadr</Word>
+    <Word>cdaar</Word>
+    <Word>cdadar</Word>
+    <Word>cdaddr</Word>
+    <Word>cdadr</Word>
+    <Word>cdar</Word>
+    <Word>cddaar</Word>
+    <Word>cddadr</Word>
+    <Word>cddar</Word>
+    <Word>cdddar</Word>
+    <Word>cddddr</Word>
+    <Word>cdddr</Word>
+    <Word>cddr</Word>
+    <Word>cdr</Word>
+    <Word>cond</Word>
+    <Word>case</Word>
+    <Word>cases</Word>
+    <Word>cons</Word>
+    <Word>current-time</Word>
+    <Word>debug</Word>
+    <Word>dir</Word>
+    <Word>display</Word>
+    <Word>env</Word>
+    <Word>eq?</Word>
+    <Word>equal?</Word>
+    <Word>eval</Word>
+    <Word>exit</Word>
+    <Word>float</Word>
+    <Word>format</Word>
+    <Word>get</Word>
+    <Word>group</Word>
+    <Word>help</Word>
+    <Word>int</Word>
+    <Word>iter?</Word>
+    <Word>length</Word>
+    <Word>list</Word>
+    <Word>list?</Word>
+    <Word>list->vector</Word>
+    <Word>list-head</Word>
+    <Word>list-tail</Word>
+    <Word>load</Word>
+    <Word>make-vector</Word>
+    <Word>member</Word>
+    <Word>memq</Word>
+    <Word>newline</Word>
+    <Word>null?</Word>
+    <Word>pair?</Word>
+    <Word>parse</Word>
+    <Word>unparse</Word>
+    <Word>parse-string</Word>
+    <Word>print</Word>
+    <Word>printf</Word>
+    <Word>procedure?</Word>
+    <Word>property</Word>
+    <Word>range</Word>
+    <Word>record-case</Word>
+    <Word>reverse</Word>
+    <Word>set-car!</Word>
+    <Word>set-cdr!</Word>
+    <Word>sort</Word>
+    <Word>sqrt</Word>
+    <Word>string?</Word>
+    <Word>string&lt;?</Word>
+    <Word>string->list</Word>
+    <Word>string->symbol</Word>
+    <Word>symbol</Word>
+    <Word>symbol?</Word>
+    <Word>symbol->string</Word>
+    <Word>typeof</Word>
+    <Word>vector</Word>
+    <Word>vector?</Word>
+    <Word>vector-&gt;list</Word>
+    <Word>vector-ref</Word>
+    <Word>vector-set!</Word>
+    <Word>choose</Word>
+    <Word>require</Word>
+  </Keywords>
+  
+  <Keywords color="keyword.semantic.property">
+    <Word>for-each</Word>
+    <Word>map</Word>
+  </Keywords>
+  
+  <Keywords color="keyword.semantic.error">
+    <Word>try</Word>
+    <Word>catch</Word>
+  </Keywords>
+  
+  <Keywords color="keyword.semantic.error">
+    <Word>raise</Word>
+  </Keywords>
+  
+  <Keywords color="constant.language">
+    <Word>#t</Word>
+    <Word>#f</Word>
+    <Word>nil</Word>
+  </Keywords>
+  
+  <Keywords color="keyword.modifier">
+  </Keywords>
+  
+  <Keywords color="keyword.namespace">
+    <Word>import</Word>
+    <Word>using</Word>
+  </Keywords>
+  
+  <Keywords color="keyword.semantic.type">
+    <Word>define</Word>
+    <Word>define-datatype</Word>
+    <Word>define!</Word>
+    <Word>lambda</Word>
+    <Word>let</Word>
+    <Word>let*</Word>
+    <Word>letrec</Word>
+  </Keywords>
+  
+  <Rule name="Comment">
+    <Keywords color="comment.keyword.todo" ignorecase="True">
+      <Word>TODO</Word>
+      <Word>FIXME</Word>
+      <Word>HACK</Word>
+      <Word>UNDONE</Word>
+    </Keywords>	
+  </Rule>
+  
+  <Rule name="String">
+  </Rule>
+
+  <Rule name="Keyword">
+  </Rule>
+</SyntaxMode>

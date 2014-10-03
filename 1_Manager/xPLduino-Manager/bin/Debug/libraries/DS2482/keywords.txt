@@ -1,0 +1,58 @@
+#######################################
+# Syntax Coloring Map For Xport
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DS2482	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+error_flags	KEYWORD2
+searchDone	KEYWORD2
+
+setConfig	KEYWORD2
+setChannel	KEYWORD2
+
+wireReset	KEYWORD2
+wireWrite	KEYWORD2
+wireRead	KEYWORD2
+
+wireWriteBit	KEYWORD2
+wireReadBit	KEYWORD2
+wireTriplet	KEYWORD2
+
+romRead	KEYWORD2
+romMatch	KEYWORD2
+romSkip	KEYWORD2
+romSearch	KEYWORD2
+
+init	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+ds2482	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+ERROR_TIMEOUT	LITERAL1
+ERROR_CONFIG	LITERAL1
+ERROR_CHANNEL	LITERAL1
+ERROR_SEARCH	LITERAL1
+
+ERROR_NO_DEVICE	LITERAL1
+ERROR_SHORT_FOUND	LITERAL1
+ERROR_CRC_MISMATCH	LITERAL1
+ERROR_EEPROM_FULL	LITERAL1
+
+
+
+

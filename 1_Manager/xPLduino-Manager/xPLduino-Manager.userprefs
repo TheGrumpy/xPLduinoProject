@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Widgets/Welcome.cs">
+    <Files>
+      <File FileName="MainWindow.cs" Line="281" Column="1" />
+      <File FileName="Class/DataManagement.cs" Line="1592" Column="1" />
+      <File FileName="Widgets/InstanceProperties.cs" Line="1" Column="1" />
+      <File FileName="Widgets/Welcome.cs" Line="12" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

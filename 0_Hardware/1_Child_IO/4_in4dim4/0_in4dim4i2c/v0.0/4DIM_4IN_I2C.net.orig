@@ -1,0 +1,1085 @@
+# EESchema Netlist Version 1.1 created  dim. 09 sept. 2012 18:09:04 CEST
+(
+ ( /4FA0F020 $noname  R15 510R {Lib=R}
+  (    1 N-000072 )
+  (    2 DGND )
+ )
+ ( /4FA0F01F $noname  D5 LED {Lib=LED}
+  (    1 +5V )
+  (    2 N-000072 )
+ )
+ ( /4F9DAAD0 $noname  R8 1KR {Lib=R}
+  (    1 N-000013 )
+  (    2 GND )
+ )
+ ( /4F9DAAA8 $noname  R7 1KR {Lib=R}
+  (    1 N-000001 )
+  (    2 GND )
+ )
+ ( /4F9DAA63 $noname  R6 1KR {Lib=R}
+  (    1 N-000002 )
+  (    2 GND )
+ )
+ ( /4F9DAA28 $noname  R5 1KR {Lib=R}
+  (    1 N-000010 )
+  (    2 GND )
+ )
+ ( /4F8C706A $noname  R16 10KR {Lib=R}
+  (    1 +5V )
+  (    2 N-000011 )
+ )
+ ( /4F8BFB17 $noname  KUA1 CONN_3 {Lib=CONN_3}
+  (    1 DGND )
+  (    2 /A1 )
+  (    3 N-000011 )
+ )
+ ( /4F8BFB14 $noname  KUA0 CONN_3 {Lib=CONN_3}
+  (    1 DGND )
+  (    2 /A0 )
+  (    3 N-000011 )
+ )
+ ( /4F8BFB04 $noname  KUA2 CONN_3 {Lib=CONN_3}
+  (    1 DGND )
+  (    2 /A2 )
+  (    3 N-000011 )
+ )
+ ( /4F8A8025 $noname  P4 CONN_5 {Lib=CONN_6}
+  (    1 +5V )
+  (    2 DGND )
+  (    3 /SCK(SCL) )
+  (    4 /MOSI(SDA) )
+  (    5 //INT )
+  (    6 ? )
+ )
+ ( /4F808EDD $noname  OK3 CNY17 {Lib=OPTO-TRANSISTOR}
+  (    1 /INPUT2 )
+  (    2 N-000001 )
+  (    3 ? )
+  (    4 DGND )
+  (    5 /IN2 )
+  (    6 ? )
+ )
+ ( /4F808EDC $noname  R3 1KR {Lib=R}
+  (    1 N-000061 )
+  (    2 GND )
+ )
+ ( /4F808EDB $noname  R11 4.7KR {Lib=R}
+  (    1 +5V )
+  (    2 /IN2 )
+ )
+ ( /4F808EDA $noname  D3 LED {Lib=LED}
+  (    1 /INPUT2 )
+  (    2 N-000061 )
+ )
+ ( /4F808ED6 $noname  P2 CONN_2 {Lib=CONN_3}
+  (    1 /INPUT2 )
+  (    2 /INPUT3 )
+  (    3 GND )
+ )
+ ( /4F808ED2 $noname  D4 LED {Lib=LED}
+  (    1 /INPUT3 )
+  (    2 N-000063 )
+ )
+ ( /4F808ED1 $noname  R12 4.7KR {Lib=R}
+  (    1 +5V )
+  (    2 /IN3 )
+ )
+ ( /4F808ED0 $noname  R4 1KR {Lib=R}
+  (    1 N-000063 )
+  (    2 GND )
+ )
+ ( /4F808ECF $noname  OK4 CNY17 {Lib=OPTO-TRANSISTOR}
+  (    1 /INPUT3 )
+  (    2 N-000013 )
+  (    3 ? )
+  (    4 DGND )
+  (    5 /IN3 )
+  (    6 ? )
+ )
+ ( /4F808D11 $noname  OK2 CNY17 {Lib=OPTO-TRANSISTOR}
+  (    1 /INPUT1 )
+  (    2 N-000002 )
+  (    3 ? )
+  (    4 DGND )
+  (    5 /IN1 )
+  (    6 ? )
+ )
+ ( /4F808D10 $noname  R2 1KR {Lib=R}
+  (    1 N-000067 )
+  (    2 GND )
+ )
+ ( /4F808D0F $noname  R10 4.7KR {Lib=R}
+  (    1 +5V )
+  (    2 /IN1 )
+ )
+ ( /4F808D0E $noname  D2 LED {Lib=LED}
+  (    1 /INPUT1 )
+  (    2 N-000067 )
+ )
+ ( /4F80580C $noname  P1 CONN_2 {Lib=CONN_3}
+  (    1 /INPUT0 )
+  (    2 /INPUT1 )
+  (    3 GND )
+ )
+ ( /4F800E84 $noname  D1 LED {Lib=LED}
+  (    1 /INPUT0 )
+  (    2 N-000069 )
+ )
+ ( /4F800D64 $noname  R9 4.7KR {Lib=R}
+  (    1 +5V )
+  (    2 /IN0 )
+ )
+ ( /4F800D59 $noname  R1 1KR {Lib=R}
+  (    1 N-000069 )
+  (    2 GND )
+ )
+ ( /4F800B32 $noname  OK1 CNY17 {Lib=OPTO-TRANSISTOR}
+  (    1 /INPUT0 )
+  (    2 N-000010 )
+  (    3 ? )
+  (    4 DGND )
+  (    5 /IN0 )
+  (    6 ? )
+ )
+ ( /502AAF98 DIP20  IC1 ATTINY2313-P {Lib=ATTINY2313-P}
+  (    1 /RESET )
+  (    2 /A0 )
+  (    3 /A1 )
+  (    4 /A2 )
+  (    5 /LED )
+  (    6 /ZCD )
+  (    7 /DIM3 )
+  (    8 /DIM1 )
+  (    9 /DIM2 )
+  (   10 DGND )
+  (   11 /DIM0 )
+  (   12 /IN3 )
+  (   13 /IN2 )
+  (   14 /IN1 )
+  (   15 /IN0 )
+  (   16 //INT )
+  (   17 /MOSI(SDA) )
+  (   18 /MISO )
+  (   19 /SCK(SCL) )
+  (   20 +5V )
+ )
+ ( /502AB08C $noname  D6 LED {Lib=LED}
+  (    1 N-000047 )
+  (    2 N-000080 )
+ )
+ ( /502AB092 $noname  R17 1KR {Lib=R}
+  (    1 N-000080 )
+  (    2 /DIM0 )
+ )
+ ( /502AB276 $noname  P6 CONN_5 {Lib=CONN_3X2}
+  (    1 /MISO )
+  (    2 +5V )
+  (    3 /SCK(SCL) )
+  (    4 /MOSI(SDA) )
+  (    5 /RESET )
+  (    6 DGND )
+ )
+ ( /502AB36E DIP6  IC2 MOC3021S {Lib=MOC3020M}
+  (    1 +5V )
+  (    2 N-000047 )
+  (    4 /GATE01 )
+  (    6 /GATE00 )
+ )
+ ( /502AB475 $noname  R21 470R {Lib=R}
+  (    1 /GATE00 )
+  (    2 /HT00 )
+ )
+ ( /502AB4A5 $noname  U1 TRIAC {Lib=TRIAC}
+  (    1 /HT03 )
+  (    2 /HT00 )
+  (    3 /GATE02 )
+ )
+ ( /502AB6A2 $noname  C1 C {Lib=C}
+  (    1 /HT01 )
+  (    2 /HT03 )
+ )
+ ( /502AB6B1 $noname  FB1 FILTER {Lib=FILTER}
+  (    1 /HT00 )
+  (    2 /HT01 )
+ )
+ ( /502AB824 $noname  P7 CONN_2 {Lib=CONN_2}
+  (    1 /HT02 )
+  (    2 /HT03 )
+ )
+ ( /502ABA04 $noname  D7 LED {Lib=LED}
+  (    1 N-000051 )
+  (    2 N-000085 )
+ )
+ ( /502ABA0A $noname  R18 1KR {Lib=R}
+  (    1 N-000085 )
+  (    2 /DIM1 )
+ )
+ ( /502ABA10 DIP6  IC3 MOC3021S {Lib=MOC3020M}
+  (    1 +5V )
+  (    2 N-000051 )
+  (    4 /GATE11 )
+  (    6 /GATE10 )
+ )
+ ( /502ABA20 $noname  R22 470R {Lib=R}
+  (    1 /GATE10 )
+  (    2 /HT10 )
+ )
+ ( /502ABA26 $noname  U2 TRIAC {Lib=TRIAC}
+  (    1 /HT13 )
+  (    2 /HT10 )
+  (    3 /GATE12 )
+ )
+ ( /502ABA30 $noname  C2 C {Lib=C}
+  (    1 /HT11 )
+  (    2 /HT13 )
+ )
+ ( /502ABA36 $noname  FB2 FILTER {Lib=FILTER}
+  (    1 /HT10 )
+  (    2 /HT11 )
+ )
+ ( /502ABA40 $noname  P8 CONN_2 {Lib=CONN_2}
+  (    1 /HT12 )
+  (    2 /HT13 )
+ )
+ ( /502ABA4A $noname  D8 LED {Lib=LED}
+  (    1 N-000041 )
+  (    2 N-000075 )
+ )
+ ( /502ABA50 $noname  R19 1KR {Lib=R}
+  (    1 N-000075 )
+  (    2 /DIM2 )
+ )
+ ( /502ABA56 DIP6  IC4 MOC3021S {Lib=MOC3020M}
+  (    1 +5V )
+  (    2 N-000041 )
+  (    4 /GATE21 )
+  (    6 /GATE20 )
+ )
+ ( /502ABA66 $noname  R23 470R {Lib=R}
+  (    1 /GATE20 )
+  (    2 /HT20 )
+ )
+ ( /502ABA6C $noname  U3 TRIAC {Lib=TRIAC}
+  (    1 /HT23 )
+  (    2 /HT20 )
+  (    3 /GATE22 )
+ )
+ ( /502ABA76 $noname  C3 C {Lib=C}
+  (    1 /HT21 )
+  (    2 /HT23 )
+ )
+ ( /502ABA7C $noname  FB3 FILTER {Lib=FILTER}
+  (    1 /HT20 )
+  (    2 /HT21 )
+ )
+ ( /502ABA86 $noname  P9 CONN_2 {Lib=CONN_2}
+  (    1 /HT22 )
+  (    2 /HT23 )
+ )
+ ( /502ABA90 $noname  D9 LED {Lib=LED}
+  (    1 N-000055 )
+  (    2 N-000077 )
+ )
+ ( /502ABA96 $noname  R20 1KR {Lib=R}
+  (    1 N-000077 )
+  (    2 /DIM3 )
+ )
+ ( /502ABA9C DIP6  IC5 MOC3021S {Lib=MOC3020M}
+  (    1 +5V )
+  (    2 N-000055 )
+  (    4 /GATE31 )
+  (    6 /GATE30 )
+ )
+ ( /502ABAAC $noname  R24 470R {Lib=R}
+  (    1 /GATE30 )
+  (    2 /HT30 )
+ )
+ ( /502ABAB2 $noname  U4 TRIAC {Lib=TRIAC}
+  (    1 /HT33 )
+  (    2 /HT30 )
+  (    3 /GATE32 )
+ )
+ ( /502ABABC $noname  C4 C {Lib=C}
+  (    1 /HT31 )
+  (    2 /HT33 )
+ )
+ ( /502ABAC2 $noname  FB4 FILTER {Lib=FILTER}
+  (    1 /HT30 )
+  (    2 /HT31 )
+ )
+ ( /502ABACC $noname  P10 CONN_2 {Lib=CONN_2}
+  (    1 /HT32 )
+  (    2 /HT33 )
+ )
+ ( /502B5AFF $noname  P5 CONN_5 {Lib=CONN_6}
+  (    1 +5V )
+  (    2 DGND )
+  (    3 /SCK(SCL) )
+  (    4 /MOSI(SDA) )
+  (    5 //INT )
+  (    6 ? )
+ )
+ ( /502BFC8A $noname  R25 10KR {Lib=R}
+  (    1 /RESET )
+  (    2 +5V )
+ )
+ ( /502CD738 $noname  F1 FUSE {Lib=FUSE}
+  (    1 /HT01 )
+  (    2 /HT02 )
+ )
+ ( /502CD8AC $noname  F2 FUSE {Lib=FUSE}
+  (    1 /HT11 )
+  (    2 /HT12 )
+ )
+ ( /502CD8B2 $noname  F3 FUSE {Lib=FUSE}
+  (    1 /HT21 )
+  (    2 /HT22 )
+ )
+ ( /502CD8B8 $noname  F4 FUSE {Lib=FUSE}
+  (    1 /HT31 )
+  (    2 /HT32 )
+ )
+ ( /502FC400 SOP4  IC6 P620 {Lib=TLP290}
+  (    1 N-000025 )
+  (    2 N-000019 )
+  (    3 DGND )
+  (    4 /ZCD )
+ )
+ ( /502FC40D $noname  P3 CONN_2 {Lib=CONN_2}
+  (    1 /NEUTRAL )
+  (    2 /PHASE )
+ )
+ ( /502FC413 $noname  R27 100KR {Lib=R}
+  (    1 N-000025 )
+  (    2 /PHASE )
+ )
+ ( /502FC419 $noname  R26 100KR {Lib=R}
+  (    1 N-000025 )
+  (    2 /PHASE )
+ )
+ ( /502FC41F $noname  R28 100KR {Lib=R}
+  (    1 N-000019 )
+  (    2 /NEUTRAL )
+ )
+ ( /502FC425 $noname  R29 100KR {Lib=R}
+  (    1 N-000019 )
+  (    2 /NEUTRAL )
+ )
+ ( /502FC6AC $noname  R30 3KR {Lib=R}
+  (    1 /ZCD )
+  (    2 +5V )
+ )
+ ( /5035436C $noname  R13 510R {Lib=R}
+  (    1 N-000008 )
+  (    2 DGND )
+ )
+ ( /50354372 $noname  D10 LED {Lib=LED}
+  (    1 /LED )
+  (    2 N-000008 )
+ )
+ ( /503E5DDF $noname  KUA3 CONN_3 {Lib=CONN_3}
+  (    1 DGND )
+  (    2 /MISO )
+  (    3 N-000011 )
+ )
+ ( /50479B33 $noname  C5 10uF {Lib=C}
+  (    1 +5V )
+  (    2 DGND )
+ )
+ ( /50479B42 $noname  C6 100nF {Lib=C}
+  (    1 +5V )
+  (    2 DGND )
+ )
+ ( /5047AB22 $noname  R14 470R {Lib=R}
+  (    1 /GATE01 )
+  (    2 /GATE02 )
+ )
+ ( /5047ACDA $noname  R31 470R {Lib=R}
+  (    1 /GATE11 )
+  (    2 /GATE12 )
+ )
+ ( /5047AE70 $noname  R32 470R {Lib=R}
+  (    1 /GATE21 )
+  (    2 /GATE22 )
+ )
+ ( /5047AF3F $noname  R33 470R {Lib=R}
+  (    1 /GATE31 )
+  (    2 /GATE32 )
+ )
+)
+*
+{ Allowed footprints by component:
+$component R15
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component D5
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R8
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R7
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R16
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R11
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component D3
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D4
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R12
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R10
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component D2
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D1
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R9
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component D6
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R17
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component IC2
+ DIP6*
+ SMD6*
+$endlist
+$component R21
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component D7
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R18
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component IC3
+ DIP6*
+ SMD6*
+$endlist
+$component R22
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C2
+ SM*
+ C?
+ C1-1
+$endlist
+$component D8
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R19
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component IC4
+ DIP6*
+ SMD6*
+$endlist
+$component R23
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component D9
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R20
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component IC5
+ DIP6*
+ SMD6*
+$endlist
+$component R24
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C4
+ SM*
+ C?
+ C1-1
+$endlist
+$component R25
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R27
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R26
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R28
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R29
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R30
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R13
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component D10
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component C6
+ SM*
+ C?
+ C1-1
+$endlist
+$component R14
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R31
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R32
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R33
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$endfootprintlist
+}
+{ Pin List by Nets
+Net 1 "" ""
+ OK3 2
+ R7 1
+Net 2 "" ""
+ OK2 2
+ R6 1
+Net 3 "/LED" "LED"
+ D10 1
+ IC1 5
+Net 4 "/GATE10" "GATE10"
+ R22 1
+ IC3 6
+Net 5 "/GATE20" "GATE20"
+ IC4 6
+ R23 1
+Net 6 "/GATE30" "GATE30"
+ IC5 6
+ R24 1
+Net 7 "DGND" "DGND"
+ OK2 4
+ KUA2 1
+ C5 2
+ KUA0 1
+ P4 2
+ OK3 4
+ OK4 4
+ C6 2
+ IC6 3
+ KUA1 1
+ R15 2
+ P6 6
+ IC1 10
+ P5 2
+ OK1 4
+ R13 2
+ KUA3 1
+Net 8 "" ""
+ D10 2
+ R13 1
+Net 9 "/MISO" "MISO"
+ IC1 18
+ KUA3 2
+ P6 1
+Net 10 "" ""
+ R5 1
+ OK1 2
+Net 11 "" ""
+ R16 2
+ KUA3 3
+ KUA2 3
+ KUA0 3
+ KUA1 3
+Net 12 "/GATE00" "GATE00"
+ R21 1
+ IC2 6
+Net 13 "" ""
+ R8 1
+ OK4 2
+Net 14 "/HT02" "HT02"
+ F1 2
+ P7 1
+Net 15 "/HT10" "HT10"
+ FB2 1
+ U2 2
+ R22 2
+Net 16 "/HT12" "HT12"
+ P8 1
+ F2 2
+Net 17 "/HT20" "HT20"
+ U3 2
+ FB3 1
+ R23 2
+Net 18 "/HT22" "HT22"
+ P9 1
+ F3 2
+Net 19 "" ""
+ R28 1
+ IC6 2
+ R29 1
+Net 20 "/GATE11" "GATE11"
+ IC3 4
+ R31 1
+Net 21 "/HT32" "HT32"
+ F4 2
+ P10 1
+Net 22 "/HT00" "HT00"
+ R21 2
+ FB1 1
+ U1 2
+Net 23 "/NEUTRAL" "NEUTRAL"
+ P3 1
+ R29 2
+ R28 2
+Net 24 "/PHASE" "PHASE"
+ R26 2
+ P3 2
+ R27 2
+Net 25 "" ""
+ IC6 1
+ R27 1
+ R26 1
+Net 26 "/ZCD" "ZCD"
+ IC1 6
+ IC6 4
+ R30 1
+Net 27 "GND" "GND"
+ P2 3
+ R8 2
+ R7 2
+ R6 2
+ R1 2
+ P1 3
+ R3 2
+ R5 2
+ R4 2
+ R2 2
+Net 28 "/GATE01" "GATE01"
+ IC2 4
+ R14 1
+Net 29 "/GATE02" "GATE02"
+ U1 3
+ R14 2
+Net 30 "/GATE12" "GATE12"
+ R31 2
+ U2 3
+Net 31 "/GATE21" "GATE21"
+ R32 1
+ IC4 4
+Net 32 "/GATE22" "GATE22"
+ R32 2
+ U3 3
+Net 33 "/GATE31" "GATE31"
+ R33 1
+ IC5 4
+Net 34 "/GATE32" "GATE32"
+ R33 2
+ U4 3
+Net 41 "" ""
+ D8 1
+ IC4 2
+Net 42 "/HT11" "HT11"
+ FB2 2
+ C2 1
+ F2 1
+Net 43 "/HT13" "HT13"
+ P8 2
+ C2 2
+ U2 1
+Net 44 "/DIM1" "DIM1"
+ R18 2
+ IC1 8
+Net 45 "/HT21" "HT21"
+ C3 1
+ F3 1
+ FB3 2
+Net 46 "/HT01" "HT01"
+ C1 1
+ FB1 2
+ F1 1
+Net 47 "" ""
+ IC2 2
+ D6 1
+Net 48 "/HT23" "HT23"
+ C3 2
+ U3 1
+ P9 2
+Net 49 "/HT03" "HT03"
+ U1 1
+ C1 2
+ P7 2
+Net 50 "/DIM0" "DIM0"
+ IC1 11
+ R17 2
+Net 51 "" ""
+ IC3 2
+ D7 1
+Net 52 "+5V" "+5V"
+ R30 2
+ R25 2
+ P4 1
+ IC1 20
+ IC5 1
+ P6 2
+ IC2 1
+ IC3 1
+ IC4 1
+ P5 1
+ C6 1
+ C5 1
+ R11 1
+ R9 1
+ R12 1
+ R10 1
+ D5 1
+ R16 1
+Net 53 "/HT30" "HT30"
+ R24 2
+ U4 2
+ FB4 1
+Net 54 "/DIM2" "DIM2"
+ IC1 9
+ R19 2
+Net 55 "" ""
+ D9 1
+ IC5 2
+Net 56 "/HT31" "HT31"
+ C4 1
+ FB4 2
+ F4 1
+Net 57 "/HT33" "HT33"
+ U4 1
+ P10 2
+ C4 2
+Net 58 "/DIM3" "DIM3"
+ IC1 7
+ R20 2
+Net 59 "/IN2" "IN2"
+ R11 2
+ OK3 5
+ IC1 13
+Net 60 "/INPUT2" "INPUT2"
+ D3 1
+ OK3 1
+ P2 1
+Net 61 "" ""
+ R3 1
+ D3 2
+Net 62 "/INPUT3" "INPUT3"
+ P2 2
+ D4 1
+ OK4 1
+Net 63 "" ""
+ R4 1
+ D4 2
+Net 64 "/IN3" "IN3"
+ IC1 12
+ OK4 5
+ R12 2
+Net 66 "/INPUT1" "INPUT1"
+ OK2 1
+ D2 1
+ P1 2
+Net 67 "" ""
+ R2 1
+ D2 2
+Net 68 "/INPUT0" "INPUT0"
+ OK1 1
+ P1 1
+ D1 1
+Net 69 "" ""
+ R1 1
+ D1 2
+Net 72 "" ""
+ R15 1
+ D5 2
+Net 73 "/SCK(SCL)" "SCK(SCL)"
+ P4 3
+ IC1 19
+ P6 3
+ P5 3
+Net 74 "//INT" "/INT"
+ P5 5
+ P4 5
+ IC1 16
+Net 75 "" ""
+ R19 1
+ D8 2
+Net 76 "/MOSI(SDA)" "MOSI(SDA)"
+ P6 4
+ P4 4
+ IC1 17
+ P5 4
+Net 77 "" ""
+ R20 1
+ D9 2
+Net 78 "/IN1" "IN1"
+ OK2 5
+ R10 2
+ IC1 14
+Net 79 "/IN0" "IN0"
+ R9 2
+ OK1 5
+ IC1 15
+Net 80 "" ""
+ D6 2
+ R17 1
+Net 81 "/A2" "A2"
+ KUA2 2
+ IC1 4
+Net 83 "/A0" "A0"
+ KUA0 2
+ IC1 2
+Net 84 "/A1" "A1"
+ KUA1 2
+ IC1 3
+Net 85 "" ""
+ R18 1
+ D7 2
+Net 86 "/RESET" "RESET"
+ P6 5
+ IC1 1
+ R25 1
+}
+#End

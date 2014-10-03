@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preferences>
+	<Preference DisplayWelcomeTab="True" />
+	<Preference ConfirmClose="True" />
+	<Preference BeepOnDelete="False" />
+	<Preference BeepOnError="False" />
+	<Preference Langage="Français" />
+</Preferences>

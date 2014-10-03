@@ -1,0 +1,301 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:special
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:hr911105_rj45
+LIBS:Small_connectors
+LIBS:74hc08
+LIBS:lm1117imp-3
+LIBS:mp2562ds
+LIBS:usd_conn
+LIBS:74lvc1g126gw
+LIBS:dual_self
+LIBS:ALPS_SWITCHS
+LIBS:max485
+LIBS:1wire
+LIBS:ds1340
+LIBS:SMB-cache
+EELAYER 24 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 4
+Title "Short Main Board - SMB controler"
+Date "29 jun 2013"
+Rev "0"
+Comp "XPLDUINO project"
+Comment1 "GNU GPL v2"
+Comment2 "Domotic Open Source "
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text GLabel 6350 3025 0    25   Output ~ 0
+MISO_33
+Text GLabel 6400 2925 0    25   Input ~ 0
+CLK_33
+Text GLabel 6400 2825 0    25   Input ~ 0
+MOSI_33
+Text GLabel 6400 2775 0    25   Input ~ 0
+CS_33
+$Comp
+L +3.3V #PWR053
+U 1 1 4FF06B96
+P 6475 2675
+F 0 "#PWR053" H 6475 2635 30  0001 C CNN
+F 1 "+3.3V" H 6475 2785 30  0000 C CNN
+F 2 "" H 6475 2675 60  0001 C CNN
+F 3 "" H 6475 2675 60  0001 C CNN
+	1    6475 2675
+	1    0    0    -1  
+$EndComp
+$Comp
+L CSMALL C215
+U 1 1 4FF06B5D
+P 6475 3250
+F 0 "C215" H 6500 3300 30  0000 L CNN
+F 1 "0.1uF" V 6400 3200 30  0000 L CNN
+F 2 "SM0603" V 6500 3200 30  0000 C CNN
+F 3 "" H 6475 3250 60  0001 C CNN
+	1    6475 3250
+	-1   0    0    1   
+$EndComp
+$Comp
+L GND #PWR054
+U 1 1 4FF06B3E
+P 6475 3400
+F 0 "#PWR054" H 6475 3400 30  0001 C CNN
+F 1 "GND" H 6475 3330 30  0001 C CNN
+F 2 "" H 6475 3400 60  0001 C CNN
+F 3 "" H 6475 3400 60  0001 C CNN
+	1    6475 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L USD_CONN J202
+U 1 1 4FF052FB
+P 6800 2900
+F 0 "J202" H 7000 2725 60  0000 C CNN
+F 1 "USD_CONN" H 6850 3175 60  0000 C CNN
+F 2 "DM3CS-SF" H 6850 3275 60  0000 C CNN
+F 3 "" H 6800 2900 60  0001 C CNN
+	1    6800 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HC08 U301
+U 1 1 519F255C
+P 4550 4300
+F 0 "U301" H 4550 4350 60  0000 C CNN
+F 1 "74HC08" H 4550 4250 60  0000 C CNN
+F 2 "" H 4550 4300 60  0001 C CNN
+F 3 "" H 4550 4300 60  0001 C CNN
+	1    4550 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR055
+U 1 1 519F2625
+P 4350 4025
+F 0 "#PWR055" H 4350 4115 20  0001 C CNN
+F 1 "+5V" H 4350 4115 30  0000 C CNN
+F 2 "" H 4350 4025 60  0001 C CNN
+F 3 "" H 4350 4025 60  0001 C CNN
+	1    4350 4025
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR056
+U 1 1 519F26C6
+P 4350 3700
+F 0 "#PWR056" H 4350 3700 30  0001 C CNN
+F 1 "GND" H 4350 3630 30  0001 C CNN
+F 2 "" H 4350 3700 60  0001 C CNN
+F 3 "" H 4350 3700 60  0001 C CNN
+	1    4350 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR057
+U 1 1 519F2702
+P 4350 4600
+F 0 "#PWR057" H 4350 4600 30  0001 C CNN
+F 1 "GND" H 4350 4530 30  0001 C CNN
+F 2 "" H 4350 4600 60  0001 C CNN
+F 3 "" H 4350 4600 60  0001 C CNN
+	1    4350 4600
+	1    0    0    -1  
+$EndComp
+Text GLabel 3800 1650 0    27   Input ~ 0
+uSD_CS
+Text GLabel 3800 2500 0    27   Input ~ 0
+SPI_MOSI
+Text GLabel 3800 3400 0    27   Input ~ 0
+SPI_CLK
+Text GLabel 3850 4300 0    27   Input ~ 0
+MISO_33
+Wire Wire Line
+	6350 3025 6575 3025
+Wire Wire Line
+	6475 3350 6475 3400
+Connection ~ 6475 2875
+Wire Wire Line
+	6475 2875 6575 2875
+Wire Wire Line
+	6400 2775 6575 2775
+Wire Wire Line
+	6400 2825 6575 2825
+Wire Wire Line
+	6400 2925 6575 2925
+Wire Wire Line
+	6475 2675 6475 3150
+Wire Wire Line
+	6575 2975 6400 2975
+Wire Wire Line
+	6400 2975 6400 3375
+Wire Wire Line
+	6400 3375 6475 3375
+Connection ~ 6475 3375
+Wire Wire Line
+	4350 3700 4350 3600
+Wire Wire Line
+	4350 4600 4350 4500
+Wire Wire Line
+	3850 4300 3950 4300
+Wire Wire Line
+	3950 4200 3950 4400
+Connection ~ 3950 4300
+Wire Wire Line
+	3800 3400 3950 3400
+Wire Wire Line
+	3950 3300 3950 3500
+Connection ~ 3950 3400
+Wire Wire Line
+	3800 2500 3950 2500
+Wire Wire Line
+	3950 2400 3950 2600
+Connection ~ 3950 2500
+Wire Wire Line
+	3800 1650 3950 1650
+Wire Wire Line
+	3950 1550 3950 1750
+Text GLabel 5200 2500 2    27   Output ~ 0
+MOSI_33
+Text GLabel 5200 3400 2    27   Output ~ 0
+CLK_33
+Text GLabel 5200 4300 2    27   Output ~ 0
+SPI_MISO
+Wire Wire Line
+	5150 4300 5200 4300
+Wire Wire Line
+	5150 3400 5200 3400
+Wire Wire Line
+	5150 2500 5200 2500
+Connection ~ 3950 1650
+Text GLabel 5200 1650 2    27   Output ~ 0
+CS_33
+Wire Wire Line
+	5150 1650 5200 1650
+NoConn ~ 6575 3075
+NoConn ~ 6575 2725
+Wire Wire Line
+	4350 4100 4350 4025
+$Comp
+L GND #PWR058
+U 1 1 519F329F
+P 4350 1900
+F 0 "#PWR058" H 4350 1900 30  0001 C CNN
+F 1 "GND" H 4350 1830 30  0001 C CNN
+F 2 "" H 4350 1900 60  0001 C CNN
+F 3 "" H 4350 1900 60  0001 C CNN
+	1    4350 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR059
+U 1 1 519F32AE
+P 4350 2775
+F 0 "#PWR059" H 4350 2775 30  0001 C CNN
+F 1 "GND" H 4350 2705 30  0001 C CNN
+F 2 "" H 4350 2775 60  0001 C CNN
+F 3 "" H 4350 2775 60  0001 C CNN
+	1    4350 2775
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 1900 4350 1850
+Wire Wire Line
+	4350 2775 4350 2700
+$Comp
+L 74HC08 U303
+U 2 1 519F2586
+P 4550 2500
+F 0 "U303" H 4550 2550 60  0000 C CNN
+F 1 "74HC08" H 4550 2450 60  0000 C CNN
+F 2 "" H 4550 2500 60  0001 C CNN
+F 3 "" H 4550 2500 60  0001 C CNN
+	2    4550 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HC08 U303
+U 3 1 519F2577
+P 4550 1650
+F 0 "U303" H 4550 1700 60  0000 C CNN
+F 1 "74HC08" H 4550 1600 60  0000 C CNN
+F 2 "" H 4550 1650 60  0001 C CNN
+F 3 "" H 4550 1650 60  0001 C CNN
+	3    4550 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HC08 U303
+U 1 1 519F2595
+P 4550 3400
+F 0 "U303" H 4550 3450 60  0000 C CNN
+F 1 "74HC08" H 4550 3350 60  0000 C CNN
+F 2 "" H 4550 3400 60  0001 C CNN
+F 3 "" H 4550 3400 60  0001 C CNN
+	1    4550 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR060
+U 1 1 519F44EA
+P 4350 3050
+F 0 "#PWR060" H 4350 3010 30  0001 C CNN
+F 1 "+3.3V" H 4350 3160 30  0000 C CNN
+F 2 "" H 4350 3050 60  0001 C CNN
+F 3 "" H 4350 3050 60  0001 C CNN
+	1    4350 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 3200 4350 3050
+$EndSCHEMATC

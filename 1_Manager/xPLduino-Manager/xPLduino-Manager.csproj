@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B800B273-C04A-41FE-91C0-B87C453AC307}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>xPLduinoManager</RootNamespace>
+    <AssemblyName>xPLduino-Manager</AssemblyName>
+    <StartupObject>xPLduinoManager.MainClass</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>glib-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>glade-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Mono.Cairo" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Mono.TextEditor">
+      <HintPath>..\..\..\..\Bureau\C-Sharp example\SourceCalico\calico\bin\Mono.TextEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.TextEditor">
+      <HintPath>..\..\..\..\Bureau\C-Sharp example\SourceCalico\calico\bin\Mono.TextEditor.Other.dll</HintPath>
+      <Package>monodevelop</Package>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="HollyLibrary">
+      <HintPath>..\..\..\..\Téléchargements\HollyLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Satsuma">
+      <HintPath>..\..\..\..\Bureau\bin\Release\Satsuma.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pictures\xplduino-FirstPage.png" />
+    <EmbeddedResource Include="Pictures\Board.png" />
+    <EmbeddedResource Include="Pictures\Debug.png" />
+    <EmbeddedResource Include="Pictures\Folder.png" />
+    <EmbeddedResource Include="Pictures\Home.png" />
+    <EmbeddedResource Include="Pictures\Lighting.png" />
+    <EmbeddedResource Include="Pictures\Network.png" />
+    <EmbeddedResource Include="Pictures\Node.png" />
+    <EmbeddedResource Include="Pictures\Parameter.png" />
+    <EmbeddedResource Include="Pictures\Pin.png" />
+    <EmbeddedResource Include="Pictures\Project.png" />
+    <EmbeddedResource Include="Pictures\Shutter.png" />
+    <EmbeddedResource Include="Pictures\Switch.png" />
+    <EmbeddedResource Include="Pictures\Empty.png" />
+    <EmbeddedResource Include="Pictures\Customer.png" />
+    <EmbeddedResource Include="Pictures\Scenario.png" />
+    <EmbeddedResource Include="Pictures\CustomerUse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="MainWindow.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Class\Project.cs" />
+    <Compile Include="Class\Node.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.MainWindow.cs" />
+    <Compile Include="Class\DataManagement.cs" />
+    <Compile Include="Class\Network.cs" />
+    <Compile Include="Class\Board.cs" />
+    <Compile Include="Class\Pin.cs" />
+    <Compile Include="Class\Instance.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.Welcome.cs" />
+    <Compile Include="Widgets\Welcome.cs" />
+    <Compile Include="Windows\NewProject.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.NewProject.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.test.cs" />
+    <Compile Include="Windows\NewNode.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.NewNode.cs" />
+    <Compile Include="Windows\NewNetwork.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.NewNetwork.cs" />
+    <Compile Include="Param\Boards.cs" />
+    <Compile Include="Windows\NewBoard.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.NewBoard.cs" />
+    <Compile Include="Class\Param.cs" />
+    <Compile Include="Class\Debug.cs" />
+    <Compile Include="Widgets\ProjectProperties.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.ProjectProperties.cs" />
+    <Compile Include="Widgets\NodeProperties.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.NodeProperties.cs" />
+    <Compile Include="Widgets\I2CProperties.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.I2CProperties.cs" />
+    <Compile Include="Widgets\OneWireProperties.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.OneWireProperties.cs" />
+    <Compile Include="Widgets\BoardI2CProperties.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.BoardI2CProperties.cs" />
+    <Compile Include="Widgets\test.cs" />
+    <Compile Include="Windows\NewInstance.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.NewInstance.cs" />
+    <Compile Include="Class\Parameters.cs" />
+    <Compile Include="Class\Notebook.cs" />
+    <Compile Include="Class\OutputTreeView.cs" />
+    <Compile Include="Widgets\InstanceProperties.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.InstanceProperties.cs" />
+    <Compile Include="Class\Preference.cs" />
+    <Compile Include="Windows\ChangePreferences.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.ChangePreferences.cs" />
+    <Compile Include="Class\HistoricTreeView.cs" />
+    <Compile Include="Document\DebugTextMarker.cs" />
+    <Compile Include="Document\TextEdit.cs" />
+    <Compile Include="Widgets\CustomerEdit.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.CustomerEdit.cs" />
+    <Compile Include="Class\Customer.cs" />
+    <Compile Include="Windows\NewCustomer.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.NewCustomer.cs" />
+    <Compile Include="Class\MenuTextEditor.cs" />
+    <Compile Include="Class\Scenario.cs" />
+    <Compile Include="Windows\NewScenario.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.NewScenario.cs" />
+    <Compile Include="Widgets\ScenarioEdit.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.ScenarioEdit.cs" />
+    <Compile Include="Class\Variable.cs" />
+    <Compile Include="Class\Function.cs" />
+    <Compile Include="Class\MenuTextEditorScenario.cs" />
+    <Compile Include="Class\MenuTextEditorFunction.cs" />
+    <Compile Include="Windows\AskPassword.cs" />
+    <Compile Include="gtk-gui\xPLduinoManager.AskPassword.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Content Include="app.desktop">
+      <DeployService-TargetDirectoryId>Linux.DesktopApplications</DeployService-TargetDirectoryId>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Class\" />
+    <Folder Include="Windows\" />
+    <Folder Include="Widgets\" />
+    <Folder Include="Param\" />
+    <Folder Include="Pictures\" />
+    <Folder Include="Document\" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <MonoDevelop.Autotools.MakefileInfo RelativeMakefileName="Makefile" ExecuteTargetName="run" SyncReferences="true">
+          <BuildFilesVar Sync="true" Name="FILES" />
+          <DeployFilesVar />
+          <ResourcesVar Sync="true" Name="RESOURCES" />
+          <OthersVar />
+          <GacRefVar Sync="true" Name="REFERENCES" />
+          <AsmRefVar Sync="true" Name="REFERENCES" />
+          <ProjectRefVar Sync="true" Name="REFERENCES" />
+        </MonoDevelop.Autotools.MakefileInfo>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

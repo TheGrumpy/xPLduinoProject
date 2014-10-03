@@ -1,0 +1,183 @@
+eeschema (2012-01-19 BZR 3256)-stable  >> Creation date: ven. 18 mai 2012 21:42:39 CEST
+
+#Cmp ( ordre = Référence )
+| D101       LED         
+| D102       LED         
+| D103       LED         
+| D104       LED         
+| D105       LED         
+| D106       LED         
+| D107       LED         
+| D108       LED         
+| D109       DIODE       
+| D110       DIODE       
+| D111       DIODE       
+| D112       DIODE       
+| D113       DIODE       
+| D114       DIODE       
+| D115       DIODE       
+| D116       DIODE       
+| D205       LED         
+| D212       LED         
+| K101       G5LA-1-12VDC
+| K102       G5LA-1-12VDC
+| K103       G5LA-1-12VDC
+| K104       G5LA-1-12VDC
+| K105       G5LA-1-12VDC
+| K106       G5LA-1-12VDC
+| K107       G5LA-1-12VDC
+| K108       G5LA-1-12VDC
+| KU1A0      CONN_3      
+| KU1A1      CONN_3      
+| KU1A2      CONN_3      
+| P101       CONN_3      
+| P102       CONN_3      
+| P103       CONN_3      
+| P104       CONN_3      
+| P105       CONN_3      
+| P106       CONN_3      
+| P107       CONN_3      
+| P108       CONN_3      
+| P109       CONN_2      
+| P110       CONN_6      
+| P112       CONN_6      
+| P113       CONN_2      
+| Q101       PNP         
+| Q102       PNP         
+| Q103       PNP         
+| Q104       PNP         
+| Q105       PNP         
+| Q106       PNP         
+| Q107       PNP         
+| Q108       PNP         
+| Q109       DSS20201L NPN
+| Q110       DSS20201L NPN
+| Q111       DSS20201L NPN
+| Q112       DSS20201L NPN
+| Q113       DSS20201L NPN
+| Q114       DSS20201L NPN
+| Q115       DSS20201L NPN
+| Q116       DSS20201L NPN
+| R101       100R        
+| R102       100R        
+| R103       10KR        
+| R104       22KR        
+| R105       22KR        
+| R106       22R         
+| R107       22KR        
+| R108       22KR        
+| R109       22KR        
+| R110       22KR        
+| R111       22KR        
+| R112       510R        
+| R113       510R        
+| R114       510R        
+| R115       510R        
+| R116       510R        
+| R117       510R        
+| R118       510R        
+| R119       510R        
+| R120       4.7KR       
+| R121       4.7KR       
+| R122       4.7KR       
+| R123       4.7KR       
+| R124       4.7KR       
+| R125       4.7KR       
+| R126       4.7KR       
+| R127       4.7KR       
+| R205       510R        
+| R212       1KR         
+| U101       PCF8574P    
+#End Cmp
+
+#Cmp ( ordre = Valeur )
+| 100R         R101      
+| 100R         R102      
+| 10KR         R103      
+| 1KR          R212      
+| 22KR         R104      
+| 22KR         R105      
+| 22KR         R107      
+| 22KR         R108      
+| 22KR         R109      
+| 22KR         R110      
+| 22KR         R111      
+| 22R          R106      
+| 4.7KR        R120      
+| 4.7KR        R121      
+| 4.7KR        R122      
+| 4.7KR        R123      
+| 4.7KR        R124      
+| 4.7KR        R125      
+| 4.7KR        R126      
+| 4.7KR        R127      
+| 510R         R112      
+| 510R         R113      
+| 510R         R114      
+| 510R         R115      
+| 510R         R116      
+| 510R         R117      
+| 510R         R118      
+| 510R         R119      
+| 510R         R205      
+| CONN_2       P109      
+| CONN_2       P113      
+| CONN_3       KU1A0     
+| CONN_3       KU1A1     
+| CONN_3       KU1A2     
+| CONN_3       P101      
+| CONN_3       P102      
+| CONN_3       P103      
+| CONN_3       P104      
+| CONN_3       P105      
+| CONN_3       P106      
+| CONN_3       P107      
+| CONN_3       P108      
+| CONN_6       P110      
+| CONN_6       P112      
+| DIODE        D109      
+| DIODE        D110      
+| DIODE        D111      
+| DIODE        D112      
+| DIODE        D113      
+| DIODE        D114      
+| DIODE        D115      
+| DIODE        D116      
+| DSS20201L NPN Q109      
+| DSS20201L NPN Q110      
+| DSS20201L NPN Q111      
+| DSS20201L NPN Q112      
+| DSS20201L NPN Q113      
+| DSS20201L NPN Q114      
+| DSS20201L NPN Q115      
+| DSS20201L NPN Q116      
+| G5LA-1-12VDC K101      
+| G5LA-1-12VDC K102      
+| G5LA-1-12VDC K103      
+| G5LA-1-12VDC K104      
+| G5LA-1-12VDC K105      
+| G5LA-1-12VDC K106      
+| G5LA-1-12VDC K107      
+| G5LA-1-12VDC K108      
+| LED          D101      
+| LED          D102      
+| LED          D103      
+| LED          D104      
+| LED          D105      
+| LED          D106      
+| LED          D107      
+| LED          D108      
+| LED          D205      
+| LED          D212      
+| PCF8574P     U101      
+| PNP          Q101      
+| PNP          Q102      
+| PNP          Q103      
+| PNP          Q104      
+| PNP          Q105      
+| PNP          Q106      
+| PNP          Q107      
+| PNP          Q108      
+#End Cmp
+
+#End List

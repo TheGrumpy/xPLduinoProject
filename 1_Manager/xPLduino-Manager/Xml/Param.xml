@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Param>(
+	<Instances>
+		<Instance Type="LIGHTING" FrenchName="Lumière" EnglishName="Lighting" />
+		<Instance Type="SWITCH" FrenchName="Commande" EnglishName="Switch" />
+		<Instance Type="SHUTTER" FrenchName="Volet" EnglishName="Shutter" />
+	</Instances>
+    <Debugs>
+        <Debug Name="DEBUG_LIGHTING_XPL" FrenchDescription = "Active l'affichage des messages xPL lighting dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_LIGHTING_CORE" FrenchDescription = "Active l'affichage de détails de traitement des lighting dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_SHUTTER_XPL" FrenchDescription = "Active l'affichage des messages xPL Shutter dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_SHUTTER_CORE" FrenchDescription = "Active l'affichage de détails de traitement des shutter dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_SWITCH_XPL" FrenchDescription = "Active l'affichage des messages xPL Switch dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_SWITCH_CORE" FrenchDescription = "Active l'affichage de détails de traitement des switch dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_Temp_OW" FrenchDescription = "Active l'affichage des messages xPL OneWire dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_ETHERNET" FrenchDescription = "Active l'affichage de détails d'init de l'Ethernet dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_INCOMING" FrenchDescription = "Active l'affichage de tous les messages xPL entrant dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_OUTCOMING" FrenchDescription = "Active l'affichage de tous les messages xPL sortant dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_I2C_DIMMER" FrenchDescription = "Active l'affichage de détails des échanges entre le contrôleur et la carte d'extension dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_BOARD_IN_16" FrenchDescription = "Active l'affichage de détails des échanges entre le contrôleur et la carte d'extension dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_BOARD_R8" FrenchDescription = "Active l'affichage de détails des échanges entre le contrôleur et la carte d'extension dans la console" EnglishDescription="Empty"/>   
+        <Debug Name="DEBUG_I2C_IN8R8" FrenchDescription = "Active l'affichage de détails des échanges entre le contrôleur et la carte d'extension dans la console" EnglishDescription="Empty"/>
+        <Debug Name="DEBUG_TELEINFO_CORE" FrenchDescription = "Active l'affichage de détails de traitement de la téléinformation dans la console" EnglishDescription="Empty"/>                    
+        <Debug Name="DEBUG_TELEINFO_SERIAL" FrenchDescription = "Active l'affichage de détails de la communication série de la téléinformation dans la console" EnglishDescription="Empty"/>        
+        <Debug Name="DEBUG_TELEINFO_XPL" FrenchDescription = "Active l'affichage des messages xPL de la téléinformation dans la console" EnglishDescription="Empty"/>             
+    </Debugs>
+</Param>	

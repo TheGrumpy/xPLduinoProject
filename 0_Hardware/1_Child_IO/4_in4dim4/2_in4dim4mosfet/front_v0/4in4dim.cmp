@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-mar-13)-testing date = sam. 10 mai 2014 21:52:32 CEST
+Cmp-Mod V01 Created by CvPcb (2013-mar-13)-testing date = dim. 05 oct. 2014 16:12:32 CEST
 
 BeginCmp
 TimeStamp = /5067601F;
@@ -25,70 +25,70 @@ BeginCmp
 TimeStamp = /5067143C;
 Reference = D1;
 ValeurCmp = LED;
-IdModule  = LED-3MM;
+IdModule  = LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /50671F30;
 Reference = D2;
 ValeurCmp = LED;
-IdModule  = LED-3MM;
+IdModule  = LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /535580DB;
 Reference = D3;
 ValeurCmp = LED;
-IdModule  = LED-3MM;
+IdModule  = LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /535580E5;
 Reference = D4;
 ValeurCmp = LED;
-IdModule  = LED-3MM;
+IdModule  = LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /535580ED;
 Reference = D5;
 ValeurCmp = LED;
-IdModule  = LED-3MM;
+IdModule  = LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /535581F5;
 Reference = D6;
 ValeurCmp = LED;
-IdModule  = LED-3MM;
+IdModule  = LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /535582AA;
 Reference = D7;
 ValeurCmp = LED;
-IdModule  = LED-3MM;
+IdModule  = LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /535582D1;
 Reference = D8;
 ValeurCmp = LED;
-IdModule  = LED-3MM;
+IdModule  = LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /535582F8;
 Reference = D9;
 ValeurCmp = LED;
-IdModule  = LED-3MM;
+IdModule  = LED-1206;
 EndCmp
 
 BeginCmp
 TimeStamp = /536E836C;
 Reference = D10;
 ValeurCmp = LED;
-IdModule  = LED-3MM;
+IdModule  = LED-1206;
 EndCmp
 
 BeginCmp
@@ -171,7 +171,7 @@ EndCmp
 BeginCmp
 TimeStamp = /5067144B;
 Reference = R1;
-ValeurCmp = 2KR;
+ValeurCmp = 4.7KR;
 IdModule  = SM1206;
 EndCmp
 
@@ -255,7 +255,7 @@ EndCmp
 BeginCmp
 TimeStamp = /536E8372;
 Reference = R13;
-ValeurCmp = 2KR;
+ValeurCmp = 4.7KR;
 IdModule  = SM1206;
 EndCmp
 

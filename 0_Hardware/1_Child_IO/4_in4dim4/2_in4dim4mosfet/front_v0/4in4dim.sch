@@ -243,13 +243,13 @@ F 3 "" H 6100 3650 60  0001 C CNN
 	1    6100 3650
 	1    0    0    -1  
 $EndComp
-Text GLabel 8500 10650 2    60   Output ~ 0
-_OUT3
-Text GLabel 8500 10050 2    60   Output ~ 0
-_OUT2
 Text GLabel 8500 10250 2    60   Output ~ 0
-_OUT0
+_OUT3
 Text GLabel 8100 10150 2    60   Output ~ 0
+_OUT2
+Text GLabel 8500 10650 2    60   Output ~ 0
+_OUT0
+Text GLabel 8500 10050 2    60   Output ~ 0
 _OUT1
 Text GLabel 8500 9400 2    60   Output ~ 0
 MOSI
@@ -618,8 +618,6 @@ Wire Wire Line
 Wire Wire Line
 	8000 10350 8150 10350
 Wire Wire Line
-	8000 10150 8100 10150
-Wire Wire Line
 	8000 9600 8500 9600
 Wire Wire Line
 	8000 9500 8100 9500
@@ -687,12 +685,6 @@ Wire Wire Line
 	7100 4850 7200 4850
 Wire Wire Line
 	7200 4850 7200 4800
-Wire Wire Line
-	8000 10050 8500 10050
-Wire Wire Line
-	8000 10250 8500 10250
-Wire Wire Line
-	8000 10650 8500 10650
 Wire Wire Line
 	8000 9950 8100 9950
 Wire Wire Line
@@ -1152,4 +1144,12 @@ Wire Wire Line
 	8000 11300 8100 11300
 Wire Wire Line
 	8000 11400 8400 11400
+Wire Wire Line
+	8000 10050 8500 10050
+Wire Wire Line
+	8000 10150 8100 10150
+Wire Wire Line
+	8000 10250 8500 10250
+Wire Wire Line
+	8000 10650 8500 10650
 $EndSCHEMATC

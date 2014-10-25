@@ -271,7 +271,6 @@ namespace xPLduinoManager
 			this.HelpAction.Label = param.ParamT("MWHelp"); //Mise à jour label Aide
 			this.aboutAction.Label = param.ParamT("MWAbout"); //Mise à jour label A propos
 			
-			this.ExtractEmbeddedAction.Label = param.ParamT("MWExtractEmbedded"); //Mise à jour label Extraction embarquée  
 			this.LoadEmbeddedAction.Label = param.ParamT("MWLoadEmbedded"); //Mise à jour label Charger embarquée 
 			
 			this.LabelInfoProject.Text = "";
@@ -283,8 +282,6 @@ namespace xPLduinoManager
 			ButtonOpenProject.TooltipText = param.ParamT("MWOpenProjectMenu") + " (Ctrl + O)";
 			ButtonSaveProject.TooltipText = param.ParamT("MWSaveProjectMenu") + " (Ctrl + S)";
 			ButtonSaveAllProject.TooltipText = param.ParamT("MWSaveAllProjectMenu") + " (Ctrl + D)";	
-			ButtonCheckEmbedded.TooltipText = param.ParamT("MWVerifyEmbedded") + " (Ctrl + R)";
-			ButtonCheckEmbedded.Sensitive = false;
 			ButtonLoadEmbedded.TooltipText = param.ParamT("MWLoadEmbedded");	
 			ButtonLoadEmbedded.Sensitive = false;
 			ButtonReloadUSB.TooltipText = param.ParamT("MWReloadUSB");
@@ -424,7 +421,6 @@ namespace xPLduinoManager
 			ButtonOpenProject.TooltipText = param.ParamT("MWOpenProjectMenu") + " (Ctrl + O)";	
 			ButtonSaveProject.TooltipText = param.ParamT("MWSaveProjectMenu") + " (Ctrl + S)";
 			ButtonSaveAllProject.TooltipText = param.ParamT("MWSaveAllProjectMenu") + " (Ctrl + D)";		
-			ButtonCheckEmbedded.TooltipText = param.ParamT("MWVerifyEmbedded") + " (Ctrl + R)";
 			ButtonLoadEmbedded.TooltipText = param.ParamT("MWLoadEmbedded");
 			
 //################## VIEW NOTEBOOK ##########################################		
@@ -638,7 +634,7 @@ namespace xPLduinoManager
 					
 					if(TreeViewEplorerValCol2 == param.ParamP("ExTVTypeProject")) //Dans le cas où la cellule sélectionné est de type projet
 					{
-						ListProjectProperties.Add (new ProjectProperties(datamanagement,param,Convert.ToInt32(TreeViewEplorerValCol4)));
+						ListProjectProperties.Add (new ProjectProperties(datamanagement,this,param,Convert.ToInt32(TreeViewEplorerValCol4)));
 						AddTabInMainNoteBook("Project",ListProjectProperties[ListProjectProperties.Count-1],param.ParamP("IconProject"),TreeViewEplorerValCol2,TreeViewEplorerValCol4); //On ouvre un nouvelle onglet permettant d'afficher les caratéristiques propre au projet					
 					}	
 					else if(TreeViewEplorerValCol2 == param.ParamP("ExTVTypeNode")) //Nous regardons la cellule 2 et nous comparons pour voir si elle est de type noeud
@@ -721,7 +717,7 @@ namespace xPLduinoManager
 				
 					if(TreeViewEplorerValCol2 == param.ParamP("ExTVTypeProject")) //Dans le cas où la cellule 2 est de type projet
 					{
-				        RightClicMenuItemExplorerTreeView = new MenuItem(param.ParamT("MenuNewNode"));  //Item permettant d'inserer un nouveau noeud dans le projet
+				    /*    RightClicMenuItemExplorerTreeView = new MenuItem(param.ParamT("MenuNewNode"));  //Item permettant d'inserer un nouveau noeud dans le projet
 				        RightClicMenuExplorerTreeView.Add(RightClicMenuItemExplorerTreeView); //On ajout l'item dans le treeview  
 						RightClicMenuItemExplorerTreeView.Activated += CreateNewNode; //Fonction appelé lors du clic sur l'item
 						
@@ -732,22 +728,24 @@ namespace xPLduinoManager
 				        RightClicMenuExplorerTreeView.Add(RightClicMenuItemExplorerTreeView);  //On ajout l'item dans le treeview  
 						RightClicMenuItemExplorerTreeView.Activated += DeleteProject; //Fonction appelé lors du clic sur l'item
 						RightClicMenuExplorerTreeView.ShowAll(); //On affiche le menu
-						RightClicMenuExplorerTreeView.Popup();	//Sous forme de popup							
+						RightClicMenuExplorerTreeView.Popup();	//Sous forme de popup		
+					*/					
 					}
 					else if(TreeViewEplorerValCol2 == param.ParamP("ExTVTypeNode")) //Dans le cas où la cellule 2 est de type noeud
 					{
+						/*
 				        RightClicMenuItemExplorerTreeView = new MenuItem(param.ParamT("MenuNewNetwork")); //Item permettant d'inserer un nouveau réseau
 				        RightClicMenuExplorerTreeView.Add(RightClicMenuItemExplorerTreeView); //On ajout l'item dans le treeview    
 						RightClicMenuItemExplorerTreeView.Activated += CreateNewNetwork; //Fonction appelé lors du clic sur l'item
 						
-						/*
+						
 				        RightClicMenuItemExplorerTreeView = new MenuItem(param.ParamT("MenuNewInstance")); //Item permettant d'inserer un nouveau réseau
 				        RightClicMenuExplorerTreeView.Add(RightClicMenuItemExplorerTreeView); //On ajout l'item dans le treeview    
 						RightClicMenuItemExplorerTreeView.Activated += CreateNewInstance; //Fonction appelé lors du clic sur l'item
-						*/
+						
 						
 						SeparatorMenuItem sep = new SeparatorMenuItem();
-						RightClicMenuExplorerTreeView.Add(sep);						
+						RightClicMenuExplorerTreeView.Add(sep);	*/					
 						
 				        RightClicMenuItemExplorerTreeView = new MenuItem(param.ParamT("MenuNewCustomer")); //Item permettant d'inserer un nouveau réseau
 				        RightClicMenuExplorerTreeView.Add(RightClicMenuItemExplorerTreeView); //On ajout l'item dans le treeview    
@@ -756,7 +754,7 @@ namespace xPLduinoManager
 				        RightClicMenuItemExplorerTreeView = new MenuItem(param.ParamT("MenuNewScenario")); //Item permettant d'inserer un nouveau réseau
 				        RightClicMenuExplorerTreeView.Add(RightClicMenuItemExplorerTreeView); //On ajout l'item dans le treeview    
 						RightClicMenuItemExplorerTreeView.Activated += CreateNewScenario; //Fonction appelé lors du clic sur l'item						
-						
+						/*
 						SeparatorMenuItem sep2 = new SeparatorMenuItem();
 						RightClicMenuExplorerTreeView.Add(sep2);
 						
@@ -764,7 +762,7 @@ namespace xPLduinoManager
 				        RightClicMenuExplorerTreeView.Add(RightClicMenuItemExplorerTreeView); //On ajout l'item dans le treeview    
 						RightClicMenuItemExplorerTreeView.Activated += DeleteNode; //Fonction appelé lors du clic sur l'item
 						RightClicMenuExplorerTreeView.ShowAll(); //On affiche le menu
-						RightClicMenuExplorerTreeView.Popup();	//Sous forme de popup							
+						RightClicMenuExplorerTreeView.Popup();	//Sous forme de popup	*/						
 					}
 					else if((TreeViewEplorerValCol2 == param.ParamP("InstLightingName") || TreeViewEplorerValCol2 == param.ParamP("InstSwitchName") || TreeViewEplorerValCol2 == param.ParamP("InstShutterName")) && TreeViewEplorerValCol3 != "")
 					{
@@ -810,7 +808,7 @@ namespace xPLduinoManager
 					
 					if(TreeViewEplorerValCol3 == param.ParamP("ExTVTypeNetwork")) //Dans le cas où la cellule trois est du type réseau
 					{
-				        RightClicMenuItemExplorerTreeView = new MenuItem(param.ParamT("MenuNewBoard")); //Item permettant de creer une nouvelle carte
+				    /*    RightClicMenuItemExplorerTreeView = new MenuItem(param.ParamT("MenuNewBoard")); //Item permettant de creer une nouvelle carte
 				        RightClicMenuExplorerTreeView.Add(RightClicMenuItemExplorerTreeView);  //On ajout l'item dans le treeview
 						RightClicMenuItemExplorerTreeView.Activated += CreateNewBoard; //Fonction appelé lors du clic sur l'item
 						
@@ -821,7 +819,8 @@ namespace xPLduinoManager
 				        RightClicMenuExplorerTreeView.Add(RightClicMenuItemExplorerTreeView);  //On ajout l'item dans le treeview 
 						RightClicMenuItemExplorerTreeView.Activated += DeleteNetwork; //Fonction appelé lors du clic sur l'item
 						RightClicMenuExplorerTreeView.ShowAll(); //On affiche le menu
-						RightClicMenuExplorerTreeView.Popup();	//Sous forme de popup							
+						RightClicMenuExplorerTreeView.Popup();	//Sous forme de popup	
+						*/						
 					}
 				}
 			}			
@@ -1657,6 +1656,7 @@ namespace xPLduinoManager
 			//Dans cette partie nous allons nous occuper de fermer les fenêtre des réseaux I2C ci ceux ci ne sont pas valable			
 			foreach(I2CProperties i2cp in ListI2CProperties)
 			{			
+				/*
 				if(!i2cp.WidgetIsCorrect())
 				{
 					foreach(Notebook not in Listnotebook)
@@ -1669,7 +1669,8 @@ namespace xPLduinoManager
 							goto Step2;								
 						}
 					}
-				}				
+				}		
+				*/		
 			}		
 			
 			Step3 :
@@ -1714,6 +1715,7 @@ namespace xPLduinoManager
 			//Dans cette partie nous allons nous occuper de fermer les fenêtre des cartes ci ceux ci ne sont pas valable			
 			foreach(InstanceProperties ip in ListInstanceProperties)
 			{			
+				/*
 				if(!ip.WidgetIsCorrect())
 				{
 					foreach(Notebook not in Listnotebook)
@@ -1726,7 +1728,7 @@ namespace xPLduinoManager
 							goto Step5;								
 						}
 					}
-				}				
+				}	*/			
 			}	
 			
 			Step6 : 
@@ -2509,49 +2511,11 @@ namespace xPLduinoManager
 		
 //################ Compilation des fichiers ##################################################			
 		
-		//Fonction OnButtonCheckEmbeddedClicked
-		//Fonction permettant de générer du code
-		protected void OnButtonCheckEmbeddedClicked (object sender, System.EventArgs e)
-		{
-			RecDataInMemoryBeforeSave();
-			EraseOutputFunction();
-			if(datamanagement.SaveProject(false, datamanagement.CurrentProjectId))
-			{
-				ButtonCheckEmbedded.Sensitive = false;
-				ButtonLoadEmbedded.Sensitive = false;
-				LoadEmbeddedAction.Sensitive = false;
-				ExtractEmbeddedAction.Sensitive = false;
-				
-				Thread threadcompil =new Thread(()=> datamanagement.CompileFile(ComboboxSelectNode.ActiveText));
-				threadcompil.IsBackground = true;
-				threadcompil.Start();
-			}
-		}		
-		
-		//Fonction OnVerifyEmbeddedActionActivated
-		//Fonction permettant de générer du code
-		protected void OnVerifyEmbeddedActionActivated (object sender, System.EventArgs e)
-		{
-			RecDataInMemoryBeforeSave();
-			EraseOutputFunction();
-			if(datamanagement.SaveProject(false, datamanagement.CurrentProjectId))
-			{
-				ButtonCheckEmbedded.Sensitive = false;
-				ButtonLoadEmbedded.Sensitive = false;
-				LoadEmbeddedAction.Sensitive = false;
-				ExtractEmbeddedAction.Sensitive = false;
-				
-				Thread threadcompil =new Thread(()=> datamanagement.CompileFile(ComboboxSelectNode.ActiveText));
-				threadcompil.IsBackground = true;
-				threadcompil.Start();
-			}
-		}		
-		
+
 		//Fonction ActiveCompileAndLoadButton
 		//Fonction permettant d'activer les boutons à la fin d'une compilation
 		public void ActiveCompileAndLoadButtonCompilation(bool CompilationIsCorrect)
 		{
-			ButtonCheckEmbedded.Sensitive = true;
 			ButtonLoadEmbedded.Sensitive = true;
 			LoadEmbeddedAction.Sensitive = true;		
 			ExtractEmbeddedAction.Sensitive = true;
@@ -2577,6 +2541,7 @@ namespace xPLduinoManager
 
 		protected void OnButtonLoadEmbeddedClicked (object sender, System.EventArgs e)
 		{
+			/*
 			if(File.Exists("/dev/tty" + ComboboxSelectUsb.ActiveText.Replace(" ","")))
 			{
 				ButtonCheckEmbedded.Sensitive = false;
@@ -2592,14 +2557,13 @@ namespace xPLduinoManager
 			{
 				AddLineOutput(param.ParamI("OutputError"),"ConnectAProgrammer");
 				UpdateComboboxSelectUsb();
-			}
+			}*/
 		}	
 				
 		//Fonction ActiveCompileAndLoadButton
 		//Fonction permettant d'activer les boutons à la fin d'une compilation
 		public void ActiveCompileAndLoadButtonLoad(bool LoadIsCorrect)
 		{
-			ButtonCheckEmbedded.Sensitive = true;
 			ButtonLoadEmbedded.Sensitive = true;
 			ExtractEmbeddedAction.Sensitive = true;
 			LoadEmbeddedAction.Sensitive = true;		
@@ -2715,84 +2679,6 @@ namespace xPLduinoManager
 			}
 		}
 		
-	//################ Combo Box Select Node ############################################			
-		
-		//Fonction UpdateComboboxSelectNode
-		//Fonction permettant de mettre à jour la selection du noeud pour le chargement d'une carte
-		public void UpdateComboboxSelectNode()
-		{
-			
-			for(int i = 0;i<1000;i++)
-			{
-				ComboboxSelectNode.RemoveText(0);
-			}
-			
-				
-			foreach(Project pro in datamanagement.ListProject)
-			{					
-				foreach(Node node in pro.ReturnListNode())
-				{
-					ComboboxSelectNode.AppendText(pro.Project_Name + "/" + node.Node_Name);
-					
-					Gtk.TreeIter iter;
-					ComboboxSelectNode.Model.IterNthChild(out iter,MemorisePositionInComboboxSelectNode);
-					ComboboxSelectNode.SetActiveIter (iter);					
-				}					
-			}	
-			
-			if(ComboboxSelectNode.ActiveText != "" && ComboboxSelectNode.ActiveText != null)
-			{
-				ExtractEmbeddedAction.Sensitive = true;
-				LoadEmbeddedAction.Sensitive = true;	
-				ButtonCheckEmbedded.Sensitive = true;
-				ButtonLoadEmbedded.Sensitive = true;
-			}
-			else
-			{
-				ExtractEmbeddedAction.Sensitive = false;
-				LoadEmbeddedAction.Sensitive = false;	
-				ButtonCheckEmbedded.Sensitive = false;
-				ButtonLoadEmbedded.Sensitive = false;				
-			}
-		}
-		
-		//Fonction ClearComboboxSelectNode
-		//Fonction permettant de vider le ComboboxSelectNode
-		public void ClearComboboxSelectNode()
-		{
-			foreach(Project pro in datamanagement.ListProject)
-			{					
-				foreach(Node node in pro.ReturnListNode())
-				{
-					ComboboxSelectNode.RemoveText(0);
-				}
-			}	
-			if(ComboboxSelectNode.ActiveText != "" && ComboboxSelectNode.ActiveText != null)
-			{
-				ExtractEmbeddedAction.Sensitive = true;
-				LoadEmbeddedAction.Sensitive = true;	
-				ButtonCheckEmbedded.Sensitive = true;
-				ButtonLoadEmbedded.Sensitive = true;
-			}
-			else
-			{
-				ExtractEmbeddedAction.Sensitive = false;
-				LoadEmbeddedAction.Sensitive = false;	
-				ButtonCheckEmbedded.Sensitive = false;
-				ButtonLoadEmbedded.Sensitive = false;				
-			}			
-		}
-		
-			//Fonction OnComboboxSelectNodeChanged
-			//Fonction permettant de faire des actions sur changement du ComboboxSelectNode
-			protected void OnComboboxSelectNodeChanged (object sender, System.EventArgs e)
-			{
-				if(ComboboxSelectNode.Active >= 0)
-				{
-					MemorisePositionInComboboxSelectNode = ComboboxSelectNode.Active;
-				}
-			}
-		
 	//################ Combo Box Select Usb ############################################			
 		
 		//Fonction UpdateComboboxSelectUsb
@@ -2819,7 +2705,7 @@ namespace xPLduinoManager
 			ComboboxSelectUsb.Model.IterNthChild(out iter,0);
 			if(iter.Stamp != 0)
 			{
-				ComboboxSelectUsb.SetActiveIter (iter);			
+				ComboboxSelectUsb.SetActiveIter (iter);					
 			}
 		}
 		
@@ -3018,9 +2904,5 @@ server.BeginReceive(result => {
 }, null);			
 			
 		}
-		
-
-		
-		
 	}
 }

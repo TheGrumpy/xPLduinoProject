@@ -20,6 +20,7 @@ using System;
 using Gtk;
 using Gdk;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace xPLduinoManager
 {
@@ -29,6 +30,7 @@ namespace xPLduinoManager
 	public partial class ProjectProperties : Gtk.Bin
 	{
 		public DataManagement datamanagement;
+		public MainWindow mainwindow;
 		public Param param;
 		public Int32 Project_Id;
 		public string OptionName;
@@ -72,7 +74,11 @@ namespace xPLduinoManager
 		public global::Gtk.TreeViewColumn Child_Node_GTWIPColumn;
 		public global::Gtk.TreeViewColumn Child_Node_DHCPColumn;
 		public global::Gtk.TreeViewColumn Child_Node_MacColumn;
+		public global::Gtk.TreeViewColumn Child_Node_CompileOkColumn;
 		public global::Gtk.TreeViewColumn Child_Node_EmptyColumn;
+		
+		public global::Gdk.Pixbuf PngOK;
+		public global::Gdk.Pixbuf PngNOK;
 		
 		public global::Gtk.CellRendererText Child_Node_IdCell;
 		public global::Gtk.CellRendererText Child_Node_NameCell;
@@ -80,15 +86,17 @@ namespace xPLduinoManager
 		public global::Gtk.CellRendererText Child_Node_GTWIPCell;
 		public global::Gtk.CellRendererText Child_Node_MacCell;
 		public global::Gtk.CellRendererToggle Child_Node_DHCPCell;
+		public global::Gtk.CellRendererPixbuf Child_Node_CompileOkCell;
 		public global::Gtk.CellRendererText Child_Node_EmptyCell;
 		
 		public global::Gtk.TreeStore Child_Node_ListStore;
 		
 				
-		public ProjectProperties (DataManagement _Datamanagement, Param _Param, Int32 _Project_Id)
+		public ProjectProperties (DataManagement _Datamanagement, MainWindow _MainWindow,Param _Param, Int32 _Project_Id)
 		{
 			this.param = _Param;
 			this.datamanagement = _Datamanagement;
+			this.mainwindow = _MainWindow;
 			this.Project_Id = _Project_Id;
 			this.Build ();
 			ChildColumnList = new List<TreeViewColumn>();			
@@ -111,7 +119,12 @@ namespace xPLduinoManager
 		{
 			LabelChildTreeView.Text = param.ParamT("PP_LabTVChild_Name_Choose"); //On met à jour le nom du label au dessus du ChildTreeview
 			NoteLabel.Text = param.ParamT("PP_NoteLabel"); //On met à jour le label des notes
-			//vpaned2.Position = 0; //On met le vpaned position à 0
+			
+			ButtonAddNode.Label = param.ParamT("PP_AddNode_Name_Button");
+			ButtonDeleteNode.Label = param.ParamT("PP_DeleteNode_Name_Button");
+			
+			ButtonGenerateOneNode.Label = param.ParamT("PP_CompileOneNode_Name_Button");
+						
 			hpaned1.Position = (datamanagement.mainwindow.ReturnHpanedPosition() * param.ParamI("NoteHPanedPurcent")) / 100; //On met le hpaned à n% de la taille de la fenetre mere
 			
 			foreach(Project Pro in datamanagement.ListProject) //Pour chaque projet de la liste
@@ -226,6 +239,9 @@ namespace xPLduinoManager
 		public void InitChildTreeView_Node()
 		{
 			LabelChildTreeView.Text = param.ParamT("PP_LabTVChild_Name_Nodes");//On modifie la label childtreeview
+						
+			PngOK = global::Gdk.Pixbuf.LoadFromResource(param.ParamP("IconOK"));	
+			PngNOK = global::Gdk.Pixbuf.LoadFromResource(param.ParamP("IconNOK"));	
 			
 			//Visibilité des lignes et des colonnes
 			ChildTreeView.EnableGridLines = TreeViewGridLines.Both;
@@ -237,6 +253,7 @@ namespace xPLduinoManager
 			Child_Node_GTWIPColumn = new Gtk.TreeViewColumn();
 			Child_Node_DHCPColumn = new Gtk.TreeViewColumn();
 			Child_Node_MacColumn = new Gtk.TreeViewColumn();
+			Child_Node_CompileOkColumn = new Gtk.TreeViewColumn();
 			Child_Node_EmptyColumn = new Gtk.TreeViewColumn();			
 			
 			//On ajoute les colonnes dans une liste
@@ -245,7 +262,8 @@ namespace xPLduinoManager
 			ChildColumnList.Add(Child_Node_GTWIPColumn);
 			ChildColumnList.Add(Child_Node_MacColumn);
 			ChildColumnList.Add(Child_Node_DHCPColumn);		
-			ChildColumnList.Add(Child_Node_IdColumn);			
+			ChildColumnList.Add(Child_Node_IdColumn);
+			ChildColumnList.Add(Child_Node_CompileOkColumn);
 			ChildColumnList.Add(Child_Node_EmptyColumn);
 			
 			//Colonne redimensionnable
@@ -255,6 +273,7 @@ namespace xPLduinoManager
 			Child_Node_GTWIPColumn.Resizable = true;
 			Child_Node_DHCPColumn.Resizable = true;
 			Child_Node_MacColumn.Resizable = true;
+			Child_Node_CompileOkColumn.Resizable = false;
 			Child_Node_EmptyColumn.Resizable = true;	
 			
 			//Nom des colonne
@@ -264,6 +283,7 @@ namespace xPLduinoManager
 			Child_Node_GTWIPColumn.Title = param.ParamT("PP_TVChild_OpNode_GTWIP");
 			Child_Node_DHCPColumn.Title = param.ParamT("PP_TVChild_OpNode_DHCP");
 			Child_Node_MacColumn.Title = param.ParamT("PP_TVChild_OpNode_MAC");
+			Child_Node_CompileOkColumn.Title = param.ParamT("PP_TVChild_OpNode_CompileOK");
 						
 			//Visibilité des colonnes
 			Child_Node_IdColumn.Visible = false;
@@ -275,6 +295,7 @@ namespace xPLduinoManager
 			Child_Node_GTWIPCell = new Gtk.CellRendererText ();
 			Child_Node_MacCell = new Gtk.CellRendererText ();
 			Child_Node_DHCPCell = new Gtk.CellRendererToggle ();
+			Child_Node_CompileOkCell = new Gtk.CellRendererPixbuf ();
 			Child_Node_EmptyCell = new Gtk.CellRendererText ();			
 			
 			//On rend les cellules éditables
@@ -299,6 +320,7 @@ namespace xPLduinoManager
 			Child_Node_GTWIPColumn.PackStart (Child_Node_GTWIPCell, true);
 			Child_Node_MacColumn.PackStart (Child_Node_MacCell,true);			
 			Child_Node_DHCPColumn.PackStart (Child_Node_DHCPCell,true);
+			Child_Node_CompileOkColumn.PackStart (Child_Node_CompileOkCell, true);
 			
 			//Ajout des colonnes dans ExplorerTreeView
 			ChildTreeView.AppendColumn (Child_Node_NameColumn);
@@ -306,7 +328,8 @@ namespace xPLduinoManager
 			ChildTreeView.AppendColumn (Child_Node_GTWIPColumn);
 			ChildTreeView.AppendColumn (Child_Node_MacColumn);			
 			ChildTreeView.AppendColumn (Child_Node_DHCPColumn);
-			ChildTreeView.AppendColumn (Child_Node_IdColumn);			
+			ChildTreeView.AppendColumn (Child_Node_CompileOkColumn);			
+			ChildTreeView.AppendColumn (Child_Node_IdColumn);	
 			ChildTreeView.AppendColumn (Child_Node_EmptyColumn);
 			
 			//Ajout des attibuts à chaque colonne
@@ -314,11 +337,12 @@ namespace xPLduinoManager
 			Child_Node_IPColumn.AddAttribute(Child_Node_IPCell,"text",param.ParamI("PP_TVChild_OpNode_PositionIP"));
 			Child_Node_GTWIPColumn.AddAttribute(Child_Node_GTWIPCell,"text",param.ParamI("PP_TVChild_OpNode_PositionGTWIP"));
 			Child_Node_MacColumn.AddAttribute(Child_Node_MacCell,"text",param.ParamI("PP_TVChild_OpNode_PositionMAC"));				
-			Child_Node_DHCPColumn.AddAttribute(Child_Node_DHCPCell,"active",param.ParamI("PP_TVChild_OpNode_PositionDHCP"));			                                  
+			Child_Node_DHCPColumn.AddAttribute(Child_Node_DHCPCell,"active",param.ParamI("PP_TVChild_OpNode_PositionDHCP"));
+			Child_Node_CompileOkColumn.AddAttribute(Child_Node_CompileOkCell,"pixbuf",param.ParamI("PP_TVChild_OpNode_PositionCompileOK"));
 			Child_Node_IdColumn.AddAttribute(Child_Node_IdCell,"text",param.ParamI("PP_TVChild_OpNode_PositionID"));
 			
 			//Création d'un nouveau store
-			Child_Node_ListStore = new Gtk.TreeStore(typeof(string),typeof(string),typeof(string),typeof(string),typeof(bool),typeof(string));	
+			Child_Node_ListStore = new Gtk.TreeStore(typeof(string),typeof(string),typeof(string),typeof(string),typeof(bool),typeof (Gdk.Pixbuf),typeof(string));	
 			
 			//On écrit le store dans le treeview
 			ChildTreeView.Model = Child_Node_ListStore;
@@ -336,7 +360,14 @@ namespace xPLduinoManager
 				{
 					foreach(Node node in Pro.ReturnListNode())//Pour chaque noeud présent dans un projet
 					{
-						IterChild = Child_Node_ListStore.AppendValues(node.Node_Name,node.Node_IP,node.Node_GTWIP,node.Node_Mac,node.Node_DHCP,node.Node_Id.ToString());//On affiche le noeud
+						if(node.Node_Compile)
+						{
+							IterChild = Child_Node_ListStore.AppendValues(node.Node_Name,node.Node_IP,node.Node_GTWIP,node.Node_Mac,node.Node_DHCP,PngOK,node.Node_Id.ToString());//On affiche le noeud
+						}
+						else
+						{
+							IterChild = Child_Node_ListStore.AppendValues(node.Node_Name,node.Node_IP,node.Node_GTWIP,node.Node_Mac,node.Node_DHCP,PngNOK,node.Node_Id.ToString());//On affiche le noeud
+						}
 					}
 				}
 			}
@@ -484,7 +515,7 @@ namespace xPLduinoManager
 		//Fonction InitPropertiesTreeView
 		//Fonction permettant d'initialiser l'arbre des propriété
 		public void InitPropertiesTreeView()
-		{
+		{	
 			LabelChildTreeView.Text = param.ParamT("PP_LabTVChild_Name_Properties"); //On modifie la label childtreeview
 			ChildTreeView.EnableGridLines = TreeViewGridLines.Both;
 			
@@ -663,6 +694,10 @@ namespace xPLduinoManager
 			OptionNameColumn.Title = param.ParamT("PP_TVOpt_NameLabel");
 			NoteLabel.Text = param.ParamT("PP_NoteLabel"); //On met à jour le label des notes
 			
+			ButtonAddNode.Label = param.ParamT("PP_AddNode_Name_Button");
+			ButtonDeleteNode.Label = param.ParamT("PP_DeleteNode_Name_Button");
+			ButtonGenerateOneNode.Label = param.ParamT("PP_CompileOneNode_Name_Button");
+			
 			//Init and update OptionTreeView
 			OptionNameColumn.Title = param.ParamT("PP_TVOpt_NameLabel");
 			UpdateOptionsTreeView();
@@ -761,6 +796,50 @@ namespace xPLduinoManager
 		{
 			datamanagement.ModifyProject(TextViewNote.Buffer.Text,param.ParamI("MoPo_ChoiceNote"),Project_Id); //Modification des notes du projet
 		}
-
+		
+		//Fonction OnButtonAddNodeClicked
+		//Fonction permettant d'ajouter un noeud
+		protected void OnButtonAddNodeClicked (object sender, System.EventArgs e)
+		{
+			datamanagement.AddNodeInProject(datamanagement.ReturnNewNameNode(param.ParamT("NNDefaultNodeName"), Project_Id),Project_Id);
+		}
+		
+		//Fonction OnButtonDeleteNodeClicked
+		//Fonction permettant de supprimer un noeud
+		protected void OnButtonDeleteNodeClicked (object sender, System.EventArgs e)
+		{
+			string IdSelected = "";	//variable permettant de stocker l'id de l'instance sélectionné
+	
+			TreeSelection selection = ChildTreeView.Selection; //Nous allons crée un arbre de selection
+			if(selection.GetSelected(out TreeModelChildTreeView, out IterChild)) //Nous cherchons la valeur selectionné dans l'arbre de selection
+			{
+				IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("PP_TVChild_OpNode_PositionID")); //Nous retournons l'id de l'instance		
+			}	
+			if(IdSelected != "")
+			{
+				datamanagement.DeleteNodeInProject(Convert.ToInt32(IdSelected));
+			}			
+		}
+		
+		//Fonction OnButtonGenerateOneNodeClicked
+		//Fonction permettant de compiler un noeud que nous avons choisit
+		protected void OnButtonGenerateOneNodeClicked (object sender, System.EventArgs e)
+		{
+			string IdSelected = "";	//variable permettant de stocker l'id de l'instance sélectionné
+	
+			TreeSelection selection = ChildTreeView.Selection; //Nous allons crée un arbre de selection
+			if(selection.GetSelected(out TreeModelChildTreeView, out IterChild)) //Nous cherchons la valeur selectionné dans l'arbre de selection
+			{
+				IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("PP_TVChild_OpNode_PositionID")); //Nous retournons l'id de l'instance		
+			}				
+			
+			if(datamanagement.SaveProject(false, datamanagement.CurrentProjectId) && IdSelected != "")
+			{			
+				mainwindow.EraseOutputFunction();
+				Thread threadcompil = new Thread(()=> datamanagement.CompileFile(Project_Id,Convert.ToInt32(IdSelected)));
+				threadcompil.IsBackground = true;
+				threadcompil.Start();
+			}	
+		}
 	}
 }

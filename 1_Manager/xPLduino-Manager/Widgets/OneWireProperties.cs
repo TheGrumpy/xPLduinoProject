@@ -129,6 +129,9 @@ namespace xPLduinoManager
 		{
 			LabelChildTreeView.Text = param.ParamT("OWP_LabTVChild_Name_Choose");
 			NoteLabel.Text = param.ParamT("OWP_NoteLabel");
+			ButtonAddProbe.Label = param.ParamT("OWP_AddBoard_Name_Button");
+			ButtonDeleteProbe.Label = param.ParamT("OWP_DeleteBoard_Name_Button");
+			
 			vpaned1.Position = 0;
 			hpaned1.Position = (datamanagement.mainwindow.ReturnHpanedPosition() * param.ParamI("NoteHPanedPurcent")) / 100 ;			
 			
@@ -146,6 +149,9 @@ namespace xPLduinoManager
 				}
 			}		
 	
+			UpdateComboBoxNumberOfProbe();
+			UpdateComboBoxTypeOfProbe();
+			
 			vpaned1.Position = (datamanagement.mainwindow.ReturnVpanedPosition() * param.ParamI("NoteVPanedPurcent")) / 100;
 			InitPropertiesTreeView();
 			UpdatePropertiesTreeView();
@@ -367,7 +373,7 @@ namespace xPLduinoManager
 		//Fonction InitChildTreeView_Board
 		//Fcontion permettant d'initialiser le treeview cbild lorsque le chois se fait pour une carte
 		public void InitChildTreeView_Board()
-		{
+		{		
 			LabelChildTreeView.Text = param.ParamT("OWP_LabTVChild_Name_BoardList");
 			
 			//Visibilité des lignes et des colonnes
@@ -574,6 +580,37 @@ namespace xPLduinoManager
 				}					
 			}
 
+//###################### Update Combobox  ####################################		
+		
+		//Fonction UpdateComboBoxNumberOfBoard
+		//Fonction permettant de mettre à jour la combobox pour afficher le nombre de carte que nous voulons créer
+		public void UpdateComboBoxNumberOfProbe()
+		{
+			for(int i = 1;i<11;i++)
+			{
+				ComboboxNumberOfProbe.AppendText(i.ToString());
+			}			
+			Gtk.TreeIter iter;
+			ComboboxNumberOfProbe.Model.IterNthChild(out iter,0);
+			ComboboxNumberOfProbe.SetActiveIter(iter);				
+		}
+		
+		//Fonction UpdateComboBoxTypeOfBoard
+		//Fonction permettant de mettre à jour la combobox pour afficher le type de carte que nous voulons créer
+		public void UpdateComboBoxTypeOfProbe()
+		{
+			foreach(Boards boas in datamanagement.ListBoards)
+			{
+				if(boas.NetworkType == "1-Wire")
+				{
+					ComboboxTypeOfProbe.AppendText(boas.Type);
+				}
+			}
+			Gtk.TreeIter iter;
+			ComboboxTypeOfProbe.Model.IterNthChild(out iter,0);
+			ComboboxTypeOfProbe.SetActiveIter(iter);				
+		}		
+		
 //###################### Other  ####################################	
 		
 		//Fonction UpdateWidget
@@ -582,6 +619,9 @@ namespace xPLduinoManager
 		{
 			LabelChildTreeView.Text = param.ParamT("OWP_LabTVChild_Name_Choose");
 			NoteLabel.Text = param.ParamT("OWP_NoteLabel");
+			
+			ButtonAddProbe.Label = param.ParamT("OWP_AddBoard_Name_Button");
+			ButtonDeleteProbe.Label = param.ParamT("OWP_DeleteBoard_Name_Button");
 			
 			//Init and update OptionTreeView
 			OptionNameColumn.Title = param.ParamT("OWP_TVOpt_Label");
@@ -657,6 +697,33 @@ namespace xPLduinoManager
 		protected void OnTextViewNoteFocusOutEvent (object o, Gtk.FocusOutEventArgs args)
 		{
 			datamanagement.ModifyNetwork(TextViewNote.Buffer.Text,param.ParamI("MoNet_ChoiceNote"),Network_Id);
+		}
+		
+		//Fonction OnButtonAddProbeClicked
+		//Fonction permettant d'ajouter une sonde à partir d'un bouton
+		protected void OnButtonAddProbeClicked (object sender, System.EventArgs e)
+		{
+			for(int i = 0;i<Convert.ToInt16(ComboboxNumberOfProbe.ActiveText);i++)
+			{
+				datamanagement.AddBoardInNetwork(ComboboxTypeOfProbe.ActiveText,datamanagement.ReturnNewNameBoard(ComboboxTypeOfProbe.ActiveText,Network_Id),Network_Id);
+			}		
+		}
+
+		//Fonction OnButtonDeleteProbeClicked
+		//Fonction permettant de supprimer une sonde à partir d'un bouton
+		protected void OnButtonDeleteProbeClicked (object sender, System.EventArgs e)
+		{
+			string IdSelected = "";	//variable permettant de stocker l'id de l'instance sélectionné
+	
+			TreeSelection selection = ChildTreeView.Selection; //Nous allons crée un arbre de selection
+			if(selection.GetSelected(out TreeModelChildTreeView, out IterChild)) //Nous cherchons la valeur selectionné dans l'arbre de selection
+			{
+				IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("OWP_TVChild_OpBoard_PositionID")); //Nous retournons l'id de l'instance		
+			}	
+			if(IdSelected != "")
+			{
+				datamanagement.DeleteBoardInNetwork(Convert.ToInt32(IdSelected));
+			}
 		}
 	}
 }

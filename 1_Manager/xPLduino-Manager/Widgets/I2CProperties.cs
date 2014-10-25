@@ -123,6 +123,10 @@ namespace xPLduinoManager
 		{
 			LabelChildTreeView.Text = param.ParamT("I2CP_LabTVChild_Name_Choose");
 			NoteLabel.Text = param.ParamT("I2CP_NoteLabel");
+			
+			ButtonAddBoard.Label = param.ParamT("I2CP_AddBoard_Name_Button");
+			ButtonDeleteBoard.Label = param.ParamT("I2CP_DeleteBoard_Name_Button");
+					
 			hpaned1.Position = (datamanagement.mainwindow.ReturnHpanedPosition() * param.ParamI("NoteHPanedPurcent") / 100);			
 			
 			foreach(Project Pro in datamanagement.ListProject)
@@ -140,6 +144,10 @@ namespace xPLduinoManager
 			}	
 			
 			vpaned1.Position = (datamanagement.mainwindow.ReturnVpanedPosition() * param.ParamI("NoteVPanedPurcent") / 100);
+			
+			UpdateComboBoxNumberOfBoard();
+			UpdateComboBoxTypeOfBoard();
+			
 			InitPropertiesTreeView();
 			UpdatePropertiesTreeView();
 		}	
@@ -246,6 +254,7 @@ namespace xPLduinoManager
 		//Fonction permettant d'initialiser l'arbre des propriété
 		public void InitPropertiesTreeView()
 		{
+			
 			ChildTreeView.EnableGridLines = TreeViewGridLines.Both;
 			LabelChildTreeView.Text = param.ParamT("I2CP_LabTVChild_Name_Properties");
 			//Ajout de deux colonnes dans TreeviewProperties
@@ -356,9 +365,10 @@ namespace xPLduinoManager
 //###################### TV Child Choice Board #########################	
 		
 		//Fonction InitChildTreeView_Board
-		//Fcontion permettant d'initialiser le treeview cbild lorsque le chois se fait pour une carte
+		//Fcontion permettant d'initialiser le treeview cbild lorsque le choix se fait pour une carte
 		public void InitChildTreeView_Board()
 		{
+			
 			ListI2CAddress = new Gtk.ListStore(typeof (string));
 			for(int i=0;i<=param.ParamI("MaxI2CAdress");i++)
 			{
@@ -623,7 +633,38 @@ namespace xPLduinoManager
 					datamanagement.mainwindow.AddLineOutput(param.ParamI("OutputError"),"I2CAdressTooBig");
 				}			
 			}	
-			
+	
+//###################### Update Combobox  ####################################		
+		
+		//Fonction UpdateComboBoxNumberOfBoard
+		//Fonction permettant de mettre à jour la combobox pour afficher le nombre de carte que nous voulons créer
+		public void UpdateComboBoxNumberOfBoard()
+		{
+			for(int i = 1;i<11;i++)
+			{
+				ComboboxNumberOfBoard.AppendText(i.ToString());
+			}			
+			Gtk.TreeIter iter;
+			ComboboxNumberOfBoard.Model.IterNthChild(out iter,0);
+			ComboboxNumberOfBoard.SetActiveIter(iter);				
+		}
+		
+		//Fonction UpdateComboBoxTypeOfBoard
+		//Fonction permettant de mettre à jour la combobox pour afficher le type de carte que nous voulons créer
+		public void UpdateComboBoxTypeOfBoard()
+		{
+			foreach(Boards boas in datamanagement.ListBoards)
+			{
+				if(boas.NetworkType == "I2C")
+				{
+					ComboboxTypeOfBoard.AppendText(boas.Type);
+				}
+			}
+			Gtk.TreeIter iter;
+			ComboboxTypeOfBoard.Model.IterNthChild(out iter,0);
+			ComboboxTypeOfBoard.SetActiveIter(iter);				
+		}
+		
 //###################### Other  ####################################	
 
 		
@@ -663,6 +704,9 @@ namespace xPLduinoManager
 		{
 			LabelChildTreeView.Text = param.ParamT("I2CP_LabTVChild_Name_Choose");
 			NoteLabel.Text = param.ParamT("I2CP_NoteLabel");
+			
+			ButtonAddBoard.Label = param.ParamT("I2CP_AddBoard_Name_Button");
+			ButtonDeleteBoard.Label = param.ParamT("I2CP_DeleteBoard_Name_Button");
 			
 			//Init and update OptionTreeView
 			OptionNameColumn.Title = param.ParamT("PP_TVOpt_NameLabel");
@@ -739,5 +783,33 @@ namespace xPLduinoManager
 		{
 			datamanagement.ModifyNetwork(TextViewNote.Buffer.Text,param.ParamI("MoNet_ChoiceNote"),Network_Id);
 		}
+		
+		// Fonction OnButtonAddBoardClicked
+		// Fonction permettant d'ajouter des cartes
+		protected void OnButtonAddBoardClicked (object sender, System.EventArgs e)
+		{
+			for(int i = 0;i<Convert.ToInt16(ComboboxNumberOfBoard.ActiveText);i++)
+			{
+				datamanagement.AddBoardInNetwork(ComboboxTypeOfBoard.ActiveText,datamanagement.ReturnNewNameBoard(ComboboxTypeOfBoard.ActiveText,Network_Id),Network_Id);
+			}
+		}
+		
+		//Fonction OnButtonDeleteBoardClicked
+		//Fonction permettant de supprimer une carte 
+		protected void OnButtonDeleteBoardClicked (object sender, System.EventArgs e)
+		{
+			string IdSelected = "";	//variable permettant de stocker l'id de l'instance sélectionné
+	
+			TreeSelection selection = ChildTreeView.Selection; //Nous allons crée un arbre de selection
+			if(selection.GetSelected(out TreeModelChildTreeView, out IterChild)) //Nous cherchons la valeur selectionné dans l'arbre de selection
+			{
+				IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("I2CP_TVChild_OpBoard_PositionID")); //Nous retournons l'id de l'instance		
+			}	
+			if(IdSelected != "")
+			{
+				datamanagement.DeleteBoardInNetwork(Convert.ToInt32(IdSelected));
+			}			
+		}
+
 	}
 }

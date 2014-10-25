@@ -53,6 +53,8 @@ namespace xPLduinoManager
 		public bool Node_DHCP;
 		public string Node_Note;
 		public bool Node_WebServer;
+		public string Node_CRC;
+		public bool Node_Compile;
 		
 		public string Node_Type;
 		public string Node_Clock;
@@ -96,6 +98,8 @@ namespace xPLduinoManager
 			this.Node_Type = param.ParamP("NP_SMBv01");
 			this.Node_Clock = "0";
 			this.Node_1Wire = false;
+			
+			this.Node_Compile = false;
 			
 		}
 			

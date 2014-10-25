@@ -9,7 +9,14 @@ namespace xPLduinoManager
 		private global::Gtk.TreeView OptionTreeView;
 		private global::Gtk.VPaned vpaned1;
 		private global::Gtk.VBox vbox1;
+		private global::Gtk.HBox hbox1;
 		private global::Gtk.Label LabelChildTreeView;
+		private global::Gtk.ComboBox ComboboxNumberOfBoard;
+		private global::Gtk.Label Labelx;
+		private global::Gtk.ComboBox ComboboxTypeOfBoard;
+		private global::Gtk.Button ButtonAddBoard;
+		private global::Gtk.VSeparator vseparator1;
+		private global::Gtk.Button ButtonDeleteBoard;
 		private global::Gtk.ScrolledWindow scrolledwindow3;
 		private global::Gtk.TreeView ChildTreeView;
 		private global::Gtk.VBox vbox5;
@@ -51,15 +58,77 @@ namespace xPLduinoManager
 			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
+			this.hbox1 = new global::Gtk.HBox ();
+			this.hbox1.Name = "hbox1";
+			this.hbox1.Spacing = 6;
+			// Container child hbox1.Gtk.Box+BoxChild
 			this.LabelChildTreeView = new global::Gtk.Label ();
 			this.LabelChildTreeView.Name = "LabelChildTreeView";
 			this.LabelChildTreeView.Xalign = 0F;
 			this.LabelChildTreeView.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
-			this.vbox1.Add (this.LabelChildTreeView);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.LabelChildTreeView]));
+			this.hbox1.Add (this.LabelChildTreeView);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.LabelChildTreeView]));
 			w3.Position = 0;
-			w3.Expand = false;
-			w3.Fill = false;
+			// Container child hbox1.Gtk.Box+BoxChild
+			this.ComboboxNumberOfBoard = global::Gtk.ComboBox.NewText ();
+			this.ComboboxNumberOfBoard.Name = "ComboboxNumberOfBoard";
+			this.hbox1.Add (this.ComboboxNumberOfBoard);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ComboboxNumberOfBoard]));
+			w4.Position = 1;
+			w4.Expand = false;
+			w4.Fill = false;
+			// Container child hbox1.Gtk.Box+BoxChild
+			this.Labelx = new global::Gtk.Label ();
+			this.Labelx.Name = "Labelx";
+			this.Labelx.LabelProp = global::Mono.Unix.Catalog.GetString ("x");
+			this.hbox1.Add (this.Labelx);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.Labelx]));
+			w5.Position = 2;
+			w5.Expand = false;
+			w5.Fill = false;
+			// Container child hbox1.Gtk.Box+BoxChild
+			this.ComboboxTypeOfBoard = global::Gtk.ComboBox.NewText ();
+			this.ComboboxTypeOfBoard.Name = "ComboboxTypeOfBoard";
+			this.hbox1.Add (this.ComboboxTypeOfBoard);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ComboboxTypeOfBoard]));
+			w6.Position = 3;
+			w6.Expand = false;
+			w6.Fill = false;
+			// Container child hbox1.Gtk.Box+BoxChild
+			this.ButtonAddBoard = new global::Gtk.Button ();
+			this.ButtonAddBoard.CanFocus = true;
+			this.ButtonAddBoard.Name = "ButtonAddBoard";
+			this.ButtonAddBoard.UseUnderline = true;
+			this.ButtonAddBoard.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
+			this.hbox1.Add (this.ButtonAddBoard);
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ButtonAddBoard]));
+			w7.Position = 4;
+			w7.Expand = false;
+			w7.Fill = false;
+			// Container child hbox1.Gtk.Box+BoxChild
+			this.vseparator1 = new global::Gtk.VSeparator ();
+			this.vseparator1.Name = "vseparator1";
+			this.hbox1.Add (this.vseparator1);
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vseparator1]));
+			w8.Position = 5;
+			w8.Expand = false;
+			w8.Fill = false;
+			// Container child hbox1.Gtk.Box+BoxChild
+			this.ButtonDeleteBoard = new global::Gtk.Button ();
+			this.ButtonDeleteBoard.CanFocus = true;
+			this.ButtonDeleteBoard.Name = "ButtonDeleteBoard";
+			this.ButtonDeleteBoard.UseUnderline = true;
+			this.ButtonDeleteBoard.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
+			this.hbox1.Add (this.ButtonDeleteBoard);
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ButtonDeleteBoard]));
+			w9.Position = 6;
+			w9.Expand = false;
+			w9.Fill = false;
+			this.vbox1.Add (this.hbox1);
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox1]));
+			w10.Position = 0;
+			w10.Expand = false;
+			w10.Fill = false;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.scrolledwindow3 = new global::Gtk.ScrolledWindow ();
 			this.scrolledwindow3.CanFocus = true;
@@ -71,11 +140,11 @@ namespace xPLduinoManager
 			this.ChildTreeView.Name = "ChildTreeView";
 			this.scrolledwindow3.Add (this.ChildTreeView);
 			this.vbox1.Add (this.scrolledwindow3);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.scrolledwindow3]));
-			w5.Position = 1;
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.scrolledwindow3]));
+			w12.Position = 1;
 			this.vpaned1.Add (this.vbox1);
-			global::Gtk.Paned.PanedChild w6 = ((global::Gtk.Paned.PanedChild)(this.vpaned1 [this.vbox1]));
-			w6.Resize = false;
+			global::Gtk.Paned.PanedChild w13 = ((global::Gtk.Paned.PanedChild)(this.vpaned1 [this.vbox1]));
+			w13.Resize = false;
 			// Container child vpaned1.Gtk.Paned+PanedChild
 			this.vbox5 = new global::Gtk.VBox ();
 			this.vbox5.Name = "vbox5";
@@ -86,10 +155,10 @@ namespace xPLduinoManager
 			this.NoteLabel.Xalign = 0F;
 			this.NoteLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("label4");
 			this.vbox5.Add (this.NoteLabel);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.NoteLabel]));
-			w7.Position = 0;
-			w7.Expand = false;
-			w7.Fill = false;
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.NoteLabel]));
+			w14.Position = 0;
+			w14.Expand = false;
+			w14.Fill = false;
 			// Container child vbox5.Gtk.Box+BoxChild
 			this.scrolledwindow4 = new global::Gtk.ScrolledWindow ();
 			this.scrolledwindow4.CanFocus = true;
@@ -101,8 +170,8 @@ namespace xPLduinoManager
 			this.TextViewNote.Name = "TextViewNote";
 			this.scrolledwindow4.Add (this.TextViewNote);
 			this.vbox5.Add (this.scrolledwindow4);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.scrolledwindow4]));
-			w9.Position = 1;
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.scrolledwindow4]));
+			w16.Position = 1;
 			this.vpaned1.Add (this.vbox5);
 			this.hpaned1.Add (this.vpaned1);
 			this.Add (this.hpaned1);
@@ -110,6 +179,8 @@ namespace xPLduinoManager
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
+			this.ButtonAddBoard.Clicked += new global::System.EventHandler (this.OnButtonAddBoardClicked);
+			this.ButtonDeleteBoard.Clicked += new global::System.EventHandler (this.OnButtonDeleteBoardClicked);
 			this.ChildTreeView.ButtonReleaseEvent += new global::Gtk.ButtonReleaseEventHandler (this.OnChildTreeViewButtonReleaseEvent);
 			this.TextViewNote.FocusOutEvent += new global::Gtk.FocusOutEventHandler (this.OnTextViewNoteFocusOutEvent);
 		}

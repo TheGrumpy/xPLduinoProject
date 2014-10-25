@@ -67,7 +67,7 @@ namespace xPLduinoManager
 			}
 			else //Sinon
 			{
-				datamanagement.AddCustomerInNode(_CustomerName,NodeId);
+				datamanagement.AddCustomerInNode(_CustomerName,NodeId,true);
 				this.Destroy(); //On détruit la fenetre en cours
 			}				
 		}

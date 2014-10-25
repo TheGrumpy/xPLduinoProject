@@ -9,7 +9,13 @@ namespace xPLduinoManager
 		private global::Gtk.TreeView OptionTreeView;
 		private global::Gtk.VPaned vpaned2;
 		private global::Gtk.VBox vbox1;
+		private global::Gtk.HBox hbox3;
 		private global::Gtk.Label LabelChildTreeView;
+		private global::Gtk.Button ButtonAddNode;
+		private global::Gtk.VSeparator vseparator1;
+		private global::Gtk.Button ButtonDeleteNode;
+		private global::Gtk.VSeparator vseparator2;
+		private global::Gtk.Button ButtonGenerateOneNode;
 		private global::Gtk.ScrolledWindow scrolledwindow3;
 		private global::Gtk.TreeView ChildTreeView;
 		private global::Gtk.VBox vbox2;
@@ -51,15 +57,71 @@ namespace xPLduinoManager
 			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
+			this.hbox3 = new global::Gtk.HBox ();
+			this.hbox3.Name = "hbox3";
+			this.hbox3.Spacing = 6;
+			// Container child hbox3.Gtk.Box+BoxChild
 			this.LabelChildTreeView = new global::Gtk.Label ();
 			this.LabelChildTreeView.Name = "LabelChildTreeView";
 			this.LabelChildTreeView.Xalign = 0F;
 			this.LabelChildTreeView.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
-			this.vbox1.Add (this.LabelChildTreeView);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.LabelChildTreeView]));
+			this.hbox3.Add (this.LabelChildTreeView);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.LabelChildTreeView]));
 			w3.Position = 0;
-			w3.Expand = false;
-			w3.Fill = false;
+			// Container child hbox3.Gtk.Box+BoxChild
+			this.ButtonAddNode = new global::Gtk.Button ();
+			this.ButtonAddNode.CanFocus = true;
+			this.ButtonAddNode.Name = "ButtonAddNode";
+			this.ButtonAddNode.UseUnderline = true;
+			this.ButtonAddNode.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
+			this.hbox3.Add (this.ButtonAddNode);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.ButtonAddNode]));
+			w4.Position = 1;
+			w4.Expand = false;
+			w4.Fill = false;
+			// Container child hbox3.Gtk.Box+BoxChild
+			this.vseparator1 = new global::Gtk.VSeparator ();
+			this.vseparator1.Name = "vseparator1";
+			this.hbox3.Add (this.vseparator1);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vseparator1]));
+			w5.Position = 2;
+			w5.Expand = false;
+			w5.Fill = false;
+			// Container child hbox3.Gtk.Box+BoxChild
+			this.ButtonDeleteNode = new global::Gtk.Button ();
+			this.ButtonDeleteNode.CanFocus = true;
+			this.ButtonDeleteNode.Name = "ButtonDeleteNode";
+			this.ButtonDeleteNode.UseUnderline = true;
+			this.ButtonDeleteNode.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
+			this.hbox3.Add (this.ButtonDeleteNode);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.ButtonDeleteNode]));
+			w6.Position = 3;
+			w6.Expand = false;
+			w6.Fill = false;
+			// Container child hbox3.Gtk.Box+BoxChild
+			this.vseparator2 = new global::Gtk.VSeparator ();
+			this.vseparator2.Name = "vseparator2";
+			this.hbox3.Add (this.vseparator2);
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vseparator2]));
+			w7.Position = 4;
+			w7.Expand = false;
+			w7.Fill = false;
+			// Container child hbox3.Gtk.Box+BoxChild
+			this.ButtonGenerateOneNode = new global::Gtk.Button ();
+			this.ButtonGenerateOneNode.CanFocus = true;
+			this.ButtonGenerateOneNode.Name = "ButtonGenerateOneNode";
+			this.ButtonGenerateOneNode.UseUnderline = true;
+			this.ButtonGenerateOneNode.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
+			this.hbox3.Add (this.ButtonGenerateOneNode);
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.ButtonGenerateOneNode]));
+			w8.Position = 5;
+			w8.Expand = false;
+			w8.Fill = false;
+			this.vbox1.Add (this.hbox3);
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox3]));
+			w9.Position = 0;
+			w9.Expand = false;
+			w9.Fill = false;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.scrolledwindow3 = new global::Gtk.ScrolledWindow ();
 			this.scrolledwindow3.CanFocus = true;
@@ -71,11 +133,11 @@ namespace xPLduinoManager
 			this.ChildTreeView.Name = "ChildTreeView";
 			this.scrolledwindow3.Add (this.ChildTreeView);
 			this.vbox1.Add (this.scrolledwindow3);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.scrolledwindow3]));
-			w5.Position = 1;
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.scrolledwindow3]));
+			w11.Position = 1;
 			this.vpaned2.Add (this.vbox1);
-			global::Gtk.Paned.PanedChild w6 = ((global::Gtk.Paned.PanedChild)(this.vpaned2 [this.vbox1]));
-			w6.Resize = false;
+			global::Gtk.Paned.PanedChild w12 = ((global::Gtk.Paned.PanedChild)(this.vpaned2 [this.vbox1]));
+			w12.Resize = false;
 			// Container child vpaned2.Gtk.Paned+PanedChild
 			this.vbox2 = new global::Gtk.VBox ();
 			this.vbox2.Name = "vbox2";
@@ -86,10 +148,10 @@ namespace xPLduinoManager
 			this.NoteLabel.Xalign = 0F;
 			this.NoteLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
 			this.vbox2.Add (this.NoteLabel);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.NoteLabel]));
-			w7.Position = 0;
-			w7.Expand = false;
-			w7.Fill = false;
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.NoteLabel]));
+			w13.Position = 0;
+			w13.Expand = false;
+			w13.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.scrolledwindow2 = new global::Gtk.ScrolledWindow ();
 			this.scrolledwindow2.CanFocus = true;
@@ -101,8 +163,8 @@ namespace xPLduinoManager
 			this.TextViewNote.Name = "TextViewNote";
 			this.scrolledwindow2.Add (this.TextViewNote);
 			this.vbox2.Add (this.scrolledwindow2);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.scrolledwindow2]));
-			w9.Position = 1;
+			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.scrolledwindow2]));
+			w15.Position = 1;
 			this.vpaned2.Add (this.vbox2);
 			this.hpaned1.Add (this.vpaned2);
 			this.Add (this.hpaned1);
@@ -110,6 +172,9 @@ namespace xPLduinoManager
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
+			this.ButtonAddNode.Clicked += new global::System.EventHandler (this.OnButtonAddNodeClicked);
+			this.ButtonDeleteNode.Clicked += new global::System.EventHandler (this.OnButtonDeleteNodeClicked);
+			this.ButtonGenerateOneNode.Clicked += new global::System.EventHandler (this.OnButtonGenerateOneNodeClicked);
 			this.ChildTreeView.ButtonReleaseEvent += new global::Gtk.ButtonReleaseEventHandler (this.OnChildTreeViewButtonReleaseEvent);
 			this.TextViewNote.FocusOutEvent += new global::Gtk.FocusOutEventHandler (this.OnTextViewNoteFocusOutEvent);
 		}

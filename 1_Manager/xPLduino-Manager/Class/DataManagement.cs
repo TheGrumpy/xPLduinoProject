@@ -28,7 +28,7 @@ using System.Collections;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
-
+using ICSharpCode.SharpZipLib.Zip;
 
 namespace xPLduinoManager
 {
@@ -230,8 +230,8 @@ namespace xPLduinoManager
 			
 			CreateNewProject("Project_0","Ludovic VOGEL","/home/ludovic/Bureau/TestPath"); //PROJECT Id 1			
 				AddNodeInProject("smb_0",Project_Id-1); //SMB Id 1
-					AddNetworkInNode("I2C",Node_Id-1); //I2C Id 1
-						AddBoardInNetwork("IN8R8","8in8r_0",Network_Id-1);
+					//AddNetworkInNode("I2C",Node_Id-1); //I2C Id 1
+						AddBoardInNetwork("IN8R8","8in8r_0",Network_Id-2);
 			
 					AddInstanceInNode("LIGHTING","Lamp_Cuisine",Node_Id-1);
 					AddInstanceInNode("LIGHTING","Lamp_Salon",Node_Id-1);
@@ -279,7 +279,6 @@ namespace xPLduinoManager
 			Project_Id++; //Incrémentation de l'id project
 			mainwindow.UpdateEplorerTreeView(); //Mise à jour de l'explorer projet
 			mainwindow.UpdateStatusBar();
-			mainwindow.UpdateComboboxSelectNode();
 			mainwindow.UpdateComboboxSelectUsb();			
 			mainwindow.Sensitive = true; //On rend la main à la page principal
 			CopyProject("HTNewProject",_ProjectName);
@@ -303,15 +302,23 @@ namespace xPLduinoManager
 				{			
 					_Name = ReturnCorrectName(_Name);
 					Pro.AddNodeInProject(_Name,Node_Id); //Nous ajoutons un nouveau noeud au projet
+					
 					AddDebudInNode(Node_Id); //Ajoute les debug au noeud a partir d'une liste définit
+					
+					//On ajoute les réseaux directement sans passé par une fenêtre d'ajout (Gain de temps à la conception)
+					AddNetworkInNode("I2C",Node_Id);
+					AddNetworkInNode("1-Wire",Node_Id);
+					
+					//On rajoute le fichier customer et scénario à la création d'un noeud
+					AddCustomerInNode(param.ParamP("CustomerInoName"),Node_Id,false); //On ajouter le fichier customer de base à partir d'un fichier racine	
+					AddScenarioInNode(param.ParamP("ScenarioName"),Node_Id,false); //On ajoute un fichier de scénarion de base	
+					
+					
 					CopyProject("HTNewNode",Pro.Project_Name + "/" + _Name);
-					AddCustomerInNode(param.ParamP("CustomerInoName"),Node_Id); //On ajouter le fichier customer de base à partir d'un fichier racine	
-					AddScenarioInNode(param.ParamP("ScenarioName"),Node_Id); //On ajoute un fichier de scénarion de base				
 					Node_Id++;	//On incrémente l'Id noeud
 					Pro.ProjectIsSave = false;
 					mainwindow.UpdateStatusBar();							
 					mainwindow.Sensitive = true; //Activation de la fenetre principale	
-					mainwindow.UpdateComboboxSelectNode();
 					mainwindow.UpdateComboboxSelectUsb();
 					return true;
 				}
@@ -346,7 +353,7 @@ namespace xPLduinoManager
 						mainwindow.UpdateEplorerTreeView(); //Mise à jour de l'explorer treeview
 						mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
 						mainwindow.Sensitive = true; //Activation de la fenetre principale						
-						CopyProject("HTNewNetwork",Pro.Project_Name + "/" + node.Node_Name + "/" + _Type);
+						//CopyProject("HTNewNetwork",Pro.Project_Name + "/" + node.Node_Name + "/" + _Type);
 						Pro.ProjectIsSave = false;
 						mainwindow.UpdateStatusBar();								
 						return true;					
@@ -498,7 +505,7 @@ namespace xPLduinoManager
 			
 		//Fonction AddCustomerInNode
 		//Fonction permettant d'ajouter le fichier customer de base dans un noeud
-		public bool AddCustomerInNode(string _Name, Int32 _NodeId)
+		public bool AddCustomerInNode(string _Name, Int32 _NodeId, bool ActivateCopyProject)
 		{
 			bool _DefaultUse = false;
 			foreach(Project Pro in ListProject)
@@ -517,7 +524,10 @@ namespace xPLduinoManager
 						}		
 						node.AddCustomerInNode(CustomerId,_Name,ReturnCustomerByFileSource(),_DefaultUse);
 						CustomerId++;
-						CopyProject("HTNewCustomer",Pro.Project_Name + "/" + node.Node_Name + "/" + _Name);
+						
+						if(ActivateCopyProject)
+							CopyProject("HTNewCustomer",Pro.Project_Name + "/" + node.Node_Name + "/" + _Name);
+						
 						mainwindow.Sensitive = true;
 						mainwindow.UpdateWidgetInTab();
 						mainwindow.UpdateEplorerTreeView();
@@ -543,7 +553,7 @@ namespace xPLduinoManager
 		
 		//Fonction AddScenarioInNode
 		//Fonction permettant d'ajouter un scénario dans la liste des scénario d'un noeud
-		public bool AddScenarioInNode(string _Name, Int32 _NodeId)
+		public bool AddScenarioInNode(string _Name, Int32 _NodeId, bool ActivateCopyProject)
 		{
 			foreach(Project Pro in ListProject)
 			{
@@ -565,7 +575,10 @@ namespace xPLduinoManager
 						}
 						
 						ScenarioId++;
-						CopyProject("HTNewScenario",Pro.Project_Name + "/" + node.Node_Name + "/" + _Name);
+						
+						if(ActivateCopyProject)
+							CopyProject("HTNewScenario",Pro.Project_Name + "/" + node.Node_Name + "/" + _Name);
+						
 						mainwindow.Sensitive = true;
 						mainwindow.UpdateWidgetInTab();
 						mainwindow.UpdateEplorerTreeView();
@@ -650,12 +663,11 @@ namespace xPLduinoManager
 					mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
 					mainwindow.CloseTabInCaseOfDelete();//Permet d'enlever le tab si celui-ci est ouvert							
 					UpdateInstanceUsed();
+					mainwindow.UpdateEplorerTreeView(); //On fait la mise à jour de l'explorer treeview
 					mainwindow.Sensitive = true; //Activation de la fenetre principale	
 					CopyProject("HTDeleteProject",NameProject);
 					CurrentProjectId = 0;
 					mainwindow.UpdateStatusBar();
-					mainwindow.UpdateComboboxSelectNode();
-					mainwindow.UpdateComboboxSelectUsb();					
 					return true;
 				}
 			}
@@ -677,16 +689,15 @@ namespace xPLduinoManager
 					if(node.Node_Id == _Node_Id) //Si le noeud trouvé à pour Id celui demandé
 					{		
 						string NameNode = node.Node_Name;
-						mainwindow.ClearComboboxSelectNode();
 						Pro.Node_.Remove(node);//On supprime le noeud
 						mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
 						mainwindow.CloseTabInCaseOfDelete();//Permet d'enlever le tab si celui-ci est ouvert								
 						UpdateInstanceUsed();
+						mainwindow.UpdateEplorerTreeView(); //On fait la mise à jour de l'explorer treeview
 						mainwindow.Sensitive = true; //Activation de la fenetre principale							
 						CopyProject("HTDeleteNode",Pro.Project_Name + "/" + NameNode);
 						Pro.ProjectIsSave = false;
 						mainwindow.UpdateStatusBar();
-						mainwindow.UpdateComboboxSelectNode();
 						return true;			
 					}
 				}	
@@ -715,6 +726,7 @@ namespace xPLduinoManager
 							mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
 							mainwindow.CloseTabInCaseOfDelete();//Permet d'enlever le tab si celui-ci est ouvert								
 							UpdateInstanceUsed();
+							mainwindow.UpdateEplorerTreeView(); //On fait la mise à jour de l'explorer treeview
 							mainwindow.Sensitive = true; //Activation de la fenetre principale								
 							CopyProject("HTDeleteNetwork",Pro.Project_Name + "/" + node.Node_Name + "/" + TypeNetwork);		
 							Pro.ProjectIsSave = false;
@@ -734,7 +746,7 @@ namespace xPLduinoManager
 		//Retour :
 		//	bool : Vrai si réussit		
 		public bool DeleteBoardInNetwork(Int32 _Board_Id)
-		{
+		{		
 			foreach(Project Pro in ListProject) //Dans la liste des projets
 			{			
 				foreach (Node node in Pro.ReturnListNode()) //Pour chaque noeud de la liste des noeud
@@ -751,6 +763,7 @@ namespace xPLduinoManager
 								mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
 								mainwindow.CloseTabInCaseOfDelete();//Permet d'enlever le tab si celui-ci est ouvert									
 								UpdateInstanceUsed();
+								mainwindow.UpdateEplorerTreeView(); //On fait la mise à jour de l'explorer treeview
 								mainwindow.Sensitive = true; //Activation de la fenetre principale									
 								CopyProject("HTDeleteBoard",Pro.Project_Name + "/" + node.Node_Name + "/" + net.Network_Type + "/" + BoardType + "/" + BoardName);
 								Pro.ProjectIsSave = false;
@@ -793,6 +806,7 @@ namespace xPLduinoManager
 							mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
 							mainwindow.CloseTabInCaseOfDelete();//Permet d'enlever le tab si celui-ci est ouvert								
 							UpdateInstanceUsed();	
+							mainwindow.UpdateEplorerTreeView(); //On fait la mise à jour de l'explorer treeview
 							mainwindow.Sensitive = true; //Activation de la fenetre principale								
 							CopyProject("HTDeleteInstance",Pro.Project_Name + "/" + node.Node_Name + "/" + InstanceType + "/" + InstanceName);	
 							Pro.ProjectIsSave = false;
@@ -829,6 +843,7 @@ namespace xPLduinoManager
 							mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
 							mainwindow.CloseTabInCaseOfDelete();//Permet d'enlever le tab si celui-ci est ouvert								
 							UpdateInstanceUsed();	
+							mainwindow.UpdateEplorerTreeView(); //On fait la mise à jour de l'explorer treeview
 							mainwindow.Sensitive = true; //Activation de la fenetre principale								
 							CopyProject("HTDeleteCustomer",Pro.Project_Name + "/" + node.Node_Name + "/" + CustomerName);
 							Pro.ProjectIsSave = false;
@@ -865,6 +880,7 @@ namespace xPLduinoManager
 							mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
 							mainwindow.CloseTabInCaseOfDelete();//Permet d'enlever le tab si celui-ci est ouvert								
 							UpdateInstanceUsed();	
+							mainwindow.UpdateEplorerTreeView(); //On fait la mise à jour de l'explorer treeview
 							mainwindow.Sensitive = true; //Activation de la fenetre principale								
 							CopyProject("HTDeleteCustomer",Pro.Project_Name + "/" + node.Node_Name + "/" + ScenarioName);
 							Pro.ProjectIsSave = false;
@@ -896,6 +912,7 @@ namespace xPLduinoManager
 								mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
 								mainwindow.CloseTabInCaseOfDelete();//Permet d'enlever le tab si celui-ci est ouvert								
 								UpdateInstanceUsed();
+								mainwindow.UpdateEplorerTreeView(); //On fait la mise à jour de l'explorer treeview
 								mainwindow.Sensitive = true; //Activation de la fenetre principale								
 								CopyProject("HTDeleteVariable",Pro.Project_Name + "/" + node.Node_Name + "/" + sce.ScenarioName + "/" + NameVariable);		
 								Pro.ProjectIsSave = false;
@@ -928,6 +945,7 @@ namespace xPLduinoManager
 								mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
 								mainwindow.CloseTabInCaseOfDelete();//Permet d'enlever le tab si celui-ci est ouvert								
 								UpdateInstanceUsed();
+								mainwindow.UpdateEplorerTreeView(); //On fait la mise à jour de l'explorer treeview
 								mainwindow.Sensitive = true; //Activation de la fenetre principale								
 								CopyProject("HTDeleteFunction",Pro.Project_Name + "/" + node.Node_Name + "/" + sce.ScenarioName + "/" + NameFunction);	
 								Pro.ProjectIsSave = false;
@@ -983,7 +1001,6 @@ namespace xPLduinoManager
 							CopyProject("HTModifyProjectName",OldProjectName + " => " + Pro.Project_Name);
 							Pro.ProjectIsSave = false;
 							mainwindow.UpdateStatusBar();	
-							mainwindow.UpdateComboboxSelectNode();
 							return true;
 						}						
 					}
@@ -1086,7 +1103,6 @@ namespace xPLduinoManager
 							CopyProject("HTModifyNodeName",Pro.Project_Name + " (" + OldNodeName + " => " + node.Node_Name + ")");	
 							Pro.ProjectIsSave = false;
 							mainwindow.UpdateStatusBar();	
-							mainwindow.UpdateComboboxSelectNode();
 							return true;
 						}
 						else if(_Choice == param.ParamI("MoNo_ChoiceIP")) //Dans le cas où nous voulons modifier l'ip d'un noeud
@@ -3267,7 +3283,7 @@ namespace xPLduinoManager
 					FlagOK = true; //A chaque tour on met le flag à true
 					foreach(Project Pro in ListProject)
 					{			
-						if(Pro.Project_Name == _ProjectName + "_" + Count) //On recherche un nouveau nom et on verifie si il existe
+						if(Pro.Project_Name == _ProjectName + Count) //On recherche un nouveau nom et on verifie si il existe
 						{
 							FlagOK = false; //Si le nouveau nom existe, on remet le flag en bas
 							Count++; //On incremente le compteur du nouveau nom
@@ -3276,7 +3292,7 @@ namespace xPLduinoManager
 					
 					if(FlagOK) //si le nouveau nom existe pas 
 					{
-						_ProjectName = _ProjectName + "_" + Count; //on le renomme
+						_ProjectName = _ProjectName + Count; //on le renomme
 						NameOK=true; //on met NameOK à vrai permettant de sortir de la boucle
 					}
 				}
@@ -3322,7 +3338,7 @@ namespace xPLduinoManager
 						{						
 							foreach(Node Nod in Pro.ReturnListNode())	//On boucle sur les noeuds
 							{						
-								if(Nod.Node_Name == _NodeName + "_" + Count) //On recherche un nouveau nom et on verifie si il existe
+								if(Nod.Node_Name == _NodeName + Count) //On recherche un nouveau nom et on verifie si il existe
 								{
 									FlagOK = false; //Si le nouveau nom existe, on remet le flag en bas
 									Count++; //On incremente le compteur du nouveau nom
@@ -3333,7 +3349,7 @@ namespace xPLduinoManager
 					
 					if(FlagOK) //si le nouveau nom existe pas 
 					{
-						_NodeName = _NodeName + "_" + Count; //on le renomme
+						_NodeName = _NodeName + Count; //on le renomme
 						NameOK=true; //on met NameOK à vrai permettant de sortir de la boucle
 					}
 				}
@@ -3390,7 +3406,7 @@ namespace xPLduinoManager
 								{
 									foreach(Board board in Net.ReturnListBoard()) //On boucle sur les cartes
 									{
-										if(board.Board_Name == _BoardName + "_" + Count)
+										if(board.Board_Name == _BoardName + Count)
 										{					
 											FlagOK = false; //Si le nouveau nom existe, on remet le flag en bas
 											Count++; //On incremente le compteur du nouveau nom
@@ -3403,7 +3419,7 @@ namespace xPLduinoManager
 					
 					if(FlagOK) //si le nouveau nom existe pas 
 					{
-						_BoardName = _BoardName + "_" + Count; //on le renomme
+						_BoardName = _BoardName + Count; //on le renomme
 						NameOK=true; //on met NameOK à vrai permettant de sortir de la boucle
 					}
 				}
@@ -3448,7 +3464,7 @@ namespace xPLduinoManager
 						{
 							foreach(Instance ins in Nod.ReturnListInstance())
 							{
-								if(ins.Instance_Name == _InstanceName + "_" + Count)
+								if(ins.Instance_Name == _InstanceName + Count)
 								{
 									FlagOK = false; //Si le nouveau nom existe, on remet le flag en bas
 									Count++; //On incremente le compteur du nouveau nom
@@ -3459,7 +3475,7 @@ namespace xPLduinoManager
 					
 					if(FlagOK) //si le nouveau nom existe pas 
 					{
-						_InstanceName = _InstanceName + "_" + Count; //on le renomme
+						_InstanceName = _InstanceName + Count; //on le renomme
 						NameOK=true; //on met NameOK à vrai permettant de sortir de la boucle
 					}
 				}
@@ -3638,7 +3654,7 @@ namespace xPLduinoManager
 							{
 								foreach(Variable vari in sce.ReturnListVariable())
 								{
-									if(vari.VariableName == _VariableName + "_" + Count)
+									if(vari.VariableName == _VariableName + Count)
 									{
 										FlagOK = false; //Si le nouveau nom existe, on remet le flag en bas
 										Count++; //On incremente le compteur du nouveau nom
@@ -3650,7 +3666,7 @@ namespace xPLduinoManager
 					
 					if(FlagOK) //si le nouveau nom existe pas 
 					{
-						_VariableName = _VariableName + "_" + Count; //on le renomme
+						_VariableName = _VariableName + Count; //on le renomme
 						NameOK=true; //on met NameOK à vrai permettant de sortir de la boucle
 					}
 				}
@@ -3700,7 +3716,7 @@ namespace xPLduinoManager
 							{
 								foreach(Function fun in sce.ReturnListFunction())
 								{
-									if(fun.FunctionName == _FunctionName + "_" + Count)
+									if(fun.FunctionName == _FunctionName + Count)
 									{
 										FlagOK = false; //Si le nouveau nom existe, on remet le flag en bas
 										Count++; //On incremente le compteur du nouveau nom
@@ -3712,7 +3728,7 @@ namespace xPLduinoManager
 					
 					if(FlagOK) //si le nouveau nom existe pas 
 					{
-						_FunctionName = _FunctionName + "_" + Count; //on le renomme
+						_FunctionName = _FunctionName + Count; //on le renomme
 						NameOK=true; //on met NameOK à vrai permettant de sortir de la boucle
 					}
 				}
@@ -3729,10 +3745,10 @@ namespace xPLduinoManager
 			{
 				if(_Name[i] < 48 || (_Name[i] > 57 && _Name[i] < 65) || (_Name[i] > 90 && _Name[i] < 97) || _Name[i] > 122)
 				{
-					_Name = _Name.Replace(_Name[i].ToString(),"_");
+					_Name = _Name.Replace(_Name[i].ToString()," ");
 				}
 			}
-			return _Name;
+			return _Name.Trim();
 		}
 		
 //#################Fonction Divers#################################################################
@@ -4532,7 +4548,6 @@ namespace xPLduinoManager
 				}
 				}
 				mainwindow.UpdateHistoricTreeView();
-				mainwindow.UpdateComboboxSelectNode();
 			}
 
 		//Fonction RedoProject
@@ -4648,7 +4663,6 @@ namespace xPLduinoManager
 					mainwindow.UndoRedoInactif("redo",false);					
 				}
 				mainwindow.UpdateHistoricTreeView();
-				mainwindow.UpdateComboboxSelectNode();
 				}
 			}
 		}
@@ -4763,7 +4777,6 @@ namespace xPLduinoManager
 				mainwindow.UndoRedoInactif("redo",true);					
 			}
 			mainwindow.UpdateHistoricTreeView();
-			mainwindow.UpdateComboboxSelectNode();
 		}
 		
 //#################Fonction Save Project ##################################################################
@@ -4771,18 +4784,21 @@ namespace xPLduinoManager
 		//Fonction SaveProject
 		//Fonction permettant de sauver tous les projets ou un projet(A faire)
 		public bool SaveProject(bool SaveAll, Int32 _Project_Id)
-		{
-			bool SaveOneOk = false;
+		{			
+			bool SaveOneOk = false;		
 			foreach(Project pro in ListProject)
 			{
 				SaveOneOk = false;
+				string TempUnzip = pro.Project_SavePath + "/UnZip";
+				string BasePath = pro.Project_SavePath + "/Temp";
+				string CompressPath = pro.Project_SavePath;		
+				
 				if(Directory.Exists(pro.Project_SavePath))
 				{
 					if((pro.Project_Id == CurrentProjectId && !pro.ProjectIsSave) || (SaveAll && !pro.ProjectIsSave) || (pro.Project_Id == _Project_Id && !pro.ProjectIsSave) )
 					{
 						SaveOneOk = true;
-						string BasePath = pro.Project_SavePath + "/Temp";
-						string CompressPath = pro.Project_SavePath;
+
 						string NameFile = "";
 						//Dans le cas ou le dossier existe, nous le supprimons
 						if(Directory.Exists(BasePath)) 
@@ -4795,6 +4811,8 @@ namespace xPLduinoManager
 						pro.Project_ModificationDateAndTime = DateTime.Now.ToString();
 						pro.Project_Version = pro.Project_Version + 1;
 						mainwindow.UpdateWidgetInTab();
+						
+						ExtractZipFile(pro.Project_SavePath + "/" + pro.Project_Name + ".dom",TempUnzip,pro.Project_Password);
 						
 //##########################  PROJECT #################################################################			
 						
@@ -5247,6 +5265,25 @@ namespace xPLduinoManager
 									
 									//On ajoute un noeud dans le xml du projet
 									AddElement(xmlProject,"Project","Nodes",CalculHash(FileXmlNode),2);
+									node.Node_CRC = CalculHash(FileXmlNode);
+									
+									//Permet de créer un dossier pour ajouter les fichiers compilés
+									if(!Directory.Exists(BasePath + "/Hex")) 
+									{
+										 System.IO.Directory.CreateDirectory(BasePath + "/Hex");
+									}									
+									
+									//Si le fichier compilé existait déjà dans le dossier compréssé, on le remet dans le dossier final
+									if(File.Exists(TempUnzip + "/Hex/" + node.Node_CRC + ".hex"))
+									{
+										File.Move(TempUnzip + "/Hex/" + node.Node_CRC + ".hex",BasePath + "/Hex/" + node.Node_CRC + ".hex");
+										node.Node_Compile = true;
+									}
+									else
+									{
+										node.Node_Compile = false;
+									}
+																	
 								}
 							}
 							//On sauvegarde le xml du projet dans un fichier
@@ -5269,6 +5306,13 @@ namespace xPLduinoManager
 						return true;
 					}
 				}
+				
+				//On supprime le dossier TempUnzip
+				if(Directory.Exists(TempUnzip)) 
+				{				
+					DirectoryInfo directory = new DirectoryInfo(TempUnzip);
+					directory.Delete(true);
+				}	
 			}
 			
 			if(SaveOneOk)
@@ -5278,6 +5322,7 @@ namespace xPLduinoManager
 			
 			mainwindow.UpdateEplorerTreeView(); //Mise à jour de l'explorer projet
 			mainwindow.UpdateMainNoteBook();
+			mainwindow.UpdateWidgetInTab();
 			return SaveOneOk;
 		}
 		
@@ -5549,7 +5594,20 @@ namespace xPLduinoManager
 													 node.Node_Note = ReaderNode["Note"];
 												if(ReaderNode["WebServer"] != null)
 													 node.Node_WebServer = Convert.ToBoolean(ReaderNode["WebServer"]);													
-																							
+
+												
+												node.Node_CRC = ReaderProject["Nodes"]; //On vient mettre le CRC du noeud dans une variable
+												
+												//Nous allons vérifier si nous avons un .hex pour un noeud et si oui nous venons complété l'information compilé
+												if(File.Exists(_DirectoryPath + "/Hex/" + node.Node_CRC + ".hex"))
+												{
+													node.Node_Compile = true;
+												}
+												else
+												{
+													node.Node_Compile = false;
+												}
+												
 //#######################################################################  DEBUG #################################################################	
 												
 												if(ReaderNode["Debugs"] != null)
@@ -6003,7 +6061,6 @@ namespace xPLduinoManager
 				mainwindow.UpdateStatusBar();
 				mainwindow.UpdateEplorerTreeView(); //Mise à jour de l'explorer projet
 				mainwindow.InitPanedAndMouvementAuthor(); 	
-				mainwindow.UpdateComboboxSelectNode();
 				mainwindow.UpdateComboboxSelectUsb();
 				UpdateInstanceUsed();
 			}
@@ -6456,9 +6513,8 @@ namespace xPLduinoManager
 		
 		//Fonction CopyFiles
 		//Fonction permettant de copier tous les fichiers code source dans un dossier de destination
-		public bool CopyFiles(string ProjectNodeChoose)
+		public bool CopyFiles(Int32 _ProjectID, Int32 _NodeId)
 		{	
-			string [] ProjectAndNodeName = ProjectNodeChoose.Split('/');
 			string fileName = "";
 			string destFile = "";
 			string ListFunction = "";
@@ -6490,7 +6546,7 @@ namespace xPLduinoManager
 						}
 					}
 					
-					if(pro.Project_Name == ProjectAndNodeName[0] && node.Node_Name == ProjectAndNodeName[1] && Directory.Exists(pro.Project_SavePath))
+					if(pro.Project_Id == _ProjectID && node.Node_Id == _NodeId && Directory.Exists(pro.Project_SavePath))
 					{
 						string TargetPath = pro.Project_SavePath + param.ParamP("FolderTargetFirmware");
 						
@@ -6518,9 +6574,7 @@ namespace xPLduinoManager
 								}
 				            }
 							
-							
-							//ON vient mettre à jour le fichier "xplduino_controller.cpp" avec les fonctions
-							
+							//On vient mettre à jour le fichier "xplduino_controller.cpp" avec les fonctions
 							foreach(Customer cus in node.ReturnListCustomer())
 							{
 								if(cus.CustomerUse)
@@ -6679,12 +6733,12 @@ namespace xPLduinoManager
 		
 		//Fonction CompileFile
 		//Fonction permettant de compiler les fichier
-		public bool CompileFile(string ProjectNodeChoose)
+		public bool CompileFile(Int32 _ProjectID, Int32 _NodeId)
 		{
 			bool CompilationIsCorrect = false;
 			mainwindow.UpdateProgressBar(0);
 			
-			if(!CopyFiles(ProjectNodeChoose))
+			if(!CopyFiles(_ProjectID,_NodeId))
 			{
 				return false;
 			}
@@ -6721,7 +6775,6 @@ namespace xPLduinoManager
 					
 	        if (System.IO.Directory.Exists(Environment.CurrentDirectory + param.ParamP("FolderHardware")))
 	        {	
-				string [] ProjectAndNodeName = ProjectNodeChoose.Split('/');
 				string SavePath = "";
 				string ShellCommande = "";
 				string ShellArgument = "";
@@ -6732,7 +6785,7 @@ namespace xPLduinoManager
 				{
 					foreach(Node node in pro.ReturnListNode())
 					{
-						if(pro.Project_Name == ProjectAndNodeName[0] && node.Node_Name == ProjectAndNodeName[1] && Directory.Exists(pro.Project_SavePath))
+						if(pro.Project_Id == _ProjectID && node.Node_Id == _NodeId && Directory.Exists(pro.Project_SavePath))
 						{		
 							SavePath = pro.Project_SavePath + "/xplduino_controller";
 																	
@@ -6766,11 +6819,11 @@ namespace xPLduinoManager
 									
 									if(Filename == "xplduino_controller.cpp")
 									{
-										ShellTransfert(ShellCommande,ShellArgument,true);
+										ShellTransfert(ShellCommande,ShellArgument,true,Filename);
 									}
 									else
 									{
-										ShellTransfert(ShellCommande,ShellArgument,false);
+										ShellTransfert(ShellCommande,ShellArgument,false,Filename);
 									}
 								}
 							}
@@ -6820,7 +6873,7 @@ namespace xPLduinoManager
 											
 											ShellArgument = ShellArgument + Environment.CurrentDirectory + param.ParamP("FolderLibrary") + FolderLibrary + "/" + Filename + " -o " + SavePath + FolderLibrary + "/" + Filename + ".o";
 											
-											ShellTransfert(ShellCommande,ShellArgument,false);										
+											ShellTransfert(ShellCommande,ShellArgument,false,Filename);										
 										}
 									}
 								}
@@ -6855,7 +6908,7 @@ namespace xPLduinoManager
 										
 										ShellArgument = ShellArgument + Environment.CurrentDirectory + param.ParamP("FolderCore") + "/" + Filename + " -o " + SavePath + "/" + Filename + ".o";
 										
-										ShellTransfert(ShellCommande,ShellArgument,false);											
+										ShellTransfert(ShellCommande,ShellArgument,false,Filename);											
 									}									
 								}
 							}
@@ -6878,7 +6931,7 @@ namespace xPLduinoManager
 										ShellArgument = "rcs ";
 										ShellArgument = ShellArgument + SavePath + "/core.a " + SavePath + "/" + Filename + ".o";
 										
-										ShellTransfert(ShellCommande,ShellArgument,false);	
+										ShellTransfert(ShellCommande,ShellArgument,false,Filename);	
 									}
 								}
 							}
@@ -6923,7 +6976,7 @@ namespace xPLduinoManager
 							
 							ShellArgument = ShellArgument + SavePath + "/core.a -L" + SavePath + " -lm";
 							
-							ShellTransfert(ShellCommande,ShellArgument,false);
+							ShellTransfert(ShellCommande,ShellArgument,false,Filename);
 							
 							mainwindow.UpdateProgressBar(80);
 							
@@ -6934,7 +6987,7 @@ namespace xPLduinoManager
 							ShellArgument = ShellArgument + SavePath + "/xplduino_controller.cpp.elf ";
 							ShellArgument = ShellArgument + SavePath + "/xplduino_controller.cpp.eep";
 							
-							ShellTransfert(ShellCommande,ShellArgument,false);	
+							ShellTransfert(ShellCommande,ShellArgument,false,"");	
 							
 							mainwindow.UpdateProgressBar(90);
 							
@@ -6945,13 +6998,32 @@ namespace xPLduinoManager
 							ShellArgument = ShellArgument + SavePath + "/xplduino_controller.cpp.elf ";
 							ShellArgument = ShellArgument + SavePath + "/xplduino_controller.cpp.hex";
 							
-							ShellTransfert(ShellCommande,ShellArgument,false);	
+							ShellTransfert(ShellCommande,ShellArgument,false,"");	
 							
 							mainwindow.UpdateProgressBar(100);
 							
 							if(File.Exists(SavePath + "/xplduino_controller.cpp.hex"))
 							{		
 								CompilationIsCorrect = true;
+								System.IO.Directory.Move(SavePath + "/xplduino_controller.cpp.hex" , SavePath + "/" + node.Node_CRC + ".hex"); //On renomme le fichier avec le  CRC du noeud
+								
+								//On ajoute le .hex dans le projet
+								ZipFile zipFile = new ZipFile(pro.Project_SavePath + "/" + pro.Project_Name + ".dom");
+								zipFile.BeginUpdate();
+								zipFile.Password = pro.Project_Password;
+								zipFile.Add(SavePath + "/" + node.Node_CRC + ".hex","Hex/" + node.Node_CRC + ".hex");
+							    zipFile.CommitUpdate();
+							    zipFile.Close();
+								
+								//On supprimer le dossier de fabrication
+								string TargetPath = pro.Project_SavePath + param.ParamP("FolderTargetFirmware");
+								if(Directory.Exists(TargetPath))
+								{
+									DirectoryInfo DirectoryFirmwareNode = new DirectoryInfo(TargetPath);
+									DirectoryFirmwareNode.Delete(true);							
+								}	
+								
+								node.Node_Compile = true;
 							}							
 						}
 					}
@@ -6960,6 +7032,7 @@ namespace xPLduinoManager
 
 			Gtk.Application.Invoke(delegate {
 		        mainwindow.ActiveCompileAndLoadButtonCompilation(CompilationIsCorrect);
+				mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
 		    });		
 			
 			return CompilationIsCorrect;
@@ -6967,7 +7040,7 @@ namespace xPLduinoManager
 		
 			//Fonction ShellTransfert
 			//Fonction permettant d'envoyer des commandes shell
-			public bool ShellTransfert(string _Commande, string _Argument, bool _DispayMessage)
+			public bool ShellTransfert(string _Commande, string _Argument, bool _DispayMessage, string _FileName)
 			{
 				bool ShellTransfertWithoutError = true;
 	            startInfo = new ProcessStartInfo(_Commande, _Argument);
@@ -6998,7 +7071,7 @@ namespace xPLduinoManager
 						if(StandardError.IndexOf("error") > -1)
 						{
 							Gtk.Application.Invoke(delegate {
-						        mainwindow.AddLineOutput(param.ParamI("OutputError"),PreviousLine + " => " + StandardError);	
+						        mainwindow.AddLineOutput(param.ParamI("OutputError"),_FileName + " : " + PreviousLine + " => " + StandardError);	
 						    });	
 							
 							ShellTransfertWithoutError = false;
@@ -7006,7 +7079,7 @@ namespace xPLduinoManager
 						else if(StandardError.IndexOf("warning") > -1)
 						{
 							Gtk.Application.Invoke(delegate {
-						        mainwindow.AddLineOutput(param.ParamI("OutputWarning"), StandardError);	
+						        mainwindow.AddLineOutput(param.ParamI("OutputWarning"),_FileName + " : " + StandardError);	
 						    });	
 						}					
 						PreviousLine = StandardError;			
@@ -7020,11 +7093,10 @@ namespace xPLduinoManager
 		
 		//Fonction LoadBoard
 		//Fonction permettant de charger une carte
-		public void LoadBoard(string USBPort, string ProjectNodeChoose)
+		public void LoadBoard(string USBPort, Int32 _ProjectID, Int32 _NodeId)
 		{
 	        if (System.IO.Directory.Exists(Environment.CurrentDirectory + param.ParamP("FolderHardware")))
 	        {	
-				string [] ProjectAndNodeName = ProjectNodeChoose.Split('/');
 				string SavePath = "";
 				string ShellCommande = "";
 				string ShellArgument = "";
@@ -7033,7 +7105,7 @@ namespace xPLduinoManager
 				{
 					foreach(Node node in pro.ReturnListNode())
 					{
-						if(pro.Project_Name == ProjectAndNodeName[0] && node.Node_Name == ProjectAndNodeName[1] && Directory.Exists(pro.Project_SavePath))
+						if(pro.Project_Id == _ProjectID && node.Node_Id == _NodeId && Directory.Exists(pro.Project_SavePath))
 						{		
 							
 							SavePath = pro.Project_SavePath + "/xplduino_controller";
@@ -7059,7 +7131,7 @@ namespace xPLduinoManager
 							}
 							else
 							{
-								CompileFile(ProjectNodeChoose);
+								CompileFile(_ProjectID,_NodeId);
 								ShellCommande = Environment.CurrentDirectory + param.ParamP("FolderTools") + "avrdude";
 								ShellArgument = " -C " + Environment.CurrentDirectory + param.ParamP("FolderTools") + "avrdude.conf  -v -v -v -v -patmega1284p -carduino -P/dev/ttyUSB0 -b115200 -D -Uflash:w:";
 								ShellArgument = ShellArgument + SavePath + "/xplduino_controller.cpp.hex:i";

@@ -100,6 +100,8 @@
     <EmbeddedResource Include="Pictures\Customer.png" />
     <EmbeddedResource Include="Pictures\Scenario.png" />
     <EmbeddedResource Include="Pictures\CustomerUse.png" />
+    <EmbeddedResource Include="Pictures\NOK.png" />
+    <EmbeddedResource Include="Pictures\OK.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />

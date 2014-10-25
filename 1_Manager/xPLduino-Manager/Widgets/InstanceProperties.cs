@@ -135,7 +135,7 @@ namespace xPLduinoManager
 		//Fonction permettant d'initialiser le widget
 		public void InitWidget()
 		{
-			
+			UpdateComboBoxNumberOfInstance();
 			if(TypeInstance == param.ParamP("InstLightingName"))
 			{		
 				AddNewInstance.Label = param.ParamT("IP_LabTVChild_ButtonNewInstance") + param.ParamT("ExTVNameLighting");
@@ -1106,6 +1106,21 @@ namespace xPLduinoManager
 				}			
 			}
 		
+//###################### Update Combobox  ####################################		
+		
+		//Fonction UpdateComboBoxNumberOfBoard
+		//Fonction permettant de mettre à jour la combobox pour afficher le nombre de carte que nous voulons créer
+		public void UpdateComboBoxNumberOfInstance()
+		{
+			for(int i = 1;i<21;i++)
+			{
+				ComboboxNumberOfInstance.AppendText(i.ToString());
+			}			
+			Gtk.TreeIter iter;
+			ComboboxNumberOfInstance.Model.IterNthChild(out iter,0);
+			ComboboxNumberOfInstance.SetActiveIter(iter);				
+		}		
+		
 //########### Autre ##########################################
 		
 		//Fonction OnChildTreeViewButtonReleaseEvent
@@ -1376,7 +1391,21 @@ namespace xPLduinoManager
 		//Fonction permettant d'ajouter un objet rapidement
 		protected void OnAddNewInstanceClicked (object sender, System.EventArgs e)
 		{
-			datamanagement.AddInstanceInNode(TypeInstance,datamanagement.ReturnNewNameInstance(param.ParamT("NIDefaultInstanceName"),Node_Id),Node_Id);
+			for(int i = 0;i<Convert.ToInt16(ComboboxNumberOfInstance.ActiveText);i++)
+			{			
+				if(TypeInstance == "LIGHTING")
+				{
+					datamanagement.AddInstanceInNode(TypeInstance,datamanagement.ReturnNewNameInstance("Lighting",Node_Id),Node_Id);
+				}
+				else if(TypeInstance == "SWITCH")
+				{
+					datamanagement.AddInstanceInNode(TypeInstance,datamanagement.ReturnNewNameInstance("Switch",Node_Id),Node_Id);
+				}
+				else if(TypeInstance == "SHUTTER")
+				{
+					datamanagement.AddInstanceInNode(TypeInstance,datamanagement.ReturnNewNameInstance("Shutter",Node_Id),Node_Id);
+				}
+			}
 		}
 		
 		//Fonction OnDeleteInstanceClicked
@@ -1385,7 +1414,7 @@ namespace xPLduinoManager
 		{
 			string IdSelected = "";	//variable permettant de stocker l'id de l'instance sélectionné
 	
-			TreeSelection selection = ChildTreeView.Selection; //Nous allons cree un arbre de selection
+			TreeSelection selection = ChildTreeView.Selection; //Nous allons crée un arbre de selection
 			if(selection.GetSelected(out TreeModelChildTreeView, out IterChild)) //Nous cherchons la valeur selectionné dans l'arbre de selection
 			{
 				if(TypeInstance == param.ParamP("InstLightingName"))

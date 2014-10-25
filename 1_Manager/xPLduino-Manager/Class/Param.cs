@@ -179,6 +179,9 @@ namespace xPLduinoManager
 			ListParameter.Add(new Parameters("IconCustomer","xPLduinoManager.Pictures.Customer.png"));
 			ListParameter.Add(new Parameters("IconCustomerUse","xPLduinoManager.Pictures.CustomerUse.png"));
 			ListParameter.Add(new Parameters("IconScenario","xPLduinoManager.Pictures.Scenario.png"));
+			ListParameter.Add(new Parameters("IconOK","xPLduinoManager.Pictures.OK.png"));
+			ListParameter.Add(new Parameters("IconNOK","xPLduinoManager.Pictures.NOK.png"));			
+			
 		}
 		public void MainWindow()
 		{
@@ -338,7 +341,7 @@ namespace xPLduinoManager
 			//LANGAGE
 			ListParameter.Add(new Parameters("NNTitle","Nouveau Noeud","New Node"));
 			ListParameter.Add(new Parameters("NNLabelNodeName","Nom du noeud :","Node name :"));
-			ListParameter.Add(new Parameters("NNDefaultNodeName","NomDuNoeud","NodeName"));
+			ListParameter.Add(new Parameters("NNDefaultNodeName","Noeud","Node"));
 			ListParameter.Add(new Parameters("NNButtonOK","Valider","Ok"));
 			ListParameter.Add(new Parameters("NNButtonCancel","Annuler","Cancel"));
 			ListParameter.Add(new Parameters("NNEmptyName","Nom de noeud vide","Node name empty"));
@@ -358,6 +361,7 @@ namespace xPLduinoManager
 			ListParameter.Add(new Parameters("NBTitle","Nouvel Carte","New Board"));
 			ListParameter.Add(new Parameters("NBLabelBoardName","Nom de la carte :","Board name :"));
 			ListParameter.Add(new Parameters("NBDefaultBoardName","NomDeLaCarte","BoardName"));
+			ListParameter.Add(new Parameters("NBDefaultProbeName","NomDeLaSonde","ProbeName"));
 			ListParameter.Add(new Parameters("NBLabelBoardType","Type de carte :","Board type :"));
 			ListParameter.Add(new Parameters("NBButtonOK","Valider","Ok"));
 			ListParameter.Add(new Parameters("NBButtonCancel","Annuler","Cancel"));
@@ -418,8 +422,9 @@ namespace xPLduinoManager
 			ListParameter.Add(new Parameters("PP_TVChild_OpNode_PositionIP",1));
 			ListParameter.Add(new Parameters("PP_TVChild_OpNode_PositionGTWIP",2));
 			ListParameter.Add(new Parameters("PP_TVChild_OpNode_PositionMAC",3));
-			ListParameter.Add(new Parameters("PP_TVChild_OpNode_PositionDHCP",4));			
-			ListParameter.Add(new Parameters("PP_TVChild_OpNode_PositionID",5));
+			ListParameter.Add(new Parameters("PP_TVChild_OpNode_PositionDHCP",4));
+			ListParameter.Add(new Parameters("PP_TVChild_OpNode_PositionCompileOK",5));
+			ListParameter.Add(new Parameters("PP_TVChild_OpNode_PositionID",6));
 			
 			//LANGAGE
 			ListParameter.Add(new Parameters("PP_LabTVChild_Name_Choose","Choisir une option","Choose an option"));
@@ -443,7 +448,13 @@ namespace xPLduinoManager
 			ListParameter.Add(new Parameters("PP_TVChild_OpNode_IP","Adresse IP","IP Adress"));
 			ListParameter.Add(new Parameters("PP_TVChild_OpNode_GTWIP","Adresse IP Gateway","IP Gateway Adress"));
 			ListParameter.Add(new Parameters("PP_TVChild_OpNode_DHCP","DHCP","DHCP"));
-			ListParameter.Add(new Parameters("PP_TVChild_OpNode_MAC","Adresse Physique","Physical adress"));		
+			ListParameter.Add(new Parameters("PP_TVChild_OpNode_MAC","Adresse Physique","Physical adress"));	
+			ListParameter.Add(new Parameters("PP_TVChild_OpNode_CompileOK","Généré","Générate"));
+			ListParameter.Add(new Parameters("PP_AddNode_Name_Button","Ajouter un noeud","Add a node"));
+			ListParameter.Add(new Parameters("PP_DeleteNode_Name_Button","Supprimer un noeud","Delete a node"));	
+			ListParameter.Add(new Parameters("PP_CompileOneNode_Name_Button","Générer un noeud","Generate one node"));
+			ListParameter.Add(new Parameters("PP_CompileAllNode_Name_Button","Tout générer","Générate All"));	
+			
 		}
 		public void NodePropertieWidget()
 		{
@@ -548,6 +559,14 @@ namespace xPLduinoManager
 			ListParameter.Add(new Parameters("I2CP_TVChild_OpBoard_Type","Type de la carte","Board Type"));
 			ListParameter.Add(new Parameters("I2CP_TVChild_OpBoard_I2C0","Addresse I2C 0","I2C 0 adress"));
 			ListParameter.Add(new Parameters("I2CP_TVChild_OpBoard_I2C1","Addresse I2C 1","I2C 1 adress"));
+			
+			ListParameter.Add(new Parameters("I2CP_AddBoard_Name_Button","Ajouter carte","Add board"));
+
+			
+			ListParameter.Add(new Parameters("I2CP_AddBoardIn16_DefaultNameBoard","Carte16i","Board16i"));
+			
+			ListParameter.Add(new Parameters("I2CP_DeleteBoard_Name_Button","Supprimer une carte","Delete a board"));
+			
 		}
 		public void OWPropertieWidget()
 		{
@@ -580,6 +599,8 @@ namespace xPLduinoManager
 			ListParameter.Add(new Parameters("OWP_TVChild_OpBoard_Precision","Precision","Precision"));			
 			ListParameter.Add(new Parameters("OWP_ErrorMac","Addresse MAC n'est par correct","MAC Adress is not correct"));
 			ListParameter.Add(new Parameters("OWP_QuestionMac","Avez-vous mis votre addresse en majuscule ?","Is that your address is in uppercase?"));
+			ListParameter.Add(new Parameters("OWP_AddBoard_Name_Button","Ajouter une sonde","Add a probe"));
+			ListParameter.Add(new Parameters("OWP_DeleteBoard_Name_Button","Supprimer une sonde","Delete a probe"));
 		}
 		public void I2CBoardPropertieWidget()
 		{

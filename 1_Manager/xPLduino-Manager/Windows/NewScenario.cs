@@ -54,7 +54,7 @@ namespace xPLduinoManager
 			}
 			else //Sinon
 			{
-				datamanagement.AddScenarioInNode(_ScenarioName,NodeId);
+				datamanagement.AddScenarioInNode(_ScenarioName,NodeId,true);
 				this.Destroy(); //On détruit la fenetre en cours
 			}				
 		}

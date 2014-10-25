@@ -35,9 +35,6 @@ namespace xPLduinoManager
 		private global::Gtk.VSeparator vseparator1;
 		private global::Gtk.Button UndoButton;
 		private global::Gtk.Button RedoButton;
-		private global::Gtk.VSeparator vseparator2;
-		private global::Gtk.ComboBox ComboboxSelectNode;
-		private global::Gtk.Button ButtonCheckEmbedded;
 		private global::Gtk.VSeparator vseparator5;
 		private global::Gtk.Button ButtonReloadUSB;
 		private global::Gtk.ComboBox ComboboxSelectUsb;
@@ -174,7 +171,7 @@ namespace xPLduinoManager
 			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='newAction' action='newAction'/><menuitem name='openAction' action='openAction'/><separator/><menuitem name='saveAction' action='saveAction'/><menuitem name='saveAsAction' action='saveAsAction'/><separator/><menuitem name='CreateConfigurationAction' action='CreateConfigurationAction'/><separator/><menuitem name='quitAction' action='quitAction'/></menu><menu name='EditAction' action='EditAction'><menuitem name='undoAction' action='undoAction'/><menuitem name='redoAction' action='redoAction'/><separator/><menuitem name='MyPreferenceAction' action='MyPreferenceAction'/></menu><menu name='ToolsAction' action='ToolsAction'><menuitem name='ExtractEmbeddedAction' action='ExtractEmbeddedAction'/><menuitem name='LoadEmbeddedAction' action='LoadEmbeddedAction'/></menu><menu name='FentreAction' action='FentreAction'><menuitem name='goForwardAction' action='goForwardAction'/><menuitem name='goBackAction' action='goBackAction'/><separator/><menuitem name='closeAction' action='closeAction'/></menu><menu name='HelpAction' action='HelpAction'><menuitem name='aboutAction' action='aboutAction'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='newAction' action='newAction'/><menuitem name='openAction' action='openAction'/><separator/><menuitem name='saveAction' action='saveAction'/><menuitem name='saveAsAction' action='saveAsAction'/><separator/><menuitem name='CreateConfigurationAction' action='CreateConfigurationAction'/><separator/><menuitem name='quitAction' action='quitAction'/></menu><menu name='EditAction' action='EditAction'><menuitem name='undoAction' action='undoAction'/><menuitem name='redoAction' action='redoAction'/><separator/><menuitem name='MyPreferenceAction' action='MyPreferenceAction'/></menu><menu name='FentreAction' action='FentreAction'><menuitem name='goForwardAction' action='goForwardAction'/><menuitem name='goBackAction' action='goBackAction'/><separator/><menuitem name='closeAction' action='closeAction'/></menu><menu name='HelpAction' action='HelpAction'><menuitem name='aboutAction' action='aboutAction'/></menu></menubar></ui>");
 			this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 			this.menubar1.Name = "menubar1";
 			this.vbox1.Add (this.menubar1);
@@ -341,54 +338,13 @@ namespace xPLduinoManager
 			w57.Expand = false;
 			w57.Fill = false;
 			// Container child hbox7.Gtk.Box+BoxChild
-			this.vseparator2 = new global::Gtk.VSeparator ();
-			this.vseparator2.Name = "vseparator2";
-			this.hbox7.Add (this.vseparator2);
-			global::Gtk.Box.BoxChild w58 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.vseparator2]));
-			w58.Position = 7;
-			w58.Expand = false;
-			w58.Fill = false;
-			// Container child hbox7.Gtk.Box+BoxChild
-			this.ComboboxSelectNode = global::Gtk.ComboBox.NewText ();
-			this.ComboboxSelectNode.Name = "ComboboxSelectNode";
-			this.hbox7.Add (this.ComboboxSelectNode);
-			global::Gtk.Box.BoxChild w59 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.ComboboxSelectNode]));
-			w59.Position = 8;
-			w59.Expand = false;
-			w59.Fill = false;
-			// Container child hbox7.Gtk.Box+BoxChild
-			this.ButtonCheckEmbedded = new global::Gtk.Button ();
-			this.ButtonCheckEmbedded.CanFocus = true;
-			this.ButtonCheckEmbedded.Name = "ButtonCheckEmbedded";
-			this.ButtonCheckEmbedded.UseUnderline = true;
-			this.ButtonCheckEmbedded.Relief = ((global::Gtk.ReliefStyle)(2));
-			// Container child ButtonCheckEmbedded.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w60 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
-			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w61 = new global::Gtk.HBox ();
-			w61.Spacing = 2;
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w62 = new global::Gtk.Image ();
-			w62.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-ok", global::Gtk.IconSize.Menu);
-			w61.Add (w62);
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w64 = new global::Gtk.Label ();
-			w61.Add (w64);
-			w60.Add (w61);
-			this.ButtonCheckEmbedded.Add (w60);
-			this.hbox7.Add (this.ButtonCheckEmbedded);
-			global::Gtk.Box.BoxChild w68 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.ButtonCheckEmbedded]));
-			w68.Position = 9;
-			w68.Expand = false;
-			w68.Fill = false;
-			// Container child hbox7.Gtk.Box+BoxChild
 			this.vseparator5 = new global::Gtk.VSeparator ();
 			this.vseparator5.Name = "vseparator5";
 			this.hbox7.Add (this.vseparator5);
-			global::Gtk.Box.BoxChild w69 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.vseparator5]));
-			w69.Position = 10;
-			w69.Expand = false;
-			w69.Fill = false;
+			global::Gtk.Box.BoxChild w58 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.vseparator5]));
+			w58.Position = 7;
+			w58.Expand = false;
+			w58.Fill = false;
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.ButtonReloadUSB = new global::Gtk.Button ();
 			this.ButtonReloadUSB.CanFocus = true;
@@ -396,32 +352,32 @@ namespace xPLduinoManager
 			this.ButtonReloadUSB.UseUnderline = true;
 			this.ButtonReloadUSB.Relief = ((global::Gtk.ReliefStyle)(2));
 			// Container child ButtonReloadUSB.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w70 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w59 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w71 = new global::Gtk.HBox ();
-			w71.Spacing = 2;
+			global::Gtk.HBox w60 = new global::Gtk.HBox ();
+			w60.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w72 = new global::Gtk.Image ();
-			w72.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-refresh", global::Gtk.IconSize.Menu);
-			w71.Add (w72);
+			global::Gtk.Image w61 = new global::Gtk.Image ();
+			w61.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-refresh", global::Gtk.IconSize.Menu);
+			w60.Add (w61);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w74 = new global::Gtk.Label ();
-			w71.Add (w74);
-			w70.Add (w71);
-			this.ButtonReloadUSB.Add (w70);
+			global::Gtk.Label w63 = new global::Gtk.Label ();
+			w60.Add (w63);
+			w59.Add (w60);
+			this.ButtonReloadUSB.Add (w59);
 			this.hbox7.Add (this.ButtonReloadUSB);
-			global::Gtk.Box.BoxChild w78 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.ButtonReloadUSB]));
-			w78.Position = 11;
-			w78.Expand = false;
-			w78.Fill = false;
+			global::Gtk.Box.BoxChild w67 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.ButtonReloadUSB]));
+			w67.Position = 8;
+			w67.Expand = false;
+			w67.Fill = false;
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.ComboboxSelectUsb = global::Gtk.ComboBox.NewText ();
 			this.ComboboxSelectUsb.Name = "ComboboxSelectUsb";
 			this.hbox7.Add (this.ComboboxSelectUsb);
-			global::Gtk.Box.BoxChild w79 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.ComboboxSelectUsb]));
-			w79.Position = 12;
-			w79.Expand = false;
-			w79.Fill = false;
+			global::Gtk.Box.BoxChild w68 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.ComboboxSelectUsb]));
+			w68.Position = 9;
+			w68.Expand = false;
+			w68.Fill = false;
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.ButtonLoadEmbedded = new global::Gtk.Button ();
 			this.ButtonLoadEmbedded.CanFocus = true;
@@ -429,32 +385,32 @@ namespace xPLduinoManager
 			this.ButtonLoadEmbedded.UseUnderline = true;
 			this.ButtonLoadEmbedded.Relief = ((global::Gtk.ReliefStyle)(2));
 			// Container child ButtonLoadEmbedded.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w80 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w69 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w81 = new global::Gtk.HBox ();
-			w81.Spacing = 2;
+			global::Gtk.HBox w70 = new global::Gtk.HBox ();
+			w70.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w82 = new global::Gtk.Image ();
-			w82.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "stock_bottom", global::Gtk.IconSize.Menu);
-			w81.Add (w82);
+			global::Gtk.Image w71 = new global::Gtk.Image ();
+			w71.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "stock_bottom", global::Gtk.IconSize.Menu);
+			w70.Add (w71);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w84 = new global::Gtk.Label ();
-			w81.Add (w84);
-			w80.Add (w81);
-			this.ButtonLoadEmbedded.Add (w80);
+			global::Gtk.Label w73 = new global::Gtk.Label ();
+			w70.Add (w73);
+			w69.Add (w70);
+			this.ButtonLoadEmbedded.Add (w69);
 			this.hbox7.Add (this.ButtonLoadEmbedded);
-			global::Gtk.Box.BoxChild w88 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.ButtonLoadEmbedded]));
-			w88.Position = 13;
-			w88.Expand = false;
-			w88.Fill = false;
+			global::Gtk.Box.BoxChild w77 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.ButtonLoadEmbedded]));
+			w77.Position = 10;
+			w77.Expand = false;
+			w77.Fill = false;
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.vseparator4 = new global::Gtk.VSeparator ();
 			this.vseparator4.Name = "vseparator4";
 			this.hbox7.Add (this.vseparator4);
-			global::Gtk.Box.BoxChild w89 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.vseparator4]));
-			w89.Position = 14;
-			w89.Expand = false;
-			w89.Fill = false;
+			global::Gtk.Box.BoxChild w78 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.vseparator4]));
+			w78.Position = 11;
+			w78.Expand = false;
+			w78.Fill = false;
 			// Container child hbox7.Gtk.Box+BoxChild
 			this.ButtonReadEthernet = new global::Gtk.Button ();
 			this.ButtonReadEthernet.CanFocus = true;
@@ -462,37 +418,37 @@ namespace xPLduinoManager
 			this.ButtonReadEthernet.UseUnderline = true;
 			this.ButtonReadEthernet.Relief = ((global::Gtk.ReliefStyle)(2));
 			// Container child ButtonReadEthernet.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w90 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w79 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w91 = new global::Gtk.HBox ();
-			w91.Spacing = 2;
+			global::Gtk.HBox w80 = new global::Gtk.HBox ();
+			w80.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w92 = new global::Gtk.Image ();
-			w92.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-media-play", global::Gtk.IconSize.Menu);
-			w91.Add (w92);
+			global::Gtk.Image w81 = new global::Gtk.Image ();
+			w81.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-media-play", global::Gtk.IconSize.Menu);
+			w80.Add (w81);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w94 = new global::Gtk.Label ();
-			w91.Add (w94);
-			w90.Add (w91);
-			this.ButtonReadEthernet.Add (w90);
+			global::Gtk.Label w83 = new global::Gtk.Label ();
+			w80.Add (w83);
+			w79.Add (w80);
+			this.ButtonReadEthernet.Add (w79);
 			this.hbox7.Add (this.ButtonReadEthernet);
-			global::Gtk.Box.BoxChild w98 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.ButtonReadEthernet]));
-			w98.Position = 15;
-			w98.Expand = false;
-			w98.Fill = false;
+			global::Gtk.Box.BoxChild w87 = ((global::Gtk.Box.BoxChild)(this.hbox7 [this.ButtonReadEthernet]));
+			w87.Position = 12;
+			w87.Expand = false;
+			w87.Fill = false;
 			this.vbox1.Add (this.hbox7);
-			global::Gtk.Box.BoxChild w99 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox7]));
-			w99.Position = 1;
-			w99.Expand = false;
-			w99.Fill = false;
+			global::Gtk.Box.BoxChild w88 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox7]));
+			w88.Position = 1;
+			w88.Expand = false;
+			w88.Fill = false;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.hseparator1 = new global::Gtk.HSeparator ();
 			this.hseparator1.Name = "hseparator1";
 			this.vbox1.Add (this.hseparator1);
-			global::Gtk.Box.BoxChild w100 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hseparator1]));
-			w100.Position = 2;
-			w100.Expand = false;
-			w100.Fill = false;
+			global::Gtk.Box.BoxChild w89 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hseparator1]));
+			w89.Position = 2;
+			w89.Expand = false;
+			w89.Fill = false;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.hpaned1 = new global::Gtk.HPaned ();
 			this.hpaned1.CanFocus = true;
@@ -518,8 +474,8 @@ namespace xPLduinoManager
 			this.LabelTreeView.LabelProp = global::Mono.Unix.Catalog.GetString ("label6");
 			this.LabelTreeView.UseMarkup = true;
 			this.hbox6.Add (this.LabelTreeView);
-			global::Gtk.Box.BoxChild w101 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.LabelTreeView]));
-			w101.Position = 0;
+			global::Gtk.Box.BoxChild w90 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.LabelTreeView]));
+			w90.Position = 0;
 			// Container child hbox6.Gtk.Box+BoxChild
 			this.Up = new global::Gtk.Button ();
 			this.Up.CanFocus = true;
@@ -527,24 +483,24 @@ namespace xPLduinoManager
 			this.Up.UseUnderline = true;
 			this.Up.Relief = ((global::Gtk.ReliefStyle)(2));
 			// Container child Up.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w102 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w91 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w103 = new global::Gtk.HBox ();
-			w103.Spacing = 2;
+			global::Gtk.HBox w92 = new global::Gtk.HBox ();
+			w92.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w104 = new global::Gtk.Image ();
-			w104.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-up", global::Gtk.IconSize.Menu);
-			w103.Add (w104);
+			global::Gtk.Image w93 = new global::Gtk.Image ();
+			w93.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-up", global::Gtk.IconSize.Menu);
+			w92.Add (w93);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w106 = new global::Gtk.Label ();
-			w103.Add (w106);
-			w102.Add (w103);
-			this.Up.Add (w102);
+			global::Gtk.Label w95 = new global::Gtk.Label ();
+			w92.Add (w95);
+			w91.Add (w92);
+			this.Up.Add (w91);
 			this.hbox6.Add (this.Up);
-			global::Gtk.Box.BoxChild w110 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.Up]));
-			w110.Position = 1;
-			w110.Expand = false;
-			w110.Fill = false;
+			global::Gtk.Box.BoxChild w99 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.Up]));
+			w99.Position = 1;
+			w99.Expand = false;
+			w99.Fill = false;
 			// Container child hbox6.Gtk.Box+BoxChild
 			this.Down = new global::Gtk.Button ();
 			this.Down.CanFocus = true;
@@ -552,24 +508,24 @@ namespace xPLduinoManager
 			this.Down.UseUnderline = true;
 			this.Down.Relief = ((global::Gtk.ReliefStyle)(2));
 			// Container child Down.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w111 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w100 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w112 = new global::Gtk.HBox ();
-			w112.Spacing = 2;
+			global::Gtk.HBox w101 = new global::Gtk.HBox ();
+			w101.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w113 = new global::Gtk.Image ();
-			w113.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-down", global::Gtk.IconSize.Menu);
-			w112.Add (w113);
+			global::Gtk.Image w102 = new global::Gtk.Image ();
+			w102.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-down", global::Gtk.IconSize.Menu);
+			w101.Add (w102);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w115 = new global::Gtk.Label ();
-			w112.Add (w115);
-			w111.Add (w112);
-			this.Down.Add (w111);
+			global::Gtk.Label w104 = new global::Gtk.Label ();
+			w101.Add (w104);
+			w100.Add (w101);
+			this.Down.Add (w100);
 			this.hbox6.Add (this.Down);
-			global::Gtk.Box.BoxChild w119 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.Down]));
-			w119.Position = 2;
-			w119.Expand = false;
-			w119.Fill = false;
+			global::Gtk.Box.BoxChild w108 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.Down]));
+			w108.Position = 2;
+			w108.Expand = false;
+			w108.Fill = false;
 			// Container child hbox6.Gtk.Box+BoxChild
 			this.Reduce = new global::Gtk.Button ();
 			this.Reduce.CanFocus = true;
@@ -577,24 +533,24 @@ namespace xPLduinoManager
 			this.Reduce.UseUnderline = true;
 			this.Reduce.Relief = ((global::Gtk.ReliefStyle)(2));
 			// Container child Reduce.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w120 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w109 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w121 = new global::Gtk.HBox ();
-			w121.Spacing = 2;
+			global::Gtk.HBox w110 = new global::Gtk.HBox ();
+			w110.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w122 = new global::Gtk.Image ();
-			w122.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-back", global::Gtk.IconSize.Menu);
-			w121.Add (w122);
+			global::Gtk.Image w111 = new global::Gtk.Image ();
+			w111.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-back", global::Gtk.IconSize.Menu);
+			w110.Add (w111);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w124 = new global::Gtk.Label ();
-			w121.Add (w124);
-			w120.Add (w121);
-			this.Reduce.Add (w120);
+			global::Gtk.Label w113 = new global::Gtk.Label ();
+			w110.Add (w113);
+			w109.Add (w110);
+			this.Reduce.Add (w109);
 			this.hbox6.Add (this.Reduce);
-			global::Gtk.Box.BoxChild w128 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.Reduce]));
-			w128.Position = 3;
-			w128.Expand = false;
-			w128.Fill = false;
+			global::Gtk.Box.BoxChild w117 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.Reduce]));
+			w117.Position = 3;
+			w117.Expand = false;
+			w117.Fill = false;
 			// Container child hbox6.Gtk.Box+BoxChild
 			this.Expand = new global::Gtk.Button ();
 			this.Expand.CanFocus = true;
@@ -602,30 +558,30 @@ namespace xPLduinoManager
 			this.Expand.UseUnderline = true;
 			this.Expand.Relief = ((global::Gtk.ReliefStyle)(2));
 			// Container child Expand.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w129 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w118 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w130 = new global::Gtk.HBox ();
-			w130.Spacing = 2;
+			global::Gtk.HBox w119 = new global::Gtk.HBox ();
+			w119.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w131 = new global::Gtk.Image ();
-			w131.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-forward", global::Gtk.IconSize.Menu);
-			w130.Add (w131);
+			global::Gtk.Image w120 = new global::Gtk.Image ();
+			w120.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-forward", global::Gtk.IconSize.Menu);
+			w119.Add (w120);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w133 = new global::Gtk.Label ();
-			w130.Add (w133);
-			w129.Add (w130);
-			this.Expand.Add (w129);
+			global::Gtk.Label w122 = new global::Gtk.Label ();
+			w119.Add (w122);
+			w118.Add (w119);
+			this.Expand.Add (w118);
 			this.hbox6.Add (this.Expand);
-			global::Gtk.Box.BoxChild w137 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.Expand]));
-			w137.Position = 4;
-			w137.Expand = false;
-			w137.Fill = false;
+			global::Gtk.Box.BoxChild w126 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.Expand]));
+			w126.Position = 4;
+			w126.Expand = false;
+			w126.Fill = false;
 			this.eventbox9.Add (this.hbox6);
 			this.vbox2.Add (this.eventbox9);
-			global::Gtk.Box.BoxChild w139 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.eventbox9]));
-			w139.Position = 0;
-			w139.Expand = false;
-			w139.Fill = false;
+			global::Gtk.Box.BoxChild w128 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.eventbox9]));
+			w128.Position = 0;
+			w128.Expand = false;
+			w128.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbox2 = new global::Gtk.HBox ();
 			this.hbox2.Name = "hbox2";
@@ -641,8 +597,8 @@ namespace xPLduinoManager
 			this.ExplorerTreeView.Name = "ExplorerTreeView";
 			this.scrolledwindow1.Add (this.ExplorerTreeView);
 			this.hbox2.Add (this.scrolledwindow1);
-			global::Gtk.Box.BoxChild w141 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.scrolledwindow1]));
-			w141.Position = 0;
+			global::Gtk.Box.BoxChild w130 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.scrolledwindow1]));
+			w130.Position = 0;
 			// Container child hbox2.Gtk.Box+BoxChild
 			this.VBoxButtonNews = new global::Gtk.VBox ();
 			this.VBoxButtonNews.Name = "VBoxButtonNews";
@@ -653,10 +609,10 @@ namespace xPLduinoManager
 			this.LabelButton.Name = "LabelButton";
 			this.LabelButton.LabelProp = global::Mono.Unix.Catalog.GetString ("label2");
 			this.VBoxButtonNews.Add (this.LabelButton);
-			global::Gtk.Box.BoxChild w142 = ((global::Gtk.Box.BoxChild)(this.VBoxButtonNews [this.LabelButton]));
-			w142.Position = 1;
-			w142.Expand = false;
-			w142.Fill = false;
+			global::Gtk.Box.BoxChild w131 = ((global::Gtk.Box.BoxChild)(this.VBoxButtonNews [this.LabelButton]));
+			w131.Position = 1;
+			w131.Expand = false;
+			w131.Fill = false;
 			// Container child VBoxButtonNews.Gtk.Box+BoxChild
 			this.ButtonNew3 = new global::Gtk.Button ();
 			this.ButtonNew3.CanFocus = true;
@@ -664,8 +620,8 @@ namespace xPLduinoManager
 			this.ButtonNew3.UseUnderline = true;
 			this.ButtonNew3.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
 			this.VBoxButtonNews.Add (this.ButtonNew3);
-			global::Gtk.Box.BoxChild w143 = ((global::Gtk.Box.BoxChild)(this.VBoxButtonNews [this.ButtonNew3]));
-			w143.Position = 2;
+			global::Gtk.Box.BoxChild w132 = ((global::Gtk.Box.BoxChild)(this.VBoxButtonNews [this.ButtonNew3]));
+			w132.Position = 2;
 			// Container child VBoxButtonNews.Gtk.Box+BoxChild
 			this.ButtonNew2 = new global::Gtk.Button ();
 			this.ButtonNew2.CanFocus = true;
@@ -673,8 +629,8 @@ namespace xPLduinoManager
 			this.ButtonNew2.UseUnderline = true;
 			this.ButtonNew2.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
 			this.VBoxButtonNews.Add (this.ButtonNew2);
-			global::Gtk.Box.BoxChild w144 = ((global::Gtk.Box.BoxChild)(this.VBoxButtonNews [this.ButtonNew2]));
-			w144.Position = 3;
+			global::Gtk.Box.BoxChild w133 = ((global::Gtk.Box.BoxChild)(this.VBoxButtonNews [this.ButtonNew2]));
+			w133.Position = 3;
 			// Container child VBoxButtonNews.Gtk.Box+BoxChild
 			this.ButtonNew1 = new global::Gtk.Button ();
 			this.ButtonNew1.CanFocus = true;
@@ -682,19 +638,19 @@ namespace xPLduinoManager
 			this.ButtonNew1.UseUnderline = true;
 			this.ButtonNew1.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
 			this.VBoxButtonNews.Add (this.ButtonNew1);
-			global::Gtk.Box.BoxChild w145 = ((global::Gtk.Box.BoxChild)(this.VBoxButtonNews [this.ButtonNew1]));
-			w145.Position = 4;
+			global::Gtk.Box.BoxChild w134 = ((global::Gtk.Box.BoxChild)(this.VBoxButtonNews [this.ButtonNew1]));
+			w134.Position = 4;
 			this.hbox2.Add (this.VBoxButtonNews);
-			global::Gtk.Box.BoxChild w146 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.VBoxButtonNews]));
-			w146.Position = 1;
-			w146.Expand = false;
-			w146.Fill = false;
+			global::Gtk.Box.BoxChild w135 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.VBoxButtonNews]));
+			w135.Position = 1;
+			w135.Expand = false;
+			w135.Fill = false;
 			this.vbox2.Add (this.hbox2);
-			global::Gtk.Box.BoxChild w147 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbox2]));
-			w147.Position = 1;
+			global::Gtk.Box.BoxChild w136 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbox2]));
+			w136.Position = 1;
 			this.hpaned1.Add (this.vbox2);
-			global::Gtk.Paned.PanedChild w148 = ((global::Gtk.Paned.PanedChild)(this.hpaned1 [this.vbox2]));
-			w148.Resize = false;
+			global::Gtk.Paned.PanedChild w137 = ((global::Gtk.Paned.PanedChild)(this.hpaned1 [this.vbox2]));
+			w137.Resize = false;
 			// Container child hpaned1.Gtk.Paned+PanedChild
 			this.vpaned1 = new global::Gtk.VPaned ();
 			this.vpaned1.Name = "vpaned1";
@@ -709,8 +665,8 @@ namespace xPLduinoManager
 			this.scrolledwindow2.CanFocus = true;
 			this.scrolledwindow2.Name = "scrolledwindow2";
 			// Container child scrolledwindow2.Gtk.Container+ContainerChild
-			global::Gtk.Viewport w149 = new global::Gtk.Viewport ();
-			w149.ShadowType = ((global::Gtk.ShadowType)(0));
+			global::Gtk.Viewport w138 = new global::Gtk.Viewport ();
+			w138.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child GtkViewport.Gtk.Container+ContainerChild
 			this.MainNoteBook = new global::Gtk.Notebook ();
 			this.MainNoteBook.CanFocus = true;
@@ -718,18 +674,18 @@ namespace xPLduinoManager
 			this.MainNoteBook.CurrentPage = -1;
 			this.MainNoteBook.ShowBorder = false;
 			this.MainNoteBook.Scrollable = true;
-			w149.Add (this.MainNoteBook);
-			this.scrolledwindow2.Add (w149);
+			w138.Add (this.MainNoteBook);
+			this.scrolledwindow2.Add (w138);
 			this.hpaned2.Add (this.scrolledwindow2);
-			global::Gtk.Paned.PanedChild w152 = ((global::Gtk.Paned.PanedChild)(this.hpaned2 [this.scrolledwindow2]));
-			w152.Resize = false;
+			global::Gtk.Paned.PanedChild w141 = ((global::Gtk.Paned.PanedChild)(this.hpaned2 [this.scrolledwindow2]));
+			w141.Resize = false;
 			// Container child hpaned2.Gtk.Paned+PanedChild
 			this.scrolledwindow3 = new global::Gtk.ScrolledWindow ();
 			this.scrolledwindow3.CanFocus = true;
 			this.scrolledwindow3.Name = "scrolledwindow3";
 			// Container child scrolledwindow3.Gtk.Container+ContainerChild
-			global::Gtk.Viewport w153 = new global::Gtk.Viewport ();
-			w153.ShadowType = ((global::Gtk.ShadowType)(0));
+			global::Gtk.Viewport w142 = new global::Gtk.Viewport ();
+			w142.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child GtkViewport1.Gtk.Container+ContainerChild
 			this.SecondNoteBook = new global::Gtk.Notebook ();
 			this.SecondNoteBook.CanFocus = true;
@@ -737,12 +693,12 @@ namespace xPLduinoManager
 			this.SecondNoteBook.CurrentPage = -1;
 			this.SecondNoteBook.ShowBorder = false;
 			this.SecondNoteBook.Scrollable = true;
-			w153.Add (this.SecondNoteBook);
-			this.scrolledwindow3.Add (w153);
+			w142.Add (this.SecondNoteBook);
+			this.scrolledwindow3.Add (w142);
 			this.hpaned2.Add (this.scrolledwindow3);
 			this.vpaned1.Add (this.hpaned2);
-			global::Gtk.Paned.PanedChild w157 = ((global::Gtk.Paned.PanedChild)(this.vpaned1 [this.hpaned2]));
-			w157.Resize = false;
+			global::Gtk.Paned.PanedChild w146 = ((global::Gtk.Paned.PanedChild)(this.vpaned1 [this.hpaned2]));
+			w146.Resize = false;
 			// Container child vpaned1.Gtk.Paned+PanedChild
 			this.ViewNoteBook = new global::Gtk.Notebook ();
 			this.ViewNoteBook.CanFocus = true;
@@ -767,134 +723,134 @@ namespace xPLduinoManager
 			this.LabelInformation.Xalign = 0F;
 			this.LabelInformation.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
 			this.hbox1.Add (this.LabelInformation);
-			global::Gtk.Box.BoxChild w158 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.LabelInformation]));
-			w158.Position = 0;
+			global::Gtk.Box.BoxChild w147 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.LabelInformation]));
+			w147.Position = 0;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.ButtonFilterInfo = new global::Gtk.ToggleButton ();
 			this.ButtonFilterInfo.CanFocus = true;
 			this.ButtonFilterInfo.Name = "ButtonFilterInfo";
 			this.ButtonFilterInfo.UseUnderline = true;
 			// Container child ButtonFilterInfo.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w159 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w148 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w160 = new global::Gtk.HBox ();
-			w160.Spacing = 2;
+			global::Gtk.HBox w149 = new global::Gtk.HBox ();
+			w149.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w161 = new global::Gtk.Image ();
-			w161.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-dialog-info", global::Gtk.IconSize.Menu);
-			w160.Add (w161);
+			global::Gtk.Image w150 = new global::Gtk.Image ();
+			w150.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-dialog-info", global::Gtk.IconSize.Menu);
+			w149.Add (w150);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w163 = new global::Gtk.Label ();
-			w160.Add (w163);
-			w159.Add (w160);
-			this.ButtonFilterInfo.Add (w159);
+			global::Gtk.Label w152 = new global::Gtk.Label ();
+			w149.Add (w152);
+			w148.Add (w149);
+			this.ButtonFilterInfo.Add (w148);
 			this.hbox1.Add (this.ButtonFilterInfo);
-			global::Gtk.Box.BoxChild w167 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ButtonFilterInfo]));
-			w167.Position = 1;
-			w167.Expand = false;
-			w167.Fill = false;
+			global::Gtk.Box.BoxChild w156 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ButtonFilterInfo]));
+			w156.Position = 1;
+			w156.Expand = false;
+			w156.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.ButtonFilterWarning = new global::Gtk.ToggleButton ();
 			this.ButtonFilterWarning.CanFocus = true;
 			this.ButtonFilterWarning.Name = "ButtonFilterWarning";
 			this.ButtonFilterWarning.UseUnderline = true;
 			// Container child ButtonFilterWarning.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w168 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w157 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w169 = new global::Gtk.HBox ();
-			w169.Spacing = 2;
+			global::Gtk.HBox w158 = new global::Gtk.HBox ();
+			w158.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w170 = new global::Gtk.Image ();
-			w170.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-dialog-warning", global::Gtk.IconSize.Menu);
-			w169.Add (w170);
+			global::Gtk.Image w159 = new global::Gtk.Image ();
+			w159.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-dialog-warning", global::Gtk.IconSize.Menu);
+			w158.Add (w159);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w172 = new global::Gtk.Label ();
-			w169.Add (w172);
-			w168.Add (w169);
-			this.ButtonFilterWarning.Add (w168);
+			global::Gtk.Label w161 = new global::Gtk.Label ();
+			w158.Add (w161);
+			w157.Add (w158);
+			this.ButtonFilterWarning.Add (w157);
 			this.hbox1.Add (this.ButtonFilterWarning);
-			global::Gtk.Box.BoxChild w176 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ButtonFilterWarning]));
-			w176.Position = 2;
-			w176.Expand = false;
-			w176.Fill = false;
+			global::Gtk.Box.BoxChild w165 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ButtonFilterWarning]));
+			w165.Position = 2;
+			w165.Expand = false;
+			w165.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.ButtonFilterError = new global::Gtk.ToggleButton ();
 			this.ButtonFilterError.CanFocus = true;
 			this.ButtonFilterError.Name = "ButtonFilterError";
 			this.ButtonFilterError.UseUnderline = true;
 			// Container child ButtonFilterError.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w177 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w166 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w178 = new global::Gtk.HBox ();
-			w178.Spacing = 2;
+			global::Gtk.HBox w167 = new global::Gtk.HBox ();
+			w167.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w179 = new global::Gtk.Image ();
-			w179.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-dialog-error", global::Gtk.IconSize.Menu);
-			w178.Add (w179);
+			global::Gtk.Image w168 = new global::Gtk.Image ();
+			w168.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-dialog-error", global::Gtk.IconSize.Menu);
+			w167.Add (w168);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w181 = new global::Gtk.Label ();
-			w178.Add (w181);
-			w177.Add (w178);
-			this.ButtonFilterError.Add (w177);
+			global::Gtk.Label w170 = new global::Gtk.Label ();
+			w167.Add (w170);
+			w166.Add (w167);
+			this.ButtonFilterError.Add (w166);
 			this.hbox1.Add (this.ButtonFilterError);
-			global::Gtk.Box.BoxChild w185 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ButtonFilterError]));
-			w185.Position = 3;
-			w185.Expand = false;
-			w185.Fill = false;
+			global::Gtk.Box.BoxChild w174 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ButtonFilterError]));
+			w174.Position = 3;
+			w174.Expand = false;
+			w174.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.ButtonFilterQuestion = new global::Gtk.ToggleButton ();
 			this.ButtonFilterQuestion.CanFocus = true;
 			this.ButtonFilterQuestion.Name = "ButtonFilterQuestion";
 			this.ButtonFilterQuestion.UseUnderline = true;
 			// Container child ButtonFilterQuestion.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w186 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w175 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w187 = new global::Gtk.HBox ();
-			w187.Spacing = 2;
+			global::Gtk.HBox w176 = new global::Gtk.HBox ();
+			w176.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w188 = new global::Gtk.Image ();
-			w188.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-dialog-question", global::Gtk.IconSize.Menu);
-			w187.Add (w188);
+			global::Gtk.Image w177 = new global::Gtk.Image ();
+			w177.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-dialog-question", global::Gtk.IconSize.Menu);
+			w176.Add (w177);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w190 = new global::Gtk.Label ();
-			w187.Add (w190);
-			w186.Add (w187);
-			this.ButtonFilterQuestion.Add (w186);
+			global::Gtk.Label w179 = new global::Gtk.Label ();
+			w176.Add (w179);
+			w175.Add (w176);
+			this.ButtonFilterQuestion.Add (w175);
 			this.hbox1.Add (this.ButtonFilterQuestion);
-			global::Gtk.Box.BoxChild w194 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ButtonFilterQuestion]));
-			w194.Position = 4;
-			w194.Expand = false;
-			w194.Fill = false;
+			global::Gtk.Box.BoxChild w183 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.ButtonFilterQuestion]));
+			w183.Position = 4;
+			w183.Expand = false;
+			w183.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.EraseOutput = new global::Gtk.Button ();
 			this.EraseOutput.CanFocus = true;
 			this.EraseOutput.Name = "EraseOutput";
 			this.EraseOutput.UseUnderline = true;
 			// Container child EraseOutput.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w195 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w184 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w196 = new global::Gtk.HBox ();
-			w196.Spacing = 2;
+			global::Gtk.HBox w185 = new global::Gtk.HBox ();
+			w185.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w197 = new global::Gtk.Image ();
-			w197.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-clear", global::Gtk.IconSize.Menu);
-			w196.Add (w197);
+			global::Gtk.Image w186 = new global::Gtk.Image ();
+			w186.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-clear", global::Gtk.IconSize.Menu);
+			w185.Add (w186);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w199 = new global::Gtk.Label ();
-			w196.Add (w199);
-			w195.Add (w196);
-			this.EraseOutput.Add (w195);
+			global::Gtk.Label w188 = new global::Gtk.Label ();
+			w185.Add (w188);
+			w184.Add (w185);
+			this.EraseOutput.Add (w184);
 			this.hbox1.Add (this.EraseOutput);
-			global::Gtk.Box.BoxChild w203 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.EraseOutput]));
-			w203.Position = 5;
-			w203.Expand = false;
-			w203.Fill = false;
+			global::Gtk.Box.BoxChild w192 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.EraseOutput]));
+			w192.Position = 5;
+			w192.Expand = false;
+			w192.Fill = false;
 			this.eventbox1.Add (this.hbox1);
 			this.vbox4.Add (this.eventbox1);
-			global::Gtk.Box.BoxChild w205 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.eventbox1]));
-			w205.Position = 0;
-			w205.Expand = false;
-			w205.Fill = false;
+			global::Gtk.Box.BoxChild w194 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.eventbox1]));
+			w194.Position = 0;
+			w194.Expand = false;
+			w194.Fill = false;
 			// Container child vbox4.Gtk.Box+BoxChild
 			this.GtkScrolledWindow1 = new global::Gtk.ScrolledWindow ();
 			this.GtkScrolledWindow1.Name = "GtkScrolledWindow1";
@@ -905,8 +861,8 @@ namespace xPLduinoManager
 			this.OutputTreeview.Name = "OutputTreeview";
 			this.GtkScrolledWindow1.Add (this.OutputTreeview);
 			this.vbox4.Add (this.GtkScrolledWindow1);
-			global::Gtk.Box.BoxChild w207 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.GtkScrolledWindow1]));
-			w207.Position = 1;
+			global::Gtk.Box.BoxChild w196 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.GtkScrolledWindow1]));
+			w196.Position = 1;
 			this.ViewNoteBook.Add (this.vbox4);
 			// Notebook tab
 			this.OutputTab = new global::Gtk.Label ();
@@ -932,14 +888,14 @@ namespace xPLduinoManager
 			this.LabelHistoric.Xalign = 0F;
 			this.LabelHistoric.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
 			this.hbox3.Add (this.LabelHistoric);
-			global::Gtk.Box.BoxChild w209 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.LabelHistoric]));
-			w209.Position = 0;
+			global::Gtk.Box.BoxChild w198 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.LabelHistoric]));
+			w198.Position = 0;
 			this.eventbox2.Add (this.hbox3);
 			this.vbox5.Add (this.eventbox2);
-			global::Gtk.Box.BoxChild w211 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.eventbox2]));
-			w211.Position = 0;
-			w211.Expand = false;
-			w211.Fill = false;
+			global::Gtk.Box.BoxChild w200 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.eventbox2]));
+			w200.Position = 0;
+			w200.Expand = false;
+			w200.Fill = false;
 			// Container child vbox5.Gtk.Box+BoxChild
 			this.GtkScrolledWindow2 = new global::Gtk.ScrolledWindow ();
 			this.GtkScrolledWindow2.Name = "GtkScrolledWindow2";
@@ -950,11 +906,11 @@ namespace xPLduinoManager
 			this.HistoricTreeView.Name = "HistoricTreeView";
 			this.GtkScrolledWindow2.Add (this.HistoricTreeView);
 			this.vbox5.Add (this.GtkScrolledWindow2);
-			global::Gtk.Box.BoxChild w213 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.GtkScrolledWindow2]));
-			w213.Position = 1;
+			global::Gtk.Box.BoxChild w202 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.GtkScrolledWindow2]));
+			w202.Position = 1;
 			this.ViewNoteBook.Add (this.vbox5);
-			global::Gtk.Notebook.NotebookChild w214 = ((global::Gtk.Notebook.NotebookChild)(this.ViewNoteBook [this.vbox5]));
-			w214.Position = 1;
+			global::Gtk.Notebook.NotebookChild w203 = ((global::Gtk.Notebook.NotebookChild)(this.ViewNoteBook [this.vbox5]));
+			w203.Position = 1;
 			// Notebook tab
 			this.HistoryTab = new global::Gtk.Label ();
 			this.HistoryTab.Name = "HistoryTab";
@@ -963,12 +919,12 @@ namespace xPLduinoManager
 			this.HistoryTab.ShowAll ();
 			this.vpaned1.Add (this.ViewNoteBook);
 			this.hpaned1.Add (this.vpaned1);
-			global::Gtk.Paned.PanedChild w216 = ((global::Gtk.Paned.PanedChild)(this.hpaned1 [this.vpaned1]));
-			w216.Resize = false;
-			w216.Shrink = false;
+			global::Gtk.Paned.PanedChild w205 = ((global::Gtk.Paned.PanedChild)(this.hpaned1 [this.vpaned1]));
+			w205.Resize = false;
+			w205.Shrink = false;
 			this.vbox1.Add (this.hpaned1);
-			global::Gtk.Box.BoxChild w217 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hpaned1]));
-			w217.Position = 3;
+			global::Gtk.Box.BoxChild w206 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hpaned1]));
+			w206.Position = 3;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbox4 = new global::Gtk.HBox ();
 			this.hbox4.HeightRequest = 25;
@@ -979,35 +935,35 @@ namespace xPLduinoManager
 			this.LabelInfoProject.Name = "LabelInfoProject";
 			this.LabelInfoProject.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
 			this.hbox4.Add (this.LabelInfoProject);
-			global::Gtk.Box.BoxChild w218 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.LabelInfoProject]));
-			w218.Position = 0;
-			w218.Expand = false;
-			w218.Fill = false;
+			global::Gtk.Box.BoxChild w207 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.LabelInfoProject]));
+			w207.Position = 0;
+			w207.Expand = false;
+			w207.Fill = false;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.vseparator3 = new global::Gtk.VSeparator ();
 			this.vseparator3.Name = "vseparator3";
 			this.hbox4.Add (this.vseparator3);
-			global::Gtk.Box.BoxChild w219 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.vseparator3]));
-			w219.Position = 1;
-			w219.Expand = false;
-			w219.Fill = false;
+			global::Gtk.Box.BoxChild w208 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.vseparator3]));
+			w208.Position = 1;
+			w208.Expand = false;
+			w208.Fill = false;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.LabelPathProject = new global::Gtk.Label ();
 			this.LabelPathProject.Name = "LabelPathProject";
 			this.LabelPathProject.Xalign = 0F;
 			this.LabelPathProject.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
 			this.hbox4.Add (this.LabelPathProject);
-			global::Gtk.Box.BoxChild w220 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.LabelPathProject]));
-			w220.Position = 2;
+			global::Gtk.Box.BoxChild w209 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.LabelPathProject]));
+			w209.Position = 2;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.ProgressBar = new global::Gtk.ProgressBar ();
 			this.ProgressBar.Name = "ProgressBar";
 			this.ProgressBar.Text = "";
 			this.ProgressBar.PulseStep = 0;
 			this.hbox4.Add (this.ProgressBar);
-			global::Gtk.Box.BoxChild w221 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.ProgressBar]));
-			w221.Position = 3;
-			w221.Expand = false;
+			global::Gtk.Box.BoxChild w210 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.ProgressBar]));
+			w210.Position = 3;
+			w210.Expand = false;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.ExpendHistoryPanel = new global::Gtk.Button ();
 			this.ExpendHistoryPanel.CanFocus = true;
@@ -1015,24 +971,24 @@ namespace xPLduinoManager
 			this.ExpendHistoryPanel.UseUnderline = true;
 			this.ExpendHistoryPanel.Relief = ((global::Gtk.ReliefStyle)(2));
 			// Container child ExpendHistoryPanel.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w222 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w211 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w223 = new global::Gtk.HBox ();
-			w223.Spacing = 2;
+			global::Gtk.HBox w212 = new global::Gtk.HBox ();
+			w212.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w224 = new global::Gtk.Image ();
-			w224.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-up", global::Gtk.IconSize.Menu);
-			w223.Add (w224);
+			global::Gtk.Image w213 = new global::Gtk.Image ();
+			w213.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-up", global::Gtk.IconSize.Menu);
+			w212.Add (w213);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w226 = new global::Gtk.Label ();
-			w223.Add (w226);
-			w222.Add (w223);
-			this.ExpendHistoryPanel.Add (w222);
+			global::Gtk.Label w215 = new global::Gtk.Label ();
+			w212.Add (w215);
+			w211.Add (w212);
+			this.ExpendHistoryPanel.Add (w211);
 			this.hbox4.Add (this.ExpendHistoryPanel);
-			global::Gtk.Box.BoxChild w230 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.ExpendHistoryPanel]));
-			w230.Position = 4;
-			w230.Expand = false;
-			w230.Fill = false;
+			global::Gtk.Box.BoxChild w219 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.ExpendHistoryPanel]));
+			w219.Position = 4;
+			w219.Expand = false;
+			w219.Fill = false;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.ReduceHistoryPanel = new global::Gtk.Button ();
 			this.ReduceHistoryPanel.CanFocus = true;
@@ -1040,29 +996,29 @@ namespace xPLduinoManager
 			this.ReduceHistoryPanel.UseUnderline = true;
 			this.ReduceHistoryPanel.Relief = ((global::Gtk.ReliefStyle)(2));
 			// Container child ReduceHistoryPanel.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w231 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w220 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w232 = new global::Gtk.HBox ();
-			w232.Spacing = 2;
+			global::Gtk.HBox w221 = new global::Gtk.HBox ();
+			w221.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w233 = new global::Gtk.Image ();
-			w233.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-down", global::Gtk.IconSize.Menu);
-			w232.Add (w233);
+			global::Gtk.Image w222 = new global::Gtk.Image ();
+			w222.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-go-down", global::Gtk.IconSize.Menu);
+			w221.Add (w222);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w235 = new global::Gtk.Label ();
-			w232.Add (w235);
-			w231.Add (w232);
-			this.ReduceHistoryPanel.Add (w231);
+			global::Gtk.Label w224 = new global::Gtk.Label ();
+			w221.Add (w224);
+			w220.Add (w221);
+			this.ReduceHistoryPanel.Add (w220);
 			this.hbox4.Add (this.ReduceHistoryPanel);
-			global::Gtk.Box.BoxChild w239 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.ReduceHistoryPanel]));
-			w239.Position = 5;
-			w239.Expand = false;
-			w239.Fill = false;
+			global::Gtk.Box.BoxChild w228 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.ReduceHistoryPanel]));
+			w228.Position = 5;
+			w228.Expand = false;
+			w228.Fill = false;
 			this.vbox1.Add (this.hbox4);
-			global::Gtk.Box.BoxChild w240 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox4]));
-			w240.Position = 4;
-			w240.Expand = false;
-			w240.Fill = false;
+			global::Gtk.Box.BoxChild w229 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox4]));
+			w229.Position = 4;
+			w229.Expand = false;
+			w229.Fill = false;
 			this.Add (this.vbox1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
@@ -1085,18 +1041,13 @@ namespace xPLduinoManager
 			this.MyPreferenceAction.Activated += new global::System.EventHandler (this.OnMyPreferenceActionActivated);
 			this.saveAction.Activated += new global::System.EventHandler (this.OnSaveActionActivated);
 			this.saveAsAction.Activated += new global::System.EventHandler (this.OnSaveAsActionActivated);
-			this.ExtractEmbeddedAction.Activated += new global::System.EventHandler (this.OnVerifyEmbeddedActionActivated);
-			this.aboutAction.Activated += new global::System.EventHandler (this.OnAboutActionActivated);
 			this.ButtonNewProject.Clicked += new global::System.EventHandler (this.OnButtonNewProjectClicked);
 			this.ButtonOpenProject.Clicked += new global::System.EventHandler (this.OnButtonOpenProjectClicked);
 			this.ButtonSaveProject.Clicked += new global::System.EventHandler (this.OnButtonSaveProjectClicked);
 			this.ButtonSaveAllProject.Clicked += new global::System.EventHandler (this.OnButtonSaveAllProjectClicked);
 			this.UndoButton.Clicked += new global::System.EventHandler (this.OnUndoButtonClicked);
 			this.RedoButton.Clicked += new global::System.EventHandler (this.OnRedoButtonClicked);
-			this.ComboboxSelectNode.Changed += new global::System.EventHandler (this.OnComboboxSelectNodeChanged);
-			this.ButtonCheckEmbedded.Clicked += new global::System.EventHandler (this.OnButtonCheckEmbeddedClicked);
 			this.ButtonReloadUSB.Clicked += new global::System.EventHandler (this.OnButtonReloadUSBClicked);
-			this.ComboboxSelectUsb.Changed += new global::System.EventHandler (this.OnComboboxSelectNodeChanged);
 			this.ButtonLoadEmbedded.Clicked += new global::System.EventHandler (this.OnButtonLoadEmbeddedClicked);
 			this.ButtonReadEthernet.Clicked += new global::System.EventHandler (this.OnButtonReadEthernetClicked);
 			this.Up.Clicked += new global::System.EventHandler (this.OnUpClicked);

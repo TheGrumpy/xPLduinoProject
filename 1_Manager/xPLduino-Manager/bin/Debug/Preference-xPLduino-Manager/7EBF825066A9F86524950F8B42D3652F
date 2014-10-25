@@ -21,7 +21,7 @@
 	<Preference SWIOffFmActionName="off_fd" />
 	<Preference SHUType="0" />
 	<Preference SHUTravelTime="864" />
-	<Preference SHUInitTime="42" />
+	<Preference SHUInitTime="0" />
 	<Preference SHUOpenActionName="ouvrir" />
 	<Preference SHUCloseActionName="fermer" />
 	<Preference SHUStopActionName="arret" />

@@ -705,7 +705,7 @@ namespace xPLduinoManager
 		{
 			for(int i = 0;i<Convert.ToInt16(ComboboxNumberOfProbe.ActiveText);i++)
 			{
-				datamanagement.AddBoardInNetwork(ComboboxTypeOfProbe.ActiveText,datamanagement.ReturnNewNameBoard(ComboboxTypeOfProbe.ActiveText,Network_Id),Network_Id);
+				datamanagement.AddBoardInNetwork(ComboboxTypeOfProbe.ActiveText,datamanagement.ReturnNewNameBoard(param.ParamT("OWP_DefaultProbeName"),Network_Id),Network_Id);
 			}		
 		}
 

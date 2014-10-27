@@ -120,7 +120,6 @@
     <Compile Include="Widgets\Welcome.cs" />
     <Compile Include="Windows\NewProject.cs" />
     <Compile Include="gtk-gui\xPLduinoManager.NewProject.cs" />
-    <Compile Include="gtk-gui\xPLduinoManager.test.cs" />
     <Compile Include="Windows\NewNode.cs" />
     <Compile Include="gtk-gui\xPLduinoManager.NewNode.cs" />
     <Compile Include="Windows\NewNetwork.cs" />
@@ -140,7 +139,6 @@
     <Compile Include="gtk-gui\xPLduinoManager.OneWireProperties.cs" />
     <Compile Include="Widgets\BoardI2CProperties.cs" />
     <Compile Include="gtk-gui\xPLduinoManager.BoardI2CProperties.cs" />
-    <Compile Include="Widgets\test.cs" />
     <Compile Include="Windows\NewInstance.cs" />
     <Compile Include="gtk-gui\xPLduinoManager.NewInstance.cs" />
     <Compile Include="Class\Parameters.cs" />

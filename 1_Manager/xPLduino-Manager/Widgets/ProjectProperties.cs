@@ -21,6 +21,7 @@ using Gtk;
 using Gdk;
 using System.Collections.Generic;
 using System.Threading;
+using System.IO;
 
 namespace xPLduinoManager
 {
@@ -124,7 +125,8 @@ namespace xPLduinoManager
 			ButtonDeleteNode.Label = param.ParamT("PP_DeleteNode_Name_Button");
 			
 			ButtonGenerateOneNode.Label = param.ParamT("PP_CompileOneNode_Name_Button");
-						
+			ButtonLoadOneNode.Label = param.ParamT("PP_LoadOneNode_Name_Button");		
+			
 			hpaned1.Position = (datamanagement.mainwindow.ReturnHpanedPosition() * param.ParamI("NoteHPanedPurcent")) / 100; //On met le hpaned à n% de la taille de la fenetre mere
 			
 			foreach(Project Pro in datamanagement.ListProject) //Pour chaque projet de la liste
@@ -242,7 +244,7 @@ namespace xPLduinoManager
 						
 			PngOK = global::Gdk.Pixbuf.LoadFromResource(param.ParamP("IconOK"));	
 			PngNOK = global::Gdk.Pixbuf.LoadFromResource(param.ParamP("IconNOK"));	
-			
+				
 			//Visibilité des lignes et des colonnes
 			ChildTreeView.EnableGridLines = TreeViewGridLines.Both;
 				
@@ -697,6 +699,7 @@ namespace xPLduinoManager
 			ButtonAddNode.Label = param.ParamT("PP_AddNode_Name_Button");
 			ButtonDeleteNode.Label = param.ParamT("PP_DeleteNode_Name_Button");
 			ButtonGenerateOneNode.Label = param.ParamT("PP_CompileOneNode_Name_Button");
+			ButtonLoadOneNode.Label = param.ParamT("PP_LoadOneNode_Name_Button");
 			
 			//Init and update OptionTreeView
 			OptionNameColumn.Title = param.ParamT("PP_TVOpt_NameLabel");
@@ -818,6 +821,10 @@ namespace xPLduinoManager
 			if(IdSelected != "")
 			{
 				datamanagement.DeleteNodeInProject(Convert.ToInt32(IdSelected));
+			}		
+			else
+			{
+				mainwindow.AddLineOutput(param.ParamI("OutputError"),param.ParamT("PP_ErrorMessage_ChooseANode"));
 			}			
 		}
 		
@@ -833,13 +840,77 @@ namespace xPLduinoManager
 				IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("PP_TVChild_OpNode_PositionID")); //Nous retournons l'id de l'instance		
 			}				
 			
-			if(datamanagement.SaveProject(false, datamanagement.CurrentProjectId) && IdSelected != "")
-			{			
-				mainwindow.EraseOutputFunction();
-				Thread threadcompil = new Thread(()=> datamanagement.CompileFile(Project_Id,Convert.ToInt32(IdSelected)));
-				threadcompil.IsBackground = true;
-				threadcompil.Start();
+			if(IdSelected != "")
+			{
+				if(datamanagement.SaveProject(false, datamanagement.CurrentProjectId))
+				{			
+					mainwindow.EraseOutputFunction();
+					Thread threadcompil = new Thread(()=> datamanagement.CompileFile(Project_Id,Convert.ToInt32(IdSelected)));
+					threadcompil.IsBackground = true;
+					threadcompil.Start();
+				}	
+			}
+			else
+			{
+				mainwindow.AddLineOutput(param.ParamI("OutputError"),param.ParamT("PP_ErrorMessage_ChooseANode"));
+			}
+		}
+
+		//Fonction OnButtonLoadOneNodeClicked
+		//Fonction permettant de charger une carte		
+		protected void OnButtonLoadOneNodeClicked (object sender, System.EventArgs e)
+		{
+			string IdSelected = "";	//variable permettant de stocker l'id de l'instance sélectionné
+	
+			TreeSelection selection = ChildTreeView.Selection; //Nous allons crée un arbre de selection
+			if(selection.GetSelected(out TreeModelChildTreeView, out IterChild)) //Nous cherchons la valeur selectionné dans l'arbre de selection
+			{
+				IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("PP_TVChild_OpNode_PositionID")); //Nous retournons l'id de l'instance		
 			}	
+			
+			foreach(Project pro in datamanagement.ListProject)
+			{
+				foreach(Node node in pro.ReturnListNode())
+				{
+					if(IdSelected != "")
+					{
+						if(node.Node_Id == Convert.ToInt32(IdSelected))
+						{
+							if(pro.ProjectIsSave)
+							{
+								if(node.Node_Compile)
+								{
+									if(File.Exists("/dev/tty" + mainwindow.ReturnNameUSB()))
+									{								
+										Thread threadload =new Thread(()=> datamanagement.LoadBoard(mainwindow.ReturnNameUSB(),Project_Id,node.Node_Id));
+										threadload.IsBackground = true;
+										threadload.Start();
+									}
+									else
+									{
+										mainwindow.AddLineOutput(param.ParamI("OutputError"),"ConnectAProgrammer");
+										mainwindow.UpdateComboboxSelectUsb();
+									}								
+								}
+								else
+								{
+									//Message noeud non compilé
+									mainwindow.AddLineOutput(param.ParamI("OutputError"),param.ParamT("PP_ErrorMessage_NodeNotCompile"));
+								}
+							}
+							else
+							{
+								//Message projet non enregistré
+								mainwindow.AddLineOutput(param.ParamI("OutputError"),param.ParamT("PP_ErrorMessage_ProjectNotSave"));
+							}
+						}
+					}
+					else
+					{
+						mainwindow.AddLineOutput(param.ParamI("OutputError"),param.ParamT("PP_ErrorMessage_ChooseANode"));
+					}
+				}
+			}
 		}
 	}
 }

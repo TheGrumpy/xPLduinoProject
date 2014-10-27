@@ -270,9 +270,7 @@ namespace xPLduinoManager
 			this.saveAsAction.Label = param.ParamT("MWSaveAllProject"); //Mise à jour label Tout Sauvegarder 
 			this.HelpAction.Label = param.ParamT("MWHelp"); //Mise à jour label Aide
 			this.aboutAction.Label = param.ParamT("MWAbout"); //Mise à jour label A propos
-			
-			this.LoadEmbeddedAction.Label = param.ParamT("MWLoadEmbedded"); //Mise à jour label Charger embarquée 
-			
+						
 			this.LabelInfoProject.Text = "";
 			this.LabelPathProject.Text = "";
 			
@@ -282,8 +280,6 @@ namespace xPLduinoManager
 			ButtonOpenProject.TooltipText = param.ParamT("MWOpenProjectMenu") + " (Ctrl + O)";
 			ButtonSaveProject.TooltipText = param.ParamT("MWSaveProjectMenu") + " (Ctrl + S)";
 			ButtonSaveAllProject.TooltipText = param.ParamT("MWSaveAllProjectMenu") + " (Ctrl + D)";	
-			ButtonLoadEmbedded.TooltipText = param.ParamT("MWLoadEmbedded");	
-			ButtonLoadEmbedded.Sensitive = false;
 			ButtonReloadUSB.TooltipText = param.ParamT("MWReloadUSB");
 			
 //##################################################################################################				
@@ -291,10 +287,11 @@ namespace xPLduinoManager
 			//Mise à jour du ViewNoteBook
 			OutputTab.Text = param.ParamT("VNBOutputTab");
 			HistoryTab.Text = param.ParamT("VNBHistoryTab");	
-			LabelHistoric.Text = param.ParamT("VNBHistoryLabel");
+			CompilLog.Text = param.ParamT("VNBLogCompilTab");
 			
-			//Mise à jour de l'output
-			this.LabelInformation.Text = param.ParamT("MWLabelInformation"); //Mise à jour du label Information
+			LabelHistoric.Text = param.ParamT("VNBHistoryLabel");
+			LabelCompilLog.Text = param.ParamT("VNBCompilLogLabel");	
+			LabelInformation.Text = param.ParamT("VNBInformationLabel");
 
 			//Mise à jour des boutons output
 			ButtonFilterInfoImage = new Gtk.Image(param.ParamP("LogoOutputInformation"), IconSize.Button);
@@ -410,8 +407,6 @@ namespace xPLduinoManager
 			this.redoAction.Label = param.ParamT("MWRedo"); //Mise à jour label Rétablir	
 			this.saveAction.Label = param.ParamT("MWSaveProject"); //Mise à jour label Sauvegarder projet
 			this.saveAsAction.Label = param.ParamT("MWSaveAllProject"); //Mise à jour label Tout Sauvegarder			
-			this.ExtractEmbeddedAction.Label = param.ParamT("MWExtractEmbedded"); //Mise à jour label Extraction embarquée 
-			this.LoadEmbeddedAction.Label = param.ParamT("MWLoadEmbedded"); //Mise à jour label Charger embarquée 			
 			this.HelpAction.Label = param.ParamT("MWHelp"); //Mise à jour label A propos
 			this.aboutAction.Label = param.ParamT("MWAbout"); //Mise à jour label A propos
 			
@@ -421,12 +416,11 @@ namespace xPLduinoManager
 			ButtonOpenProject.TooltipText = param.ParamT("MWOpenProjectMenu") + " (Ctrl + O)";	
 			ButtonSaveProject.TooltipText = param.ParamT("MWSaveProjectMenu") + " (Ctrl + S)";
 			ButtonSaveAllProject.TooltipText = param.ParamT("MWSaveAllProjectMenu") + " (Ctrl + D)";		
-			ButtonLoadEmbedded.TooltipText = param.ParamT("MWLoadEmbedded");
 			
 //################## VIEW NOTEBOOK ##########################################		
 			
-			//Mise à jour de l'output
-			this.LabelInformation.Text = param.ParamT("MWLabelInformation"); //Mise à jour du label Information
+			
+			
 			
 			EraseOutput.TooltipText = param.ParamT("TextOutputErase");			
 			
@@ -439,8 +433,11 @@ namespace xPLduinoManager
 			//Mise à jour du ViewNoteBook
 			OutputTab.Text = param.ParamT("VNBOutputTab");
 			HistoryTab.Text = param.ParamT("VNBHistoryTab");
-			LabelHistoric.Text = param.ParamT("VNBHistoryLabel");		
-			//ViewNoteBook.CurrentPage = 0;	
+			CompilLog.Text = param.ParamT("VNBLogCompilTab");
+			
+			LabelInformation.Text = param.ParamT("VNBInformationLabel");
+			LabelHistoric.Text = param.ParamT("VNBHistoryLabel");	
+			LabelCompilLog.Text = param.ParamT("VNBCompilLogLabel");	
 			
 			//Mise à jour des titre dans l'arbre output
 			DateAndTimeColumn.Title = param.ParamT ("OutTVDateAndTimeValue");
@@ -2515,11 +2512,7 @@ namespace xPLduinoManager
 		//Fonction ActiveCompileAndLoadButton
 		//Fonction permettant d'activer les boutons à la fin d'une compilation
 		public void ActiveCompileAndLoadButtonCompilation(bool CompilationIsCorrect)
-		{
-			ButtonLoadEmbedded.Sensitive = true;
-			LoadEmbeddedAction.Sensitive = true;		
-			ExtractEmbeddedAction.Sensitive = true;
-			
+		{		
 			if(CompilationIsCorrect)	
 			{
 				AddLineOutput(param.ParamI("OutputInformation"),"CompleteCompilation");
@@ -2538,35 +2531,11 @@ namespace xPLduinoManager
 		}
 		
 //################ Chargement sur cible #####################################################
-
-		protected void OnButtonLoadEmbeddedClicked (object sender, System.EventArgs e)
-		{
-			/*
-			if(File.Exists("/dev/tty" + ComboboxSelectUsb.ActiveText.Replace(" ","")))
-			{
-				ButtonCheckEmbedded.Sensitive = false;
-				ButtonLoadEmbedded.Sensitive = false;
-				LoadEmbeddedAction.Sensitive = false;	
-				ExtractEmbeddedAction.Sensitive = false;
-				
-				Thread threadload =new Thread(()=> datamanagement.LoadBoard(ComboboxSelectUsb.ActiveText.Replace(" ",""),ComboboxSelectNode.ActiveText));
-				threadload.IsBackground = true;
-				threadload.Start();
-			}
-			else
-			{
-				AddLineOutput(param.ParamI("OutputError"),"ConnectAProgrammer");
-				UpdateComboboxSelectUsb();
-			}*/
-		}	
 				
 		//Fonction ActiveCompileAndLoadButton
 		//Fonction permettant d'activer les boutons à la fin d'une compilation
 		public void ActiveCompileAndLoadButtonLoad(bool LoadIsCorrect)
 		{
-			ButtonLoadEmbedded.Sensitive = true;
-			ExtractEmbeddedAction.Sensitive = true;
-			LoadEmbeddedAction.Sensitive = true;		
 			
 			if(LoadIsCorrect)	
 			{
@@ -2577,6 +2546,11 @@ namespace xPLduinoManager
 				AddLineOutput(param.ParamI("OutputError"),"ErrorLoad");
 			}
 		}		
+		
+		public string ReturnNameUSB()
+		{
+			return ComboboxSelectUsb.ActiveText.Replace(" ","");
+		}
 		
 //################ Fermeture de la fenêtre ##################################################				
 		
@@ -2653,6 +2627,13 @@ namespace xPLduinoManager
 
 //################ Autre ################################################################
 	
+	//################ Log Compilation  ######################################################	
+		
+		public void UpdateLogCompilation(string _data)
+		{
+			TextViewCompilLog.Buffer.Text = TextViewCompilLog.Buffer.Text + _data;
+		}
+		
 	//################ Status Bar  ######################################################	
 		
 		//Fonction UpdateStatusBar
@@ -2685,8 +2666,6 @@ namespace xPLduinoManager
 		//Fonction permettant de mettre à jour la liste des port USB
 		public void UpdateComboboxSelectUsb()
 		{
-			LoadEmbeddedAction.Sensitive = false;	
-			ButtonLoadEmbedded.Sensitive = false;
 			for(int i=0; i<20; i++)
 			{
 				ComboboxSelectUsb.RemoveText(0);
@@ -2696,8 +2675,6 @@ namespace xPLduinoManager
 				if(File.Exists("/dev/ttyUSB" + i))
 				{
 					ComboboxSelectUsb.AppendText("USB " + i);
-					LoadEmbeddedAction.Sensitive = true;	
-					ButtonLoadEmbedded.Sensitive = true;
 				}
 			}
 			

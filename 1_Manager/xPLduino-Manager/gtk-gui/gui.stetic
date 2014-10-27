@@ -11,9 +11,6 @@
     <widget-library name="../bin/Debug/xPLduino-Manager.exe" internal="true" />
     <widget-library name="../../../../../Téléchargements/HollyLibrary.dll" />
   </import>
-  <action-group name="xPLduinoManager.test" />
-  <action-group name="xPLduinoManager.test" />
-  <action-group name="xPLduinoManager.test" />
   <widget class="Gtk.Window" id="xPLduinoManager.MainWindow" design-size="1530 1224">
     <action-group name="Default">
       <action id="FileAction">
@@ -126,20 +123,6 @@
         <property name="ShortLabel" translatable="yes">Save All</property>
         <property name="StockId">gtk-save-as</property>
         <signal name="Activated" handler="OnSaveAsActionActivated" />
-      </action>
-      <action id="ExtractEmbeddedAction">
-        <property name="Type">Action</property>
-        <property name="Accelerator">&lt;Primary&gt;&lt;Mod2&gt;r</property>
-        <property name="Label" translatable="yes">Verify Embedded</property>
-        <property name="ShortLabel" translatable="yes">Verify Embedded</property>
-        <property name="StockId">gtk-ok</property>
-        <signal name="Activated" handler="OnVerifyEmbeddedActionActivated" />
-      </action>
-      <action id="LoadEmbeddedAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Load Embedded</property>
-        <property name="ShortLabel" translatable="yes">Load Embedded</property>
-        <property name="StockId">gtk-media-play</property>
       </action>
       <action id="HelpAction">
         <property name="Type">Action</property>
@@ -365,29 +348,11 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Button" id="ButtonLoadEmbedded">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Type">TextAndIcon</property>
-                <property name="Icon">stock:stock_bottom Menu</property>
-                <property name="Label" translatable="yes" />
-                <property name="UseUnderline">True</property>
-                <property name="Relief">None</property>
-                <signal name="Clicked" handler="OnButtonLoadEmbeddedClicked" />
-              </widget>
-              <packing>
-                <property name="Position">10</property>
-                <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
-            <child>
               <widget class="Gtk.VSeparator" id="vseparator4">
                 <property name="MemberName" />
               </widget>
               <packing>
-                <property name="Position">11</property>
+                <property name="Position">10</property>
                 <property name="AutoSize">True</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
@@ -406,7 +371,7 @@
                 <signal name="Clicked" handler="OnButtonReadEthernetClicked" />
               </widget>
               <packing>
-                <property name="Position">12</property>
+                <property name="Position">11</property>
                 <property name="AutoSize">True</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
@@ -712,7 +677,7 @@
                   <widget class="Gtk.Notebook" id="ViewNoteBook">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
-                    <property name="CurrentPage">1</property>
+                    <property name="CurrentPage">2</property>
                     <property name="TabPos">Bottom</property>
                     <child>
                       <widget class="Gtk.VBox" id="vbox4">
@@ -932,6 +897,95 @@
                       <widget class="Gtk.Label" id="HistoryTab">
                         <property name="MemberName" />
                         <property name="LabelProp" translatable="yes">HistoryTab</property>
+                      </widget>
+                      <packing>
+                        <property name="type">tab</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.VBox" id="vbox6">
+                        <property name="MemberName" />
+                        <property name="Spacing">6</property>
+                        <child>
+                          <widget class="Gtk.EventBox" id="eventbox3">
+                            <property name="MemberName" />
+                            <property name="HeightRequest">26</property>
+                            <child>
+                              <widget class="Gtk.HBox" id="hbox5">
+                                <property name="MemberName" />
+                                <property name="Spacing">6</property>
+                                <child>
+                                  <widget class="Gtk.Label" id="LabelCompilLog">
+                                    <property name="MemberName" />
+                                    <property name="Xalign">0</property>
+                                    <property name="LabelProp" translatable="yes">label1</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">0</property>
+                                    <property name="AutoSize">False</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <placeholder />
+                                </child>
+                                <child>
+                                  <placeholder />
+                                </child>
+                                <child>
+                                  <placeholder />
+                                </child>
+                                <child>
+                                  <widget class="Gtk.Button" id="ExportLogButton">
+                                    <property name="MemberName" />
+                                    <property name="CanFocus">True</property>
+                                    <property name="Type">TextOnly</property>
+                                    <property name="Label" translatable="yes">GtkButton</property>
+                                    <property name="UseUnderline">True</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">4</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                              </widget>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="Position">0</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+                            <property name="MemberName" />
+                            <property name="ShadowType">In</property>
+                            <child>
+                              <widget class="Gtk.TextView" id="TextViewCompilLog">
+                                <property name="MemberName" />
+                                <property name="CanFocus">True</property>
+                                <property name="ShowScrollbars">True</property>
+                                <property name="Text" translatable="yes" />
+                              </widget>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">True</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Label" id="CompilLog">
+                        <property name="MemberName" />
+                        <property name="LabelProp" translatable="yes">CompilLog</property>
                       </widget>
                       <packing>
                         <property name="type">tab</property>
@@ -1769,6 +1823,22 @@
                         <property name="Fill">False</property>
                       </packing>
                     </child>
+                    <child>
+                      <widget class="Gtk.Button" id="ButtonLoadOneNode">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="Type">TextOnly</property>
+                        <property name="Label" translatable="yes">GtkButton</property>
+                        <property name="UseUnderline">True</property>
+                        <signal name="Clicked" handler="OnButtonLoadOneNodeClicked" />
+                      </widget>
+                      <packing>
+                        <property name="Position">6</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2470,14 +2540,6 @@
           </widget>
         </child>
       </widget>
-    </child>
-  </widget>
-  <widget class="Gtk.Window" id="xPLduinoManager.test" design-size="400 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">test</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <placeholder />
     </child>
   </widget>
   <widget class="Gtk.Dialog" id="xPLduinoManager.NewInstance" design-size="400 125">

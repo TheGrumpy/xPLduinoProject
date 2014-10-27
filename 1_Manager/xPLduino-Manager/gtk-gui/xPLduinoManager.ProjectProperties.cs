@@ -16,6 +16,7 @@ namespace xPLduinoManager
 		private global::Gtk.Button ButtonDeleteNode;
 		private global::Gtk.VSeparator vseparator2;
 		private global::Gtk.Button ButtonGenerateOneNode;
+		private global::Gtk.Button ButtonLoadOneNode;
 		private global::Gtk.ScrolledWindow scrolledwindow3;
 		private global::Gtk.TreeView ChildTreeView;
 		private global::Gtk.VBox vbox2;
@@ -117,11 +118,22 @@ namespace xPLduinoManager
 			w8.Position = 5;
 			w8.Expand = false;
 			w8.Fill = false;
-			this.vbox1.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox3]));
-			w9.Position = 0;
+			// Container child hbox3.Gtk.Box+BoxChild
+			this.ButtonLoadOneNode = new global::Gtk.Button ();
+			this.ButtonLoadOneNode.CanFocus = true;
+			this.ButtonLoadOneNode.Name = "ButtonLoadOneNode";
+			this.ButtonLoadOneNode.UseUnderline = true;
+			this.ButtonLoadOneNode.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
+			this.hbox3.Add (this.ButtonLoadOneNode);
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.ButtonLoadOneNode]));
+			w9.Position = 6;
 			w9.Expand = false;
 			w9.Fill = false;
+			this.vbox1.Add (this.hbox3);
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox3]));
+			w10.Position = 0;
+			w10.Expand = false;
+			w10.Fill = false;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.scrolledwindow3 = new global::Gtk.ScrolledWindow ();
 			this.scrolledwindow3.CanFocus = true;
@@ -133,11 +145,11 @@ namespace xPLduinoManager
 			this.ChildTreeView.Name = "ChildTreeView";
 			this.scrolledwindow3.Add (this.ChildTreeView);
 			this.vbox1.Add (this.scrolledwindow3);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.scrolledwindow3]));
-			w11.Position = 1;
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.scrolledwindow3]));
+			w12.Position = 1;
 			this.vpaned2.Add (this.vbox1);
-			global::Gtk.Paned.PanedChild w12 = ((global::Gtk.Paned.PanedChild)(this.vpaned2 [this.vbox1]));
-			w12.Resize = false;
+			global::Gtk.Paned.PanedChild w13 = ((global::Gtk.Paned.PanedChild)(this.vpaned2 [this.vbox1]));
+			w13.Resize = false;
 			// Container child vpaned2.Gtk.Paned+PanedChild
 			this.vbox2 = new global::Gtk.VBox ();
 			this.vbox2.Name = "vbox2";
@@ -148,10 +160,10 @@ namespace xPLduinoManager
 			this.NoteLabel.Xalign = 0F;
 			this.NoteLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
 			this.vbox2.Add (this.NoteLabel);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.NoteLabel]));
-			w13.Position = 0;
-			w13.Expand = false;
-			w13.Fill = false;
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.NoteLabel]));
+			w14.Position = 0;
+			w14.Expand = false;
+			w14.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.scrolledwindow2 = new global::Gtk.ScrolledWindow ();
 			this.scrolledwindow2.CanFocus = true;
@@ -163,8 +175,8 @@ namespace xPLduinoManager
 			this.TextViewNote.Name = "TextViewNote";
 			this.scrolledwindow2.Add (this.TextViewNote);
 			this.vbox2.Add (this.scrolledwindow2);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.scrolledwindow2]));
-			w15.Position = 1;
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.scrolledwindow2]));
+			w16.Position = 1;
 			this.vpaned2.Add (this.vbox2);
 			this.hpaned1.Add (this.vpaned2);
 			this.Add (this.hpaned1);
@@ -175,6 +187,7 @@ namespace xPLduinoManager
 			this.ButtonAddNode.Clicked += new global::System.EventHandler (this.OnButtonAddNodeClicked);
 			this.ButtonDeleteNode.Clicked += new global::System.EventHandler (this.OnButtonDeleteNodeClicked);
 			this.ButtonGenerateOneNode.Clicked += new global::System.EventHandler (this.OnButtonGenerateOneNodeClicked);
+			this.ButtonLoadOneNode.Clicked += new global::System.EventHandler (this.OnButtonLoadOneNodeClicked);
 			this.ChildTreeView.ButtonReleaseEvent += new global::Gtk.ButtonReleaseEventHandler (this.OnChildTreeViewButtonReleaseEvent);
 			this.TextViewNote.FocusOutEvent += new global::Gtk.FocusOutEventHandler (this.OnTextViewNoteFocusOutEvent);
 		}

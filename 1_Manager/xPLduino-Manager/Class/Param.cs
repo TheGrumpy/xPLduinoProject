@@ -190,7 +190,6 @@ namespace xPLduinoManager
 			ListParameter.Add(new Parameters("MWVPanedExtendDefaultValue",65));
 			//LANGAGE
 			ListParameter.Add(new Parameters("MWTitle","xPLduino - Manager","xPLduino - Manager"));
-			ListParameter.Add(new Parameters("MWLabelInformation","Informations","Informations"));
 			ListParameter.Add(new Parameters("MWFileMenu","Fichier","File"));
 			ListParameter.Add(new Parameters("MWNewProjectMenu","Nouveau Projet","New Project"));
 			ListParameter.Add(new Parameters("MWOpenProjectMenu","Ouvrir Projet","Open Project"));
@@ -277,7 +276,12 @@ namespace xPLduinoManager
 			//LANGAGE
 			ListParameter.Add(new Parameters("VNBOutputTab","Sortie","Output"));
 			ListParameter.Add(new Parameters("VNBHistoryTab","Historique","Historic"));
+			ListParameter.Add(new Parameters("VNBLogCompilTab","Log de compilation","Compilation log"));
+			
+			ListParameter.Add(new Parameters("VNBInformationLabel","Informations","Informations"));			
 			ListParameter.Add(new Parameters("VNBHistoryLabel","Historique des travaux","Works historic"));
+			ListParameter.Add(new Parameters("VNBCompilLogLabel","Log de compilation","Compilation log"));
+			
 		}
 		public void OutputTreeview()
 		{
@@ -453,8 +457,10 @@ namespace xPLduinoManager
 			ListParameter.Add(new Parameters("PP_AddNode_Name_Button","Ajouter un noeud","Add a node"));
 			ListParameter.Add(new Parameters("PP_DeleteNode_Name_Button","Supprimer un noeud","Delete a node"));	
 			ListParameter.Add(new Parameters("PP_CompileOneNode_Name_Button","Générer un noeud","Generate one node"));
-			ListParameter.Add(new Parameters("PP_CompileAllNode_Name_Button","Tout générer","Générate All"));	
-			
+			ListParameter.Add(new Parameters("PP_LoadOneNode_Name_Button","Charger un noeud","Load node"));
+			ListParameter.Add(new Parameters("PP_ErrorMessage_ChooseANode","Veuillez choisir un noeud","Choose a node"));
+			ListParameter.Add(new Parameters("PP_ErrorMessage_ProjectNotSave","Votre projet n'est pas sauvegardé","Your project is not save"));	
+			ListParameter.Add(new Parameters("PP_ErrorMessage_NodeNotCompile","Votre noeud n'est pas généré","Your node is not generate"));	
 		}
 		public void NodePropertieWidget()
 		{
@@ -601,6 +607,8 @@ namespace xPLduinoManager
 			ListParameter.Add(new Parameters("OWP_QuestionMac","Avez-vous mis votre addresse en majuscule ?","Is that your address is in uppercase?"));
 			ListParameter.Add(new Parameters("OWP_AddBoard_Name_Button","Ajouter une sonde","Add a probe"));
 			ListParameter.Add(new Parameters("OWP_DeleteBoard_Name_Button","Supprimer une sonde","Delete a probe"));
+			ListParameter.Add(new Parameters("OWP_DefaultProbeName","Sonde","Probe"));
+			
 		}
 		public void I2CBoardPropertieWidget()
 		{

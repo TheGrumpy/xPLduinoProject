@@ -57,10 +57,6 @@
 #include "TeleInfo_xpl.h"
 
 #include "Arduino.h"
-
-#include "RFDevice.h"
-#include "RCSwitch_mod.h"
-
 void setup();
 void loop();
 void check_reset_cause();
@@ -107,7 +103,6 @@ extern const uint8_t int_i2c;
     Switch *SWITCH=NULL;
     Shutter *SHUTTER=NULL;
     Temperature *TEMPERATURE=NULL;
-    RFDevice *RFDEVICE=NULL;
 
     /* board pointer */
     In4Dimmer4 *IN4DIM4=NULL;
@@ -149,7 +144,6 @@ extern int NumberOfBoardIn16; // number of instances declared
 extern int NumberOfOneWire; // number of instances declared
 extern int NumberOfBoardIn8R8; // number of instances declared
 extern int NumberOfTemp; // number of instances declared
-extern int NumberOfRFDevice; // number of instances declared
 
 // instance teleinfo
 TeleInfo TeleInfo;
@@ -236,12 +230,6 @@ void setup() {
         Serial.print(F("Create Temperature:"));
         Serial.println(NumberOfTemp);
 
-    // create the instances of RF Device
-    if (NumberOfRFDevice)
-        RFDEVICE = (RFDevice*) malloc((NumberOfRFDevice)*sizeof(RFDevice));
-
-        Serial.print(F("Create RFDevice: "));
-        Serial.println(NumberOfRFDevice);
 
     pinMode(int_i2c,INPUT); // configure the pin of the i2c interrupt signal as input
     digitalWrite(int_i2c, HIGH); // active the internal pull-up
@@ -266,11 +254,6 @@ void setup() {
         Serial.println(F("---------- setup DS2482 end -----------"));
         delay(100);
     }
-    if(NumberOfRFDevice>0){
-        Serial.println(F("------------ setup RF module  ------------"));
-    	Setup_RF();
-        Serial.println(F("---------- setup RF module end -----------"));
-    }     
 
     /* configuration des cartes */
     /// futurement sur lecture de l'eeprom
@@ -327,10 +310,7 @@ void loop() {
 
         if(NumberOfBoardIn8R8 && !digitalRead(int_i2c))
             BoardIn8R8_pre();
-
-		if(NumberOfRFDevice)
-            RFDevice_pre();  
-
+        //~ Serial.print("2");
         /* update all the preliminary condition */
         pre_update();  // cf custom.ino
 
@@ -340,10 +320,10 @@ void loop() {
         /* update the status of the shutters */
         if (NumberOfShutter)
             shutter_post();
-
+        //~ Serial.print("3");
         /* update the post conditions */
         post_update(); // cf custom.ino
-
+        //~ Serial.print("4");
         /* update the output of the boards */
         if(NumberOfBoardIn4Dimmer4)
             BoardIn4Dimmer4_post();
@@ -354,10 +334,8 @@ void loop() {
         if(NumberOfBoardIn8R8)
             BoardIn8R8_post();
 
-		if(NumberOfRFDevice)
-            RFDevice_post(); 
-
         main_actual=millis()-main_prev_millis;
+
         if(main_actual>main_max)
             main_max=main_actual;
 

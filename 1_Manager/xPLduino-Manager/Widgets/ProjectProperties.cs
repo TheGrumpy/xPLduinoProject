@@ -881,10 +881,10 @@ namespace xPLduinoManager
 								if(node.Node_Compile)
 								{
 									if(File.Exists("/dev/tty" + mainwindow.ReturnNameUSB()))
-									{								
+									{		
 										Thread threadload =new Thread(()=> datamanagement.LoadBoard(mainwindow.ReturnNameUSB(),Project_Id,node.Node_Id));
 										threadload.IsBackground = true;
-										threadload.Start();
+										threadload.Start();								
 									}
 									else
 									{
@@ -911,6 +911,7 @@ namespace xPLduinoManager
 					}
 				}
 			}
+			Console.WriteLine("End of Load");
 		}
 	}
 }

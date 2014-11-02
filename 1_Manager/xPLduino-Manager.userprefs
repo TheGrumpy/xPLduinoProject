@@ -2,11 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="xPLduino-Manager/Class/DataManagement.cs">
     <Files>
-      <File FileName="xPLduino-Manager/Widgets/ProjectProperties.cs" Line="828" Column="5" />
-      <File FileName="xPLduino-Manager/Class/DataManagement.cs" Line="6770" Column="32" />
-      <File FileName="xPLduino-Manager/MainWindow.cs" Line="2669" Column="1" />
-      <File FileName="xPLduino-Manager/Class/Param.cs" Line="461" Column="65" />
-      <File FileName="xPLduino-Manager/Widgets/OneWireProperties.cs" Line="708" Column="137" />
+      <File FileName="xPLduino-Manager/Widgets/ProjectProperties.cs" Line="891" Column="18" />
+      <File FileName="xPLduino-Manager/Class/DataManagement.cs" Line="7230" Column="88" />
+      <File FileName="xPLduino-Manager/MainWindow.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

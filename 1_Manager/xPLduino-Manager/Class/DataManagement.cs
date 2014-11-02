@@ -501,6 +501,7 @@ namespace xPLduinoManager
 				        node.AddDebugInNode("DEBUG_TELEINFO_CORE","Active l'affichage de détails de traitement de la téléinformation dans la console","Empty");                    
 				        node.AddDebugInNode("DEBUG_TELEINFO_SERIAL","Active l'affichage de détails de la communication série de la téléinformation dans la console","Empty");        
 				        node.AddDebugInNode("DEBUG_TELEINFO_XPL","Active l'affichage des messages xPL de la téléinformation dans la console","Empty"); 
+						node.AddDebugInNode("DEBUG_DEVICERF","Active l'affichage des info sur les commande RF","Empty");
 					}
 				}
 			}			
@@ -4812,7 +4813,8 @@ namespace xPLduinoManager
 						}
 						
 						//On fait un .bak.version de la précédente sauvegarde
-						System.IO.File.Copy(pro.Project_SavePath + "/" + pro.Project_Name + ".dom", pro.Project_SavePath + "/" + pro.Project_Name + ".dom.bak(Version" + pro.Project_Version + ")", true);
+						if(File.Exists(pro.Project_SavePath + "/" + pro.Project_Name + ".dom"))
+							System.IO.File.Copy(pro.Project_SavePath + "/" + pro.Project_Name + ".dom", pro.Project_SavePath + "/" + pro.Project_Name + ".dom.bak(Version" + pro.Project_Version + ")", true);
 						
 						//On met à jour la date du projet et la version
 						pro.Project_ModificationDateAndTime = DateTime.Now.ToString();
@@ -7044,8 +7046,8 @@ namespace xPLduinoManager
 								string TargetPath = pro.Project_SavePath + param.ParamP("FolderTargetFirmware");
 								if(Directory.Exists(TargetPath))
 								{
-									DirectoryInfo DirectoryFirmwareNode = new DirectoryInfo(TargetPath);
-									DirectoryFirmwareNode.Delete(true);							
+									//DirectoryInfo DirectoryFirmwareNode = new DirectoryInfo(TargetPath);
+									//DirectoryFirmwareNode.Delete(true);							
 								}	
 								
 								node.Node_Compile = true;
@@ -7120,10 +7122,7 @@ namespace xPLduinoManager
 						}
 						
 					}
-					
-				
-			
-			
+
 				process.WaitForExit();
 				return ShellTransfertWithoutError;
 			}			
@@ -7136,13 +7135,8 @@ namespace xPLduinoManager
 		{
 	        if (System.IO.Directory.Exists(Environment.CurrentDirectory + param.ParamP("FolderHardware")))
 	        {	
-				string SavePath = "";
 				string ShellCommande = "";
 				string ShellArgument = "";
-				
-				string SeparateStar = "\n\n*************************************************************************************************************************************************************";
-				string SeparateStarEnd = "*************************************************************************************************************************************************************\n";
-
 				
 				foreach(Project pro in ListProject)
 				{
@@ -7155,17 +7149,11 @@ namespace xPLduinoManager
 							ExtractZipFile(pro.Project_SavePath + "/" + pro.Project_Name + ".dom",TempUnzip,pro.Project_Password);
 						
 							if(File.Exists(TempUnzip + "/Hex/" + node.Node_CRC + ".hex"))
-							{
-								
-								CompilLogData = SeparateStar + "\n" + " Load " + pro.Project_Name + " " + node.Node_Name + "\n" + SeparateStarEnd;
-
-								
+							{							
 								ShellCommande = Environment.CurrentDirectory + param.ParamP("FolderTools") + "avrdude";
 								ShellArgument = " -C " + Environment.CurrentDirectory + param.ParamP("FolderTools") + "avrdude.conf  -v -v -v -v -patmega1284p -carduino -P/dev/tty" + USBPort + " -b115200 -D -Uflash:w:";
 								ShellArgument = ShellArgument + TempUnzip + "/Hex/" + node.Node_CRC + ".hex:i";
-								
-								CompilLogData = CompilLogData + SeparateStar + "\n" + " Load : " + ShellCommande + " " + ShellArgument + "\n" + SeparateStarEnd;
-								
+
 								if(ShellTransfertForUpload(ShellCommande,ShellArgument,true,ReturnNumberOfLineInHexFile(TempUnzip + "/Hex/" + node.Node_CRC + ".hex")))
 								{
 									Gtk.Application.Invoke(delegate {
@@ -7177,7 +7165,7 @@ namespace xPLduinoManager
 									Gtk.Application.Invoke(delegate {
 							        	mainwindow.ActiveCompileAndLoadButtonLoad(false);	
 							    	});	
-								}				
+								}		
 							}
 							else
 							{
@@ -7185,11 +7173,8 @@ namespace xPLduinoManager
 							}
 						}
 					}
-				}
-				
-				Gtk.Application.Invoke(delegate {
-					mainwindow.UpdateLogCompilation(CompilLogData);
-			    });						
+				}	
+
 			}
 		}		
 		
@@ -7216,6 +7201,7 @@ namespace xPLduinoManager
 		        reader = process.StandardOutput;
 		        errorReader = process.StandardError;
 				
+			
 				Int32 NumberOfLine = 0;
 				
 				string PreviousLine = "";
@@ -7242,7 +7228,6 @@ namespace xPLduinoManager
 				
 					Gtk.Application.Invoke(delegate {
 						mainwindow.UpdateProgressBar(((NumberOfLine*1.1750)/_NumberOfLineInHexFile)*100);
-						mainwindow.UpdateLogCompilation(CompilLogData);
 					 });
 				}
 					

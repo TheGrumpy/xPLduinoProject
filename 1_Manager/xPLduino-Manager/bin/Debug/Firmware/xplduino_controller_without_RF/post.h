@@ -25,8 +25,6 @@ void write_in8R8(uint8_t card_id, uint8_t card_channel, uint8_t value);
 void set_in8R8(uint8_t card_id, uint8_t card_channel);
 void clear_in8R8(uint8_t card_id, uint8_t card_channel);
 
-void lighting_to_RF(uint8_t lighting_id,uint8_t RF_id);
-
 byte aboutPostVersion();
 
 #endif

@@ -50,7 +50,7 @@ void in16_to_switch(uint8_t switch_id, uint8_t card_id, uint8_t card_channel);
 void R8_to_lighting(uint8_t lighting_id, uint8_t card_id, uint8_t card_channel);
 void in8R8_to_lighting(uint8_t lighting_id, uint8_t card_id, uint8_t card_channel);
 void in8R8_to_switch(uint8_t switch_id, uint8_t card_id, uint8_t card_channel);
-void RF_to_lighting(uint8_t lighting_id,uint8_t RF_id);
+
 
 byte aboutPreVersion();
 

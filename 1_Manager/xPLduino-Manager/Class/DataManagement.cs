@@ -501,7 +501,7 @@ namespace xPLduinoManager
 				        node.AddDebugInNode("DEBUG_TELEINFO_CORE","Active l'affichage de détails de traitement de la téléinformation dans la console","Empty");                    
 				        node.AddDebugInNode("DEBUG_TELEINFO_SERIAL","Active l'affichage de détails de la communication série de la téléinformation dans la console","Empty");        
 				        node.AddDebugInNode("DEBUG_TELEINFO_XPL","Active l'affichage des messages xPL de la téléinformation dans la console","Empty"); 
-						node.AddDebugInNode("DEBUG_DEVICERF","Active l'affichage des info sur les commande RF","Empty");
+						//node.AddDebugInNode("DEBUG_DEVICERF","Active l'affichage des info sur les commande RF","Empty");
 					}
 				}
 			}			
@@ -7046,8 +7046,8 @@ namespace xPLduinoManager
 								string TargetPath = pro.Project_SavePath + param.ParamP("FolderTargetFirmware");
 								if(Directory.Exists(TargetPath))
 								{
-									//DirectoryInfo DirectoryFirmwareNode = new DirectoryInfo(TargetPath);
-									//DirectoryFirmwareNode.Delete(true);							
+									DirectoryInfo DirectoryFirmwareNode = new DirectoryInfo(TargetPath);
+									DirectoryFirmwareNode.Delete(true);							
 								}	
 								
 								node.Node_Compile = true;

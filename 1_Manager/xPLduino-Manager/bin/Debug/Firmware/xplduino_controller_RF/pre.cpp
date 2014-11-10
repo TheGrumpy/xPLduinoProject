@@ -4,6 +4,7 @@
 #include "BoardR8.h"
 #include "BoardIn16.h"
 #include "BoardIn8R8.h"
+#include "RFDevice.h"
 
 #include "switch_core.h"
 #include "switch_xpl.h"
@@ -38,6 +39,7 @@ extern Relay8 *R8;
 extern Lighting *LIGHTING;
 extern Input16 *IN16;
 extern In8R8 *IN8R8;
+extern RFDevice *RFDEVICE;
 
 extern int NumberOfPre; // number of instances declared
 
@@ -93,6 +95,12 @@ void in8R8_to_switch(uint8_t switch_id, uint8_t card_id, uint8_t card_channel){
 
 }
 
+void RF_to_lighting(uint8_t lighting_id,uint8_t RF_id){
+
+    LIGHTING[lighting_id].postCurrent(LIGHTING[lighting_id].getSetpoint());
+    /// il faudra recuperer le vrai etat
+
+}
 
 byte aboutPreVersion(){
     return PRE_VERSION;

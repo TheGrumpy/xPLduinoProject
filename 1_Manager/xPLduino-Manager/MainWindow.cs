@@ -720,13 +720,13 @@ namespace xPLduinoManager
 						
 						SeparatorMenuItem sep = new SeparatorMenuItem();
 						RightClicMenuExplorerTreeView.Add(sep);						
-						
+					*/	
 						RightClicMenuItemExplorerTreeView = new MenuItem(param.ParamT("MenuDeleteProject")); //Item permettant de supprimer un projet
 				        RightClicMenuExplorerTreeView.Add(RightClicMenuItemExplorerTreeView);  //On ajout l'item dans le treeview  
 						RightClicMenuItemExplorerTreeView.Activated += DeleteProject; //Fonction appelé lors du clic sur l'item
 						RightClicMenuExplorerTreeView.ShowAll(); //On affiche le menu
 						RightClicMenuExplorerTreeView.Popup();	//Sous forme de popup		
-					*/					
+										
 					}
 					else if(TreeViewEplorerValCol2 == param.ParamP("ExTVTypeNode")) //Dans le cas où la cellule 2 est de type noeud
 					{

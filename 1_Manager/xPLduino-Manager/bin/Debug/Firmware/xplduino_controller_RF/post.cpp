@@ -5,6 +5,7 @@
 #include "BoardR8.h"
 #include "BoardIn16.h"
 #include "BoardIn8R8.h"
+#include "RFDevice.h"
 
 #include "switch_core.h"
 #include "switch_xpl.h"
@@ -41,6 +42,7 @@ extern Relay8 *R8;
 extern Lighting *LIGHTING;
 extern Input16 *IN16;
 extern In8R8 *IN8R8;
+extern RFDevice *RFDEVICE;
 
 #define POST_VERSION 2
 
@@ -109,6 +111,19 @@ void clear_in8R8(uint8_t card_id, uint8_t card_channel){
 
 }
 
+void lighting_to_RF(uint8_t lighting_id,uint8_t RF_id){
+
+    if(LIGHTING[lighting_id].IsFlagSPChanged()){	
+        /*if (LIGHTING[lighting_id].getSetpoint()==0){
+			RFDEVICE[RF_id].PostOff();
+		} 
+		else {
+			RFDEVICE[RF_id].PostOn();
+		} */	
+	RFDEVICE[RF_id].Post(LIGHTING[lighting_id].getSetpoint());
+	LIGHTING[lighting_id].ResetFlagSPChanged();
+    }
+}
 
 byte aboutPostVersion(){
     return POST_VERSION;

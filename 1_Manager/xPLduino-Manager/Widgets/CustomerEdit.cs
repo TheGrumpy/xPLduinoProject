@@ -243,6 +243,7 @@ namespace xPLduinoManager
 			[GLib.ConnectBefore]
 			private void OnTextEditor1ButtonReleaseEvent (object o, Gtk.ButtonReleaseEventArgs args)
 			{
+			/*
 				if(args.Event.Button == param.ParamI("LeftClic")) //Si le bouton cliquer est le clic gauche
 				{			
 					mainwindow.UndoRedoInactif("undo",true);
@@ -256,7 +257,7 @@ namespace xPLduinoManager
 				{	
 					MenuItemTextEditor.Submenu.ShowAll();
 					((Gtk.Menu)MenuItemTextEditor.Submenu).Popup();
-				}
+				}*/
 			}
 			
 			//Fonction InitialiseMenu

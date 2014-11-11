@@ -1233,6 +1233,37 @@ namespace xPLduinoManager
 			}			
 		}
 		
+		// Fonction OnChildTreeViewKeyReleaseEvent
+		// Fonction permettant d'éxecuter des actions sur appuie d'un bouton
+		protected void OnChildTreeViewKeyReleaseEvent (object o, Gtk.KeyReleaseEventArgs args)
+		{
+			string IdSelected = "";	//variable permettant de stocker l'id de l'instance sélectionné
+	
+			TreeSelection selection = ChildTreeView.Selection; //Nous allons crée un arbre de selection
+			if(selection.GetSelected(out TreeModelChildTreeView, out IterChild)) //Nous cherchons la valeur selectionné dans l'arbre de selection
+			{
+				if(TypeInstance == param.ParamP("InstLightingName"))
+				{
+					IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("IP_TVChild_Lighting_PositionID")); //Nous retournons l'id de l'instance		
+				}
+				else if(TypeInstance == param.ParamP("InstSwitchName"))
+				{
+					IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("IP_TVChild_Switch_PositionID")); //Nous retournons l'id de l'instance		
+				}
+				else if(TypeInstance == param.ParamP("InstShutterName"))
+				{
+					IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("IP_TVChild_Shutter_PositionID")); //Nous retournons l'id de l'instance		
+				}
+				if(IDMemorised == "")
+				{
+					IDMemorised = IdSelected;
+				}
+			}	
+			if(args.Event.Key.ToString() == param.ParamP("BI2CP_TouchDelete") && IdSelected != "")
+			{
+				datamanagement.DeleteInstanceInNode(Convert.ToInt32(IdSelected));
+			}
+		}		
 		
 		//Fonction UpdateWidget
 		//Fcontion permettant de mettre à jour le widget		
@@ -1440,5 +1471,7 @@ namespace xPLduinoManager
 			}			
 			
 		}
+
+
 	}
 }

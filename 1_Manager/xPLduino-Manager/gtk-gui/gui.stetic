@@ -158,8 +158,6 @@
                 <node type="Menuitem" action="saveAction" />
                 <node type="Menuitem" action="saveAsAction" />
                 <node type="Separator" />
-                <node type="Menuitem" action="CreateConfigurationAction" />
-                <node type="Separator" />
                 <node type="Menuitem" action="quitAction" />
               </node>
               <node type="Menu" action="EditAction">
@@ -2811,6 +2809,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <signal name="ButtonReleaseEvent" handler="OnChildTreeViewButtonReleaseEvent" />
+                    <signal name="KeyReleaseEvent" handler="OnChildTreeViewKeyReleaseEvent" />
                   </widget>
                 </child>
               </widget>

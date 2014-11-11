@@ -5301,18 +5301,16 @@ namespace xPLduinoManager
 						
 						pro.ProjectIsSave = true;
 						mainwindow.UpdateStatusBar();
+
+						//On appel la fonction permettant de créer le nouveau fichier .dom
 						CompressProject(CompressPath,pro.Project_Password,BasePath,pro.Project_Name);
-						if(Directory.Exists(BasePath)) 
-						{				
-							DirectoryInfo directory = new DirectoryInfo(BasePath);
-							directory.Delete(true);
-						}	
 						
+									
 						CopyProject("HTUpdateVersionOneProject",pro.Project_Name);					
 					}
 					else if(pro.ProjectIsSave)
 					{
-						return true;
+						//return true;
 					}
 				}
 				
@@ -5398,11 +5396,29 @@ namespace xPLduinoManager
 		//Fonction permettant de compresser un dossier
 		public void CompressProject(string outPathname, string password, string folderName, string _ProjectName)
 		{
+			
+			
+			
 			ICSharpCode.SharpZipLib.Zip.FastZip fastZip = new ICSharpCode.SharpZipLib.Zip.FastZip();
 			fastZip.Password = password;
 			fastZip.CreateEmptyDirectories = true;
 			string zipFileName = outPathname + "/" + _ProjectName + ".dom";
+
+			//On supprime l'ancien .dom avant de créer le nouveau
+			if(File.Exists(zipFileName))
+			{
+				File.Delete(zipFileName);
+			}	
+			
+			//On fait la création du zip
 			fastZip.CreateZip(zipFileName, folderName, true, "");
+			
+			//on supprime le dossier source
+			if(Directory.Exists(folderName)) 
+			{				
+				DirectoryInfo directory = new DirectoryInfo(folderName);
+				directory.Delete(true);
+			}				
 		}	
 		
 		//Fonction FileIsCrypte
@@ -5498,19 +5514,37 @@ namespace xPLduinoManager
 		public int OpenProject(string _Path, string _password)
 		{	
 			string _DirectoryPath = Path.GetDirectoryName(_Path) + "/temp";
-			string _FilePath  = Path.GetFileName(_Path);
+			string _FilePath  = "";
+			
 			
 			foreach(Project pro in ListProject)
 			{
 				if(pro.Project_SavePath + "/" + pro.Project_Name + ".dom" == _Path)
 				{
-					return 1;
+					return 0;
 				}
 			}
 			
 			//UnCompressProject(_Path,"",_DirectoryPath);
 			if(!ExtractZipFile(_Path,_DirectoryPath,_password))
 			{				
+				return 0;
+			}
+			
+			DirectoryInfo dir = new DirectoryInfo(_DirectoryPath);
+			FileInfo[] fichiers = dir.GetFiles();
+			
+			foreach ( FileInfo fichier in fichiers)
+			{
+				if(fichier.Extension == ".dom")
+				{
+					_FilePath = fichier.Name.ToString();
+				}
+			} 			
+			
+			if(_FilePath == "")
+			{
+				mainwindow.AddLineOutput(param.ParamI("OutputError"),"ProjectNotCorrect");
 				return 0;
 			}
 			

@@ -150,6 +150,7 @@ namespace xPLduinoManager
 			this.AddNewInstance.Clicked += new global::System.EventHandler (this.OnAddNewInstanceClicked);
 			this.DeleteInstance.Clicked += new global::System.EventHandler (this.OnDeleteInstanceClicked);
 			this.ChildTreeView.ButtonReleaseEvent += new global::Gtk.ButtonReleaseEventHandler (this.OnChildTreeViewButtonReleaseEvent);
+			this.ChildTreeView.KeyReleaseEvent += new global::Gtk.KeyReleaseEventHandler (this.OnChildTreeViewKeyReleaseEvent);
 			this.TextViewNote.FocusOutEvent += new global::Gtk.FocusOutEventHandler (this.OnTextViewNoteFocusOutEvent);
 			this.TextViewNote.KeyReleaseEvent += new global::Gtk.KeyReleaseEventHandler (this.OnTextViewNoteKeyReleaseEvent);
 		}

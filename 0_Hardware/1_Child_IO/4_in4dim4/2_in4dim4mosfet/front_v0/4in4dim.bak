@@ -286,7 +286,7 @@ F 3 "" H 7050 10050 60  0000 C CNN
 	1    7050 10050
 	1    0    0    -1  
 $EndComp
-Text GLabel 8100 9700 2    60   Input ~ 0
+Text GLabel 8400 11400 2    60   Input ~ 0
 CMD0
 Text GLabel 8150 10350 2    60   BiDi ~ 0
 SDA
@@ -506,11 +506,11 @@ F 3 "" H 6300 3650 60  0001 C CNN
 	1    6300 3650
 	1    0    0    -1  
 $EndComp
-Text GLabel 8100 11300 2    60   Input ~ 0
+Text GLabel 8450 9800 2    60   Input ~ 0
 CMD2
-Text GLabel 8500 9800 2    60   Input ~ 0
+Text GLabel 8100 11300 2    60   Input ~ 0
 CMD1
-Text GLabel 8500 11400 2    60   Input ~ 0
+Text GLabel 8100 9700 2    60   Input ~ 0
 CMD3
 NoConn ~ 8000 9300
 NoConn ~ 8000 9100
@@ -608,10 +608,6 @@ Wire Wire Line
 Connection ~ 6050 11500
 Connection ~ 6100 8650
 Wire Wire Line
-	8000 11400 8500 11400
-Wire Wire Line
-	8000 11300 8100 11300
-Wire Wire Line
 	8000 11200 8500 11200
 Wire Wire Line
 	8000 11100 8100 11100
@@ -623,10 +619,6 @@ Wire Wire Line
 	8000 10350 8150 10350
 Wire Wire Line
 	8000 10150 8100 10150
-Wire Wire Line
-	8000 9800 8500 9800
-Wire Wire Line
-	8000 9700 8100 9700
 Wire Wire Line
 	8000 9600 8500 9600
 Wire Wire Line
@@ -1152,4 +1144,12 @@ F 3 "" H 7800 2900 60  0001 C CNN
 	1    7800 2900
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	8000 9700 8100 9700
+Wire Wire Line
+	8000 9800 8450 9800
+Wire Wire Line
+	8000 11300 8100 11300
+Wire Wire Line
+	8000 11400 8400 11400
 $EndSCHEMATC

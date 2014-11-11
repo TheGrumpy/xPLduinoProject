@@ -875,6 +875,7 @@ namespace xPLduinoManager
 			//Fonction perettant de supprimer un projet depuis l'explorer treeview
 			public void DeleteProject (object o, EventArgs e)
 			{
+			/*
 				this.Sensitive = false; //Permet d'incativer la fenêtre principal
 				if(pref.BeepOnDelete)
 					System.Media.SystemSounds.Question.Play(); //Avertir du popup
@@ -898,6 +899,11 @@ namespace xPLduinoManager
 					message.Destroy();//On détruit la boite de dialogue
 				}
 				this.Sensitive = true; //Permet d'activer la fenêtre principal
+			*/
+			
+				datamanagement.DeleteProject(Convert.ToInt32(TreeViewEplorerValCol4)); //On appel la fonction permettant de supprimer un projet à partir de son Id
+				UpdateEplorerTreeView(); //On met  jour l'explorer treeview
+			
 			}		
 		
 			//Fonction DeleteNode

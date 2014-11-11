@@ -1,32 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="xPLduino-Manager/Class/DataManagement.cs">
-    <Files>
-      <File FileName="xPLduino-Manager/Widgets/ProjectProperties.cs" Line="891" Column="18" />
-      <File FileName="xPLduino-Manager/Class/DataManagement.cs" Line="7230" Column="88" />
-      <File FileName="xPLduino-Manager/MainWindow.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="xPLduino-Manager" expanded="True">
-            <Node name="UserInterface" expanded="True" />
-            <Node name="Class" expanded="True">
-              <Node name="DataManagement.cs" selected="True" />
-            </Node>
-            <Node name="Widgets" expanded="True" />
-          </Node>
-        </State>
+        <State expanded="True" />
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>pro.Project_Id == _ProjectID</Value>
-          <Value>node.Node_Id == _NodeId</Value>
+          <Value>zipEntry.IsFile</Value>
+          <Value>zipEntry</Value>
           <Value>Directory.Exists(pro.Project_SavePath)</Value>
-          <Value>IdSelected</Value>
+          <Value>pro.Project_Id</Value>
+          <Value>CurrentProjectId</Value>
+          <Value>ListProject</Value>
+          <Value>pro.ProjectIsSave</Value>
         </State>
       </Pad>
     </Pads>

@@ -836,7 +836,7 @@ namespace xPLduinoManager
 			ListParameter.Add(new Parameters("QuestionDeleteVariable","Etes-vous sûre de vouloir supprimer la variable ","Do you want to delete the variable "));
 			ListParameter.Add(new Parameters("QuestionDeleteFunction","Etes-vous sûre de vouloir supprimer la fonction ","Do you want to delete the function "));
 			
-			ListParameter.Add(new Parameters("ErrorPasswordOrInValidFile","Mot de passe Incorrect ou fichier invalide","Incorect password or invalid file"));
+			ListParameter.Add(new Parameters("ErrorPasswordOrInValidFile","Mot de passe incorrect ou fichier invalide","Incorect password or invalid file"));
 			ListParameter.Add(new Parameters("QuestionSaveProject","Voulez-vous sauvegader le projet ","Do you want to save the project "));
 			ListParameter.Add(new Parameters("QuestionQuitProject","Voulez-vous quitter xPLduino - Manager ?","Do you want to quit xPLduino - Manager ?"));
 		}
@@ -878,6 +878,7 @@ namespace xPLduinoManager
 			ListParameter.Add(new Parameters("NameExistInActionName","Ce nom est utilisé pour une action","This name are using by an action"));
 			ListParameter.Add(new Parameters("NameExistInInstance","Ce nom est utilisé pour une instance","This name are using by an instance"));	
 			ListParameter.Add(new Parameters("NameExistInFunctione","Ce nom est utilisé pour une function","This name are using by an function"));	
+			ListParameter.Add(new Parameters("ProjectNotCorrect","Votre projet n'est pas valide","Your project is not valid"));
 		}
 		public void ModifyProject()
 		{

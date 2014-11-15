@@ -97,7 +97,7 @@ namespace xPLduinoManager
 		private global::Gtk.ProgressBar ProgressBar;
 		private global::Gtk.Button ExpendHistoryPanel;
 		private global::Gtk.Button ReduceHistoryPanel;
-		
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);

@@ -6,7 +6,7 @@ namespace xPLduinoManager
 	{
 		private global::Gtk.VBox vbox6;
 		private global::Gtk.Image image71;
-		
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);

@@ -23,7 +23,7 @@ namespace xPLduinoManager
 		private global::Gtk.Label NoteLabel;
 		private global::Gtk.ScrolledWindow scrolledwindow2;
 		private global::Gtk.TextView TextViewNote;
-		
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);

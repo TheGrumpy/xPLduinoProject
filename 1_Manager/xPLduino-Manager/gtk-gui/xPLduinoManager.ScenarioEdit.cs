@@ -16,7 +16,7 @@ namespace xPLduinoManager
 		private global::Gtk.TreeView TreeviewFunction;
 		private global::Gtk.ScrolledWindow GtkScrolledWindow2;
 		private global::Gtk.TreeView TreeviewArgsFunction;
-		
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);

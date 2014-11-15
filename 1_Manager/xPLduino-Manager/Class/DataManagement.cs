@@ -5396,13 +5396,12 @@ namespace xPLduinoManager
 		//Fonction permettant de compresser un dossier
 		public void CompressProject(string outPathname, string password, string folderName, string _ProjectName)
 		{
-			
-			
-			
+					
 			ICSharpCode.SharpZipLib.Zip.FastZip fastZip = new ICSharpCode.SharpZipLib.Zip.FastZip();
 			fastZip.Password = password;
 			fastZip.CreateEmptyDirectories = true;
 			string zipFileName = outPathname + "/" + _ProjectName + ".dom";
+			ZipConstants.DefaultCodePage = 0;
 
 			//On supprime l'ancien .dom avant de créer le nouveau
 			if(File.Exists(zipFileName))

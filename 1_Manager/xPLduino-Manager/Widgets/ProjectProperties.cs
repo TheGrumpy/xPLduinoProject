@@ -840,19 +840,25 @@ namespace xPLduinoManager
 				IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("PP_TVChild_OpNode_PositionID")); //Nous retournons l'id de l'instance		
 			}				
 			
-			if(IdSelected != "")
+			foreach(Project pro in datamanagement.ListProject)
 			{
-				if(datamanagement.SaveProject(false, datamanagement.CurrentProjectId))
-				{			
-					mainwindow.EraseOutputFunction();
-					Thread threadcompil = new Thread(()=> datamanagement.CompileFile(Project_Id,Convert.ToInt32(IdSelected)));
-					threadcompil.IsBackground = true;
-					threadcompil.Start();
-				}	
-			}
-			else
-			{
-				mainwindow.AddLineOutput(param.ParamI("OutputError"),param.ParamT("PP_ErrorMessage_ChooseANode"));
+				foreach (Node node in pro.ReturnListNode()) {
+					if (IdSelected != "") {
+						if (node.Node_Id == Convert.ToInt32 (IdSelected)) {
+							if (pro.ProjectIsSave) {
+								mainwindow.EraseOutputFunction ();
+								Thread threadcompil = new Thread (() => datamanagement.CompileFile (Project_Id, Convert.ToInt32 (IdSelected)));
+								threadcompil.IsBackground = true;
+								threadcompil.Start ();
+							} else {
+								//Message projet non enregistré
+								mainwindow.AddLineOutput (param.ParamI ("OutputError"), param.ParamT ("PP_ErrorMessage_ProjectNotSave"));
+							}				
+						} else {
+							mainwindow.AddLineOutput (param.ParamI ("OutputError"), param.ParamT ("PP_ErrorMessage_ChooseANode"));
+						}
+					}
+				}
 			}
 		}
 

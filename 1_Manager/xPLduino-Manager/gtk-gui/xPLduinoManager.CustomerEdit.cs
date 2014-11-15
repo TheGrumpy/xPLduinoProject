@@ -7,7 +7,7 @@ namespace xPLduinoManager
 		private global::Gtk.HPaned hpaned2;
 		private global::Gtk.ScrolledWindow ScrolledWindowTextEdit1;
 		private global::Gtk.ScrolledWindow ScrolledWindowTextEdit2;
-		
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);

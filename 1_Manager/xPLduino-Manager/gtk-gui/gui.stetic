@@ -6,10 +6,8 @@
   </configuration>
   <import>
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <widget-library name="Mono.TextEditor, Version=1.0.0.0, Culture=neutral" />
-    <widget-library name="Mono.TextEditor, Version=1.0.0.0, Culture=neutral" />
     <widget-library name="../bin/Debug/xPLduino-Manager.exe" internal="true" />
-    <widget-library name="../../../../../Téléchargements/HollyLibrary.dll" />
+    <widget-library name="../bin/Debug/Mono.TextEditor.dll" />
   </import>
   <widget class="Gtk.Window" id="xPLduinoManager.MainWindow" design-size="1530 1224">
     <action-group name="Default">

@@ -8,7 +8,7 @@ namespace xPLduinoManager
 		private global::Gtk.Label LabelPassword;
 		private global::Gtk.Entry EntryPassword;
 		private global::Gtk.Button buttonOk;
-		
+
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);

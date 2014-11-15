@@ -66,17 +66,10 @@
       <HintPath>..\..\..\..\Bureau\C-Sharp example\SourceCalico\calico\bin\Mono.TextEditor.dll</HintPath>
     </Reference>
     <Reference Include="Mono.TextEditor">
-      <HintPath>..\..\..\..\Bureau\C-Sharp example\SourceCalico\calico\bin\Mono.TextEditor.Other.dll</HintPath>
-      <Package>monodevelop</Package>
+      <HintPath>bin\Debug\Mono.TextEditor.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="HollyLibrary">
-      <HintPath>..\..\..\..\Téléchargements\HollyLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Satsuma">
-      <HintPath>..\..\..\..\Bureau\bin\Release\Satsuma.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -187,14 +180,14 @@
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
-        <MonoDevelop.Autotools.MakefileInfo RelativeMakefileName="Makefile" ExecuteTargetName="run" SyncReferences="true">
-          <BuildFilesVar Sync="true" Name="FILES" />
+        <MonoDevelop.Autotools.MakefileInfo RelativeMakefileName="Makefile" ExecuteTargetName="run" SyncReferences="True">
+          <BuildFilesVar Sync="True" Name="FILES" />
           <DeployFilesVar />
-          <ResourcesVar Sync="true" Name="RESOURCES" />
+          <ResourcesVar Sync="True" Name="RESOURCES" />
           <OthersVar />
-          <GacRefVar Sync="true" Name="REFERENCES" />
-          <AsmRefVar Sync="true" Name="REFERENCES" />
-          <ProjectRefVar Sync="true" Name="REFERENCES" />
+          <GacRefVar Sync="True" Name="REFERENCES" />
+          <AsmRefVar Sync="True" Name="REFERENCES" />
+          <ProjectRefVar Sync="True" Name="REFERENCES" />
         </MonoDevelop.Autotools.MakefileInfo>
       </Properties>
     </MonoDevelop>

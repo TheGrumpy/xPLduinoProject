@@ -1,9 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="xPLduino-Manager/Document/DebugTextMarker.cs">
+    <Files>
+      <File FileName="xPLduino-Manager/Class/DataManagement.cs" Line="4791" Column="3" />
+      <File FileName="xPLduino-Manager/Widgets/ProjectProperties.cs" Line="863" Column="4" />
+      <File FileName="xPLduino-Manager/Document/DebugTextMarker.cs" Line="38" Column="42" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" />
+        <State expanded="True">
+          <Node name="xPLduino-Manager" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Class" expanded="True" />
+            <Node name="Document" expanded="True" />
+            <Node name="Widgets" expanded="True" />
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
@@ -23,8 +35,8 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint enabled="false" file="/home/ludovic/Documents/xPLduino-Manager/xPLduino-Manager/xPLduino-Manager/Windows/ExternOutputAndHistoric.cs" line="19" />
-      <Breakpoint enabled="false" file="/home/ludovic/Documents/xPLduino-Manager/xPLduino-Manager/Class/DataManagement.cs" line="1609" />
+      <Breakpoint enabled="false" file="/home/ludovic/Documents/xPLduino-Manager/xPLduino-Manager/xPLduino-Manager/Windows/ExternOutputAndHistoric.cs" line="19" column="1" />
+      <Breakpoint enabled="false" file="/home/ludovic/Documents/xPLduino-Manager/xPLduino-Manager/Class/DataManagement.cs" line="1609" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

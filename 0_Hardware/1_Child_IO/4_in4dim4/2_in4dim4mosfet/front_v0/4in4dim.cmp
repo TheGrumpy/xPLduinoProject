@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-mar-13)-testing date = dim. 05 oct. 2014 16:12:32 CEST
+Cmp-Mod V01 Created by CvPcb (2012-nov-02)-testing date = lun. 03 nov. 2014 13:19:44 CET
 
 BeginCmp
 TimeStamp = /5067601F;
@@ -18,6 +18,13 @@ BeginCmp
 TimeStamp = /51AB4C03;
 Reference = C3;
 ValeurCmp = 4.7uF;
+IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /545772E0;
+Reference = C4;
+ValeurCmp = C;
 IdModule  = SM1206;
 EndCmp
 
@@ -141,6 +148,20 @@ IdModule  = PIN_ARRAY_2X1;
 EndCmp
 
 BeginCmp
+TimeStamp = /54576F4D;
+Reference = P6;
+ValeurCmp = CONN_6;
+IdModule  = PIN_ARRAY-6X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /54577CB2;
+Reference = P7;
+ValeurCmp = CONN_3X2;
+IdModule  = pin_array_3x2;
+EndCmp
+
+BeginCmp
 TimeStamp = /535581D6;
 Reference = Q1;
 ValeurCmp = PNP;
@@ -257,6 +278,13 @@ TimeStamp = /536E8372;
 Reference = R13;
 ValeurCmp = 4.7KR;
 IdModule  = SM1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /5457767C;
+Reference = SW1;
+ValeurCmp = SW_PUSH;
+IdModule  = SKQGAKE010;
 EndCmp
 
 EndListe

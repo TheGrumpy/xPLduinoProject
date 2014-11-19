@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-nov-02)-testing date = lun. 03 nov. 2014 13:19:44 CET
+Cmp-Mod V01 Created by CvPcb (2013-jul-07)-stable date = mer. 19 nov. 2014 17:26:45 CET
 
 BeginCmp
 TimeStamp = /5067601F;
@@ -155,38 +155,31 @@ IdModule  = PIN_ARRAY-6X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /54577CB2;
-Reference = P7;
-ValeurCmp = CONN_3X2;
-IdModule  = pin_array_3x2;
-EndCmp
-
-BeginCmp
 TimeStamp = /535581D6;
 Reference = Q1;
 ValeurCmp = PNP;
-IdModule  = SOT23;
+IdModule  = SOT23EBC;
 EndCmp
 
 BeginCmp
 TimeStamp = /53558292;
 Reference = Q2;
 ValeurCmp = PNP;
-IdModule  = SOT23;
+IdModule  = SOT23EBC;
 EndCmp
 
 BeginCmp
 TimeStamp = /535582B9;
 Reference = Q3;
 ValeurCmp = PNP;
-IdModule  = SOT23;
+IdModule  = SOT23EBC;
 EndCmp
 
 BeginCmp
 TimeStamp = /535582E0;
 Reference = Q4;
 ValeurCmp = PNP;
-IdModule  = SOT23;
+IdModule  = SOT23EBC;
 EndCmp
 
 BeginCmp
@@ -281,9 +274,9 @@ IdModule  = SM1206;
 EndCmp
 
 BeginCmp
-TimeStamp = /5457767C;
+TimeStamp = /545777AC;
 Reference = SW1;
-ValeurCmp = SW_PUSH;
+ValeurCmp = SKQGAKE010;
 IdModule  = SKQGAKE010;
 EndCmp
 

@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-mar-13)-testing date = lun. 21 avril 2014 18:07:15 CEST
+Cmp-Mod V01 Created by CvPcb (2013-jul-07)-stable date = mer. 19 nov. 2014 18:45:49 CET
 
 BeginCmp
 TimeStamp = /531094D5;
@@ -200,7 +200,7 @@ BeginCmp
 TimeStamp = /53553DBA;
 Reference = IC1;
 ValeurCmp = TLP290;
-IdModule  = SMD-4;
+IdModule  = DDIP-4;
 EndCmp
 
 BeginCmp
@@ -536,14 +536,14 @@ BeginCmp
 TimeStamp = /53107F54;
 Reference = U2;
 ValeurCmp = LTV847;
-IdModule  = SO16W;
+IdModule  = DDIP-16;
 EndCmp
 
 BeginCmp
 TimeStamp = /53108D8E;
 Reference = U3;
 ValeurCmp = LTV847;
-IdModule  = SO16W;
+IdModule  = DDIP-16;
 EndCmp
 
 EndListe

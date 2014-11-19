@@ -1,6 +1,6 @@
-update=lun. 21 avril 2014 18:00:32 CEST
+update=mer. 19 nov. 2014 18:38:01 CET
 version=1
-last_client=cvpcb
+last_client=pcbnew
 [general]
 version=1
 [eeschema]
@@ -46,14 +46,19 @@ LibName31=valves
 LibName32=relays
 LibName33=components/g5t-1-12vdc
 LibName34=components/max485
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
 [pcbnew]
 version=1
 LastNetListRead=8in8out.net
 UseCmpFile=1
-PadDrill="    1,300000"
-PadDrillOvalY="    1,300000"
-PadSizeH="    2,540000"
-PadSizeV="    2,540000"
+PadDrill="    1,016000"
+PadDrillOvalY="    1,016000"
+PadSizeH="    1,778000"
+PadSizeV="    1,778000"
 PcbTextSizeV="    2,032000"
 PcbTextSizeH="    1,524000"
 PcbTextThickness="    0,304800"
@@ -66,6 +71,7 @@ DrawSegmentWidth="    0,381000"
 BoardOutlineThickness="    0,381000"
 ModuleOutlineThickness="    0,254000"
 [pcbnew/libraries]
+LibDir=
 LibName1=components/Molex_39531-0003
 LibName2=sockets
 LibName3=connect
@@ -95,9 +101,4 @@ LibName26=components/Recom
 LibName27=components/GBU-4L
 LibName28=components/fuseholder
 LibName29=components/SOP-4
-LibDir=
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
+LibName30=components/DDIP

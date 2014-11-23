@@ -41,7 +41,7 @@ $Descr A2 23386 16535
 encoding utf-8
 Sheet 1 1
 Title "8in 8relays I2C board"
-Date "19 nov 2014"
+Date "21 nov 2014"
 Rev "V0.2"
 Comp "XPLDUINO project"
 Comment1 "GNU GPL v2"
@@ -258,7 +258,7 @@ Text GLabel 8100 9500 2    60   Input ~ 0
 MISO
 Text GLabel 8500 9600 2    60   Output ~ 0
 SCK
-Text GLabel 8100 9950 2    60   Output ~ 0
+Text GLabel 8500 9800 2    60   Output ~ 0
 /INT
 Text GLabel 9200 5200 3    60   Output ~ 0
 A0
@@ -287,7 +287,7 @@ F 3 "" H 7050 10050 60  0000 C CNN
 	1    7050 10050
 	1    0    0    -1  
 $EndComp
-Text GLabel 8400 11400 2    60   Input ~ 0
+Text GLabel 8100 9100 2    60   Input ~ 0
 CMD0
 Text GLabel 8150 10350 2    60   BiDi ~ 0
 SDA
@@ -507,11 +507,11 @@ F 3 "" H 6300 3650 60  0001 C CNN
 	1    6300 3650
 	1    0    0    -1  
 $EndComp
-Text GLabel 8450 9800 2    60   Input ~ 0
+Text GLabel 8400 11400 2    60   Input ~ 0
 CMD2
-Text GLabel 8100 11300 2    60   Input ~ 0
+Text GLabel 8100 11500 2    60   Input ~ 0
 CMD1
-Text GLabel 8100 9700 2    60   Input ~ 0
+Text GLabel 8100 11300 2    60   Input ~ 0
 CMD3
 NoConn ~ 8000 9300
 NoConn ~ 8000 8750
@@ -522,8 +522,6 @@ Text GLabel 8500 10800 2    60   Input ~ 0
 RX
 Text Notes 8750 10900 0    60   ~ 0
 vers MAX485 ?
-Text GLabel 8100 11500 2    60   Output ~ 0
-SEL
 Text GLabel 6650 13950 0    60   BiDi ~ 0
 SDA
 Text GLabel 8600 13950 2    60   BiDi ~ 0
@@ -919,58 +917,19 @@ F 3 "" H 7800 2900 60  0001 C CNN
 	1    7800 2900
 	1    0    0    -1  
 $EndComp
-$Comp
-L CONN_6 P6
-U 1 1 54576F4D
-P 3650 6200
-F 0 "P6" V 3600 6200 60  0000 C CNN
-F 1 "CONN_6" V 3700 6200 60  0000 C CNN
-F 2 "" H 3650 6200 60  0000 C CNN
-F 3 "" H 3650 6200 60  0000 C CNN
-	1    3650 6200
-	0    -1   -1   0   
-$EndComp
-Text GLabel 3500 6700 3    60   Output ~ 0
-TX
-Text GLabel 3600 6950 3    60   Input ~ 0
-RX
-$Comp
-L GND #PWR031
-U 1 1 545772BD
-P 3900 6950
-F 0 "#PWR031" H 3900 6950 30  0001 C CNN
-F 1 "GND" H 3900 6880 30  0001 C CNN
-F 2 "" H 3900 6950 60  0001 C CNN
-F 3 "" H 3900 6950 60  0001 C CNN
-	1    3900 6950
-	1    0    0    -1  
-$EndComp
-$Comp
-L +5V #PWR032
-U 1 1 545772D8
-P 3700 6650
-F 0 "#PWR032" H 3700 6740 20  0001 C CNN
-F 1 "+5V" H 3700 6740 30  0000 C CNN
-F 2 "" H 3700 6650 60  0001 C CNN
-F 3 "" H 3700 6650 60  0001 C CNN
-	1    3700 6650
-	-1   0    0    1   
-$EndComp
 Text GLabel 3400 7950 3    60   BiDi ~ 0
 RESET
 $Comp
-L GND #PWR033
+L GND #PWR031
 U 1 1 54577716
 P 3150 8550
-F 0 "#PWR033" H 3150 8550 30  0001 C CNN
+F 0 "#PWR031" H 3150 8550 30  0001 C CNN
 F 1 "GND" H 3150 8480 30  0001 C CNN
 F 2 "" H 3150 8550 60  0001 C CNN
 F 3 "" H 3150 8550 60  0001 C CNN
 	1    3150 8550
 	1    0    0    -1  
 $EndComp
-Text GLabel 8150 9100 2    60   Output ~ 0
-RES1
 $Comp
 L SKQGAKE010 SW1
 U 1 1 545777AC
@@ -1149,8 +1108,6 @@ Wire Wire Line
 Wire Wire Line
 	8000 10900 8100 10900
 Wire Wire Line
-	8000 11500 8100 11500
-Wire Wire Line
 	8000 13950 8600 13950
 Wire Wire Line
 	6650 13950 7200 13950
@@ -1191,10 +1148,6 @@ Wire Wire Line
 Wire Wire Line
 	7800 4050 7800 3950
 Wire Wire Line
-	8000 9700 8100 9700
-Wire Wire Line
-	8000 9800 8450 9800
-Wire Wire Line
 	8000 11300 8100 11300
 Wire Wire Line
 	8000 11400 8400 11400
@@ -1208,30 +1161,11 @@ Wire Wire Line
 	8000 10650 8500 10650
 Wire Wire Line
 	8000 13850 8200 13850
-Wire Wire Line
-	3500 6550 3500 6700
-Wire Wire Line
-	3400 6550 3400 7150
-Wire Wire Line
-	3800 6550 3800 6650
-Wire Wire Line
-	3800 6650 3900 6650
-Wire Wire Line
-	3900 6550 3900 6950
-Connection ~ 3900 6650
-Wire Wire Line
-	3700 6550 3700 6650
-Wire Wire Line
-	3600 6550 3600 6950
 Connection ~ 3150 7650
 Wire Wire Line
 	3150 7550 3150 7850
 Wire Wire Line
 	3150 8150 3150 8550
-Wire Wire Line
-	3150 7650 3400 7650
-Wire Wire Line
-	8000 9100 8150 9100
 Wire Wire Line
 	3150 7850 3100 7850
 Wire Wire Line
@@ -1244,18 +1178,31 @@ Connection ~ 8100 14150
 Wire Wire Line
 	7200 14050 7100 14050
 Connection ~ 7100 14150
-Connection ~ 3400 7650
 Wire Wire Line
-	3400 7550 3400 7950
+	3150 7650 3400 7650
+Wire Wire Line
+	3400 7650 3400 7950
+Wire Wire Line
+	8000 11500 8100 11500
+Wire Wire Line
+	8000 9100 8100 9100
+Wire Wire Line
+	8000 9700 8100 9700
+Wire Wire Line
+	8000 9800 8500 9800
+Text GLabel 10850 10800 2    60   Input ~ 0
+RX
+Text GLabel 10850 11000 2    60   Output ~ 0
+TX
 $Comp
-L C C4
-U 1 1 545772E0
-P 3400 7350
-F 0 "C4" H 3450 7450 50  0000 L CNN
-F 1 "C" H 3450 7250 50  0000 L CNN
-F 2 "" H 3400 7350 60  0000 C CNN
-F 3 "" H 3400 7350 60  0000 C CNN
-	1    3400 7350
-	1    0    0    -1  
+L CONN_2 P6
+U 1 1 546F93B9
+P 10500 10900
+F 0 "P6" V 10450 10900 40  0000 C CNN
+F 1 "CONN_2" V 10550 10900 40  0000 C CNN
+F 2 "" H 10500 10900 60  0000 C CNN
+F 3 "" H 10500 10900 60  0000 C CNN
+	1    10500 10900
+	-1   0    0    1   
 $EndComp
 $EndSCHEMATC

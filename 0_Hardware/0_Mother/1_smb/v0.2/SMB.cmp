@@ -1,4 +1,11 @@
-Cmp-Mod V01 Created by CvPcb (2012-nov-02)-testing date = sam. 29 juin 2013 16:51:36 CEST
+Cmp-Mod V01 Created by CvPcb (2013-jul-07)-stable date = dim. 23 nov. 2014 22:15:53 CET
+
+BeginCmp
+TimeStamp = /52CE9503;
+Reference = C1;
+ValeurCmp = CAPAPOL;
+IdModule  = C2V10;
+EndCmp
 
 BeginCmp
 TimeStamp = /4FA01278;
@@ -379,6 +386,27 @@ IdModule  = 1wire-TO92-;
 EndCmp
 
 BeginCmp
+TimeStamp = /52D29855;
+Reference = P3;
+ValeurCmp = CONN_3;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52D29D84;
+Reference = P4;
+ValeurCmp = CONN_3;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FDE1C88/54724E4E;
+Reference = P5;
+ValeurCmp = CONN_2;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
 TimeStamp = /500C6B20;
 Reference = P101;
 ValeurCmp = I2C_CONN;
@@ -446,6 +474,13 @@ TimeStamp = /4FDE1C88/5001A202;
 Reference = P301;
 ValeurCmp = CONN_2;
 IdModule  = MOL_CONN_2_MINI;
+EndCmp
+
+BeginCmp
+TimeStamp = /54723569;
+Reference = Q1;
+ValeurCmp = BSS84;
+IdModule  = SOT23;
 EndCmp
 
 BeginCmp
@@ -631,6 +666,13 @@ IdModule  = SKQGAKE010;
 EndCmp
 
 BeginCmp
+TimeStamp = /52CE94EA;
+Reference = U1;
+ValeurCmp = DS1340;
+IdModule  = SO8E;
+EndCmp
+
+BeginCmp
 TimeStamp = /4F9D6DA9/4F9D6DD5;
 Reference = U201;
 ValeurCmp = ENC28J60;
@@ -663,6 +705,13 @@ TimeStamp = /4FF04C39/519F2586;
 Reference = U303;
 ValeurCmp = 74HC08;
 IdModule  = SO14E;
+EndCmp
+
+BeginCmp
+TimeStamp = /52CE9701;
+Reference = X1;
+ValeurCmp = CRYSTAL;
+IdModule  = quartz_0.7;
 EndCmp
 
 BeginCmp

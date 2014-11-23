@@ -1,13 +1,8 @@
-update=jeu. 09 janv. 2014 13:13:08 CET
+update=dim. 23 nov. 2014 21:27:22 CET
 version=1
-last_client=eeschema
+last_client=cvpcb
 [general]
 version=1
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
 [pcbnew]
 version=1
 LastNetListRead=SMB.net
@@ -28,7 +23,6 @@ DrawSegmentWidth="    0,381000"
 BoardOutlineThickness="    0,381000"
 ModuleOutlineThickness="    0,076200"
 [pcbnew/libraries]
-LibDir=components
 LibName1=sockets
 LibName2=connect
 LibName3=discret
@@ -53,6 +47,9 @@ LibName21=RJ45_basic
 LibName22=1wire
 LibName23=CONN2x10
 LibName24=ohw-logo
+LibName25=SOT23-MOSFET
+LibName26=quartz_rtc
+LibDir=components
 [eeschema]
 version=1
 LibDir=components
@@ -104,3 +101,8 @@ LibName39=ALPS_SWITCHS
 LibName40=max485
 LibName41=1wire
 LibName42=ds1340
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms

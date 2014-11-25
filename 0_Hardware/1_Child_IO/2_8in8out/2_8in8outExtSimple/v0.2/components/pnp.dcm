@@ -1,0 +1,7 @@
+EESchema-DOCLIB  Version 2.0  Date: lun. 24 nov. 2014 22:32:36 CET
+#
+$CMP PNP
+F transistors/bipolar/*.*
+$ENDCMP
+#
+#End Doc Library

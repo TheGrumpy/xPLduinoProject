@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:mos_p
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -48,7 +49,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 4
 Title "Short Main Board - SMB controller"
-Date "23 nov 2014"
+Date "25 nov 2014"
 Rev "0"
 Comp "XPLDUINO project"
 Comment1 "GNU GPL v2"
@@ -1314,7 +1315,7 @@ Wire Wire Line
 	4000 1200 4000 1350
 Connection ~ 4500 700 
 Wire Wire Line
-	4500 800  4500 700 
+	4500 700  4500 800 
 Connection ~ 5250 700 
 Wire Wire Line
 	5350 1250 5350 1450
@@ -1386,7 +1387,7 @@ Wire Wire Line
 	4250 700  4250 800 
 Connection ~ 4250 700 
 Wire Wire Line
-	4750 800  4750 700 
+	4750 700  4750 800 
 Connection ~ 4750 700 
 Wire Wire Line
 	4000 700  5250 700 
@@ -1876,7 +1877,7 @@ V0.2: add RTC + SUPERCAP
 Wire Wire Line
 	5400 6550 5500 6550
 Wire Wire Line
-	5800 6700 5800 6850
+	5800 6750 5800 6850
 Connection ~ 5800 6850
 Wire Wire Line
 	5800 6150 6200 6150
@@ -1932,19 +1933,19 @@ Wire Wire Line
 Connection ~ 2050 7000
 Text Notes 1400 5850 0    60   ~ 0
 v0.2: add serial w/o max485
-$Comp
-L BSS138 Q1
-U 1 1 54723569
-P 5700 6500
-F 0 "Q1" H 5700 6351 40  0000 R CNN
-F 1 "BSS84" H 5700 6650 40  0000 R CNN
-F 2 "SOT-23" H 5570 6602 29  0000 C CNN
-F 3 "" H 5700 6500 60  0000 C CNN
-	1    5700 6500
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	5800 6300 5800 6150
+	5800 6350 5800 6150
 Wire Wire Line
 	1200 6600 1200 6500
+$Comp
+L MOSFET_P Q?
+U 1 1 5474E0C9
+P 5700 6550
+F 0 "Q?" H 5700 6740 60  0000 R CNN
+F 1 "MOSFET_P" H 5700 6370 60  0000 R CNN
+F 2 "~" H 5700 6550 60  0000 C CNN
+F 3 "~" H 5700 6550 60  0000 C CNN
+	1    5700 6550
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-jul-07)-stable date = dim. 23 nov. 2014 22:15:53 CET
+Cmp-Mod V01 Created by CvPcb (2013-jul-07)-stable date = mar. 25 nov. 2014 20:40:06 CET
 
 BeginCmp
 TimeStamp = /52CE9503;
@@ -477,9 +477,9 @@ IdModule  = MOL_CONN_2_MINI;
 EndCmp
 
 BeginCmp
-TimeStamp = /54723569;
+TimeStamp = /5474E0C9;
 Reference = Q1;
-ValeurCmp = BSS84;
+ValeurCmp = MOSFET_P;
 IdModule  = SOT23;
 EndCmp
 

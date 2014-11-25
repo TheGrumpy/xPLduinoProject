@@ -40,7 +40,7 @@ $Descr A2 23386 16535
 encoding utf-8
 Sheet 1 1
 Title "4in 4dim power mosfet board"
-Date "19 nov 2014"
+Date "25 nov 2014"
 Rev "V0.0"
 Comp "XPLDUINO project"
 Comment1 "GNU GPL v2"
@@ -1209,28 +1209,28 @@ $EndComp
 $Comp
 L R R1
 U 1 1 53553DC7
-P 6550 8800
-F 0 "R1" H 6400 8700 50  0000 C CNN
-F 1 "56K 1W" H 6300 8900 50  0000 C CNN
-F 2 "" H 6550 8800 60  0001 C CNN
-F 3 "" H 6550 8800 60  0001 C CNN
-	1    6550 8800
-	1    0    0    -1  
+P 6550 10350
+F 0 "R1" H 6400 10250 50  0000 C CNN
+F 1 "56K 1W" H 6300 10350 50  0000 C CNN
+F 2 "" H 6550 10350 60  0001 C CNN
+F 3 "" H 6550 10350 60  0001 C CNN
+	1    6550 10350
+	-1   0    0    1   
 $EndComp
 $Comp
 L R R2
 U 1 1 53553DD7
-P 6550 9300
-F 0 "R2" H 6400 9200 50  0000 C CNN
+P 6550 9400
+F 0 "R2" H 6400 9300 50  0000 C CNN
 F 1 "56K 1W" H 6300 9400 50  0000 C CNN
-F 2 "" H 6550 9300 60  0001 C CNN
-F 3 "" H 6550 9300 60  0001 C CNN
-	1    6550 9300
-	1    0    0    -1  
+F 2 "" H 6550 9400 60  0001 C CNN
+F 3 "" H 6550 9400 60  0001 C CNN
+	1    6550 9400
+	-1   0    0    1   
 $EndComp
-Text GLabel 6550 10000 3    60   Input ~ 0
+Text GLabel 6550 9150 1    60   Input ~ 0
 L
-Text GLabel 6550 8550 1    60   Input ~ 0
+Text GLabel 6550 10600 3    60   Input ~ 0
 N
 $Comp
 L GND #PWR015
@@ -1772,13 +1772,11 @@ Connection ~ 16300 1950
 Wire Wire Line
 	8050 13700 8500 13700
 Wire Wire Line
-	6550 9550 6550 9650
+	6550 9850 6550 10100
 Wire Wire Line
 	6550 9650 6750 9650
 Wire Wire Line
 	6550 9850 6750 9850
-Wire Wire Line
-	6550 9850 6550 10000
 Wire Wire Line
 	7450 9650 7700 9650
 Wire Wire Line

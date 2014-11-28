@@ -1,4 +1,4 @@
-update=mer. 19 nov. 2014 18:38:01 CET
+update=ven. 28 nov. 2014 17:01:32 CET
 version=1
 last_client=pcbnew
 [general]
@@ -53,12 +53,12 @@ NetIExt=net
 EquName1=devcms
 [pcbnew]
 version=1
-LastNetListRead=8in8out.net
+LastNetListRead=
 UseCmpFile=1
-PadDrill="    1,016000"
-PadDrillOvalY="    1,016000"
-PadSizeH="    1,778000"
-PadSizeV="    1,778000"
+PadDrill="    0,000000"
+PadDrillOvalY="    0,000000"
+PadSizeH="    1,500000"
+PadSizeV="    1,400000"
 PcbTextSizeV="    2,032000"
 PcbTextSizeH="    1,524000"
 PcbTextThickness="    0,304800"

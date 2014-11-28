@@ -39,7 +39,7 @@ $Descr A2 23386 16535
 encoding utf-8
 Sheet 1 1
 Title "8in 8relays I2C board"
-Date "24 nov 2014"
+Date "28 nov 2014"
 Rev "V0.2"
 Comp "XPLDUINO project"
 Comment1 "GNU GPL v2"
@@ -1798,17 +1798,6 @@ Text GLabel 18050 8400 0    60   Output ~ 0
 R6
 Text GLabel 18050 10250 0    60   Output ~ 0
 R7
-$Comp
-L 7805 U1
-U 1 1 516549E7
-P 12700 2550
-F 0 "U1" H 12850 2354 60  0000 C CNN
-F 1 "7805" H 12700 2750 60  0000 C CNN
-F 2 "" H 12700 2550 60  0000 C CNN
-F 3 "" H 12700 2550 60  0000 C CNN
-	1    12700 2550
-	1    0    0    -1  
-$EndComp
 Wire Bus Line
 	12050 2000 13400 2000
 Wire Bus Line
@@ -2156,4 +2145,15 @@ Wire Wire Line
 	8050 4100 8500 4100
 Wire Wire Line
 	8500 4100 8500 4150
+$Comp
+L LM7805CT U1
+U 1 1 54789373
+P 12700 2550
+F 0 "U1" H 12500 2750 40  0000 C CNN
+F 1 "LM7805CT" H 12700 2750 40  0000 L CNN
+F 2 "TO-220" H 12700 2650 30  0000 C CIN
+F 3 "" H 12700 2550 60  0000 C CNN
+	1    12700 2550
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

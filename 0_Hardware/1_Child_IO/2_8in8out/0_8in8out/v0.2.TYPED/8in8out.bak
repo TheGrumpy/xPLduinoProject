@@ -39,7 +39,7 @@ $Descr A2 23386 16535
 encoding utf-8
 Sheet 1 1
 Title "8in 8relays I2C board"
-Date "24 nov 2014"
+Date "28 nov 2014"
 Rev "V0.2"
 Comp "XPLDUINO project"
 Comment1 "GNU GPL v2"
@@ -678,21 +678,21 @@ OUT0
 Text GLabel 12700 9700 2    60   Output ~ 0
 OUT1
 Text GLabel 16800 2800 0    60   Input ~ 0
-OUT0
-Text GLabel 17150 2900 0    60   Input ~ 0
-OUT1
-Text GLabel 16800 3000 0    60   Input ~ 0
-OUT2
-Text GLabel 17150 3100 0    60   Input ~ 0
-OUT3
-Text GLabel 17150 3500 0    60   Input ~ 0
 OUT7
-Text GLabel 16800 3400 0    60   Input ~ 0
+Text GLabel 17150 2900 0    60   Input ~ 0
 OUT6
-Text GLabel 17150 3300 0    60   Input ~ 0
+Text GLabel 16800 3000 0    60   Input ~ 0
 OUT5
-Text GLabel 16800 3200 0    60   Input ~ 0
+Text GLabel 17150 3100 0    60   Input ~ 0
 OUT4
+Text GLabel 17150 3500 0    60   Input ~ 0
+OUT0
+Text GLabel 16800 3400 0    60   Input ~ 0
+OUT1
+Text GLabel 17150 3300 0    60   Input ~ 0
+OUT2
+Text GLabel 16800 3200 0    60   Input ~ 0
+OUT3
 Text GLabel 4500 3850 2    60   Input ~ 0
 CMD0
 Text GLabel 4500 4250 2    60   Input ~ 0
@@ -1746,21 +1746,21 @@ F 3 "" H 18050 4500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 18700 2800 2    60   Input ~ 0
-R0
-Text GLabel 18450 2900 2    60   Input ~ 0
-R1
-Text GLabel 18700 3000 2    60   Input ~ 0
-R2
-Text GLabel 18450 3100 2    60   Input ~ 0
-R3
-Text GLabel 18700 3200 2    60   Input ~ 0
-R4
-Text GLabel 18450 3300 2    60   Input ~ 0
-R5
-Text GLabel 18700 3400 2    60   Input ~ 0
-R6
-Text GLabel 18450 3500 2    60   Input ~ 0
 R7
+Text GLabel 18450 2900 2    60   Input ~ 0
+R6
+Text GLabel 18700 3000 2    60   Input ~ 0
+R5
+Text GLabel 18450 3100 2    60   Input ~ 0
+R4
+Text GLabel 18700 3200 2    60   Input ~ 0
+R3
+Text GLabel 18450 3300 2    60   Input ~ 0
+R2
+Text GLabel 18700 3400 2    60   Input ~ 0
+R1
+Text GLabel 18450 3500 2    60   Input ~ 0
+R0
 Wire Wire Line
 	18450 2800 18700 2800
 Wire Wire Line
@@ -1798,17 +1798,6 @@ Text GLabel 18050 8400 0    60   Output ~ 0
 R6
 Text GLabel 18050 10250 0    60   Output ~ 0
 R7
-$Comp
-L 7805 U1
-U 1 1 516549E7
-P 12700 2550
-F 0 "U1" H 12850 2354 60  0000 C CNN
-F 1 "7805" H 12700 2750 60  0000 C CNN
-F 2 "" H 12700 2550 60  0000 C CNN
-F 3 "" H 12700 2550 60  0000 C CNN
-	1    12700 2550
-	1    0    0    -1  
-$EndComp
 Wire Bus Line
 	12050 2000 13400 2000
 Wire Bus Line
@@ -2156,4 +2145,15 @@ Wire Wire Line
 	8050 4100 8500 4100
 Wire Wire Line
 	8500 4100 8500 4150
+$Comp
+L LM7805CT U?
+U 1 1 54789373
+P 12700 2550
+F 0 "U?" H 12500 2750 40  0000 C CNN
+F 1 "LM7805CT" H 12700 2750 40  0000 L CNN
+F 2 "TO-220" H 12700 2650 30  0000 C CIN
+F 3 "" H 12700 2550 60  0000 C CNN
+	1    12700 2550
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

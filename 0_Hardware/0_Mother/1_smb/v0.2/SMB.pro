@@ -1,6 +1,6 @@
-update=mar. 25 nov. 2014 20:39:17 CET
+update=ven. 28 nov. 2014 17:44:36 CET
 version=1
-last_client=eeschema
+last_client=cvpcb
 [general]
 version=1
 [pcbnew]
@@ -49,12 +49,8 @@ LibName23=CONN2x10
 LibName24=ohw-logo
 LibName25=SOT23-MOSFET
 LibName26=quartz_rtc
+LibName27=SOIC-8
 LibDir=components
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
 [eeschema]
 version=1
 LibDir=components
@@ -107,3 +103,8 @@ LibName40=ALPS_SWITCHS
 LibName41=max485
 LibName42=1wire
 LibName43=ds1340
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms

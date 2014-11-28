@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-jul-07)-stable date = mar. 25 nov. 2014 20:40:06 CET
+Cmp-Mod V01 Created by CvPcb (2013-jul-07)-stable date = ven. 28 nov. 2014 17:46:19 CET
 
 BeginCmp
 TimeStamp = /52CE9503;
@@ -676,7 +676,7 @@ BeginCmp
 TimeStamp = /4F9D6DA9/4F9D6DD5;
 Reference = U201;
 ValeurCmp = ENC28J60;
-IdModule  = SO28;
+IdModule  = SO28W;
 EndCmp
 
 BeginCmp

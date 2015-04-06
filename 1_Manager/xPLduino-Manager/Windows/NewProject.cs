@@ -72,7 +72,7 @@ namespace xPLduinoManager
 			{
 				if(!File.Exists(ButtonChooseFolder.Filename + "/" + _ProjectName + param.ParamP("ExtensionFile"))) //On verifie que le projet existe pas au chemin indiqué par l'utilisateur
 				{
-					foreach(Project Pro in datamanagement.ListProject)
+					foreach(Project Pro in datamanagement.ListProject.Values)
 					{
 						if(Pro.Project_Name == _ProjectName && ButtonChooseFolder.Filename == Pro.Project_SavePath)
 						{

@@ -118,7 +118,7 @@ namespace xPLduinoManager
 			TextEditorFunction.ButtonReleaseEvent += OnTextEditorFunctionButtonReleaseEvent;
 			
 			//Permet de retourner l'id du projet
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -174,7 +174,7 @@ namespace xPLduinoManager
 			UpdateFunctionTreeview();
 			InitFunctionArgumentTreeview();
 			
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -246,7 +246,7 @@ namespace xPLduinoManager
 														pref.TEMPGetValue,
 														};			
 			
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -307,7 +307,7 @@ namespace xPLduinoManager
 			
 			TextEditorScenario.Options = OptionsTextEditorScenario;
 			
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -390,7 +390,7 @@ namespace xPLduinoManager
 						TextEditorScenario.Text = TextEditorScenario.Text + "\n";
 					}	
 	
-					foreach(Project Pro in datamanagement.ListProject) //Dans la liste des projets
+					foreach(Project Pro in datamanagement.ListProject.Values) //Dans la liste des projets
 					{
 						foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 						{
@@ -441,7 +441,7 @@ namespace xPLduinoManager
 			
 					if(TextEditorScenario.SelectedText != null)
 					{
-						foreach(Project Pro in datamanagement.ListProject) //Dans la liste des projets
+						foreach(Project Pro in datamanagement.ListProject.Values) //Dans la liste des projets
 						{
 							foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 							{
@@ -663,7 +663,7 @@ namespace xPLduinoManager
 							TextEditorFunction.Text = TextEditorFunction.Text + "\n";
 						}	
 		
-						foreach(Project Pro in datamanagement.ListProject) //Dans la liste des projets
+						foreach(Project Pro in datamanagement.ListProject.Values) //Dans la liste des projets
 						{
 							foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 							{
@@ -995,7 +995,7 @@ namespace xPLduinoManager
 		public void UpdateVariableTreeview()
 		{
 			VariableListStore.Clear();
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -1037,7 +1037,7 @@ namespace xPLduinoManager
 						return;				
 					}
 				
-					foreach(Project Pro in datamanagement.ListProject) //Dans la liste des projets
+				foreach(Project Pro in datamanagement.ListProject.Values) //Dans la liste des projets
 					{
 						foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 						{
@@ -1322,7 +1322,7 @@ namespace xPLduinoManager
 		public void UpdateFunctionTreeview()
 		{
 			FunctionListStore.Clear();
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -1364,7 +1364,7 @@ namespace xPLduinoManager
 						return;				
 					}
 				
-					foreach(Project Pro in datamanagement.ListProject) //Dans la liste des projets
+				foreach(Project Pro in datamanagement.ListProject.Values) //Dans la liste des projets
 					{
 						foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 						{
@@ -1480,7 +1480,7 @@ namespace xPLduinoManager
 					MemorisationIdFunction = IdFunctionRead;
 				}
 				
-				foreach(Project Pro in datamanagement.ListProject)
+				foreach(Project Pro in datamanagement.ListProject.Values)
 				{	
 					foreach(Node node in Pro.ReturnListNode())
 					{
@@ -1659,7 +1659,7 @@ namespace xPLduinoManager
 		public void UpdateFunctionArgumentTreeview()
 		{
 			FunctionArgsListStore.Clear();
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -1775,7 +1775,7 @@ namespace xPLduinoManager
 			
 				if(NewText != NameSelected)
 				{
-					foreach(Project Pro in datamanagement.ListProject) //Dans la liste des projets
+				foreach(Project Pro in datamanagement.ListProject.Values) //Dans la liste des projets
 					{
 						foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 						{
@@ -1840,7 +1840,7 @@ namespace xPLduinoManager
 		//Fcontion peremettant de saoir si un widget est correct, si il nous retourne de la data
 		public bool WidgetIsCorrect()
 		{
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{

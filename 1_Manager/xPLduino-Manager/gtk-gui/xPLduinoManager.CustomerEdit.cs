@@ -5,7 +5,9 @@ namespace xPLduinoManager
 	public partial class CustomerEdit
 	{
 		private global::Gtk.HPaned hpaned2;
+		
 		private global::Gtk.ScrolledWindow ScrolledWindowTextEdit1;
+		
 		private global::Gtk.ScrolledWindow ScrolledWindowTextEdit2;
 
 		protected virtual void Build ()

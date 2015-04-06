@@ -103,7 +103,7 @@ namespace xPLduinoManager
 			OptionTreeView.ButtonReleaseEvent += new ButtonReleaseEventHandler(OptionsTreeViewButtonRelease);
 			
 			//Permet de retourner l'id du projet
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -130,7 +130,7 @@ namespace xPLduinoManager
 			NoteLabel.Text = param.ParamT("BI2CP_NoteLabel");
 			vpaned1.Position = 0;
 			hpaned1.Position = (datamanagement.mainwindow.ReturnHpanedPosition() * param.ParamI("NoteHPanedPurcent")) / 100;
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -316,7 +316,7 @@ namespace xPLduinoManager
 		{
 			PropertiesListStore.Clear();
 
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -392,7 +392,7 @@ namespace xPLduinoManager
 				{
 					string CurrentTypeBoard = "";
 					Int32 MaxI2CAdress = 0;
-					foreach(Project Pro in datamanagement.ListProject)
+					foreach(Project Pro in datamanagement.ListProject.Values)
 					{
 						foreach(Node nod in Pro.ReturnListNode())
 						{
@@ -462,7 +462,7 @@ namespace xPLduinoManager
 				{
 					string CurrentTypeBoard = "";
 					Int32 MaxI2CAdress = 0;
-					foreach(Project Pro in datamanagement.ListProject)
+					foreach(Project Pro in datamanagement.ListProject.Values)
 					{
 						foreach(Node nod in Pro.ReturnListNode())
 						{
@@ -638,7 +638,7 @@ namespace xPLduinoManager
 			string InstanceName = "";
 			string ExtensionInstanceName = "";
 			Child_Pin_ListStore.Clear();
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -706,7 +706,7 @@ namespace xPLduinoManager
 					IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("BI2CP_TVChild_OpPin_PositionID")); //Nous retournons l'id du noeud selectionné
 				}	 
 				
-				foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 				{
 					foreach(Node node in Pro.ReturnListNode())
 					{
@@ -774,7 +774,7 @@ namespace xPLduinoManager
 					ChildIDSelect = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("BI2CP_TVChild_OpPin_PositionID")); //Nous récuperons la valeur que nous stockons	
 				}	
 				
-				foreach(Project Pro in datamanagement.ListProject)
+				foreach(Project Pro in datamanagement.ListProject.Values)
 				{
 					foreach(Node node in Pro.ReturnListNode())
 					{
@@ -939,7 +939,7 @@ namespace xPLduinoManager
 		//Fcontion peremettant de saoir si un widget est correct, si il nous retourne de la data
 		public bool WidgetIsCorrect()
 		{
-			foreach(Project Pro in datamanagement.ListProject)//Pour chaque projet de la liste
+			foreach(Project Pro in datamanagement.ListProject.Values)//Pour chaque projet de la liste
 			{	
 				foreach(Node nod in Pro.ReturnListNode())
 				{

@@ -129,7 +129,7 @@ namespace xPLduinoManager
 			
 			hpaned1.Position = (datamanagement.mainwindow.ReturnHpanedPosition() * param.ParamI("NoteHPanedPurcent")) / 100; //On met le hpaned à n% de la taille de la fenetre mere
 			
-			foreach(Project Pro in datamanagement.ListProject) //Pour chaque projet de la liste
+			foreach(Project Pro in datamanagement.ListProject.Values) //Pour chaque projet de la liste
 			{
 				if(Pro.Project_Id == Project_Id)//Si l'id du projet est égale à l'id de la liste
 				{
@@ -356,7 +356,7 @@ namespace xPLduinoManager
 		public void UpdateChildTreeView_Node()
 		{
 			Child_Node_ListStore.Clear();//On vide le store
-			foreach(Project Pro in datamanagement.ListProject)//Pour chaque projet de la liste
+			foreach(Project Pro in datamanagement.ListProject.Values)//Pour chaque projet de la liste
 			{	
 				if(Pro.Project_Id == Project_Id)//si un projet est égale à l'id project mis en paramètre
 				{
@@ -576,7 +576,7 @@ namespace xPLduinoManager
 		{
 			PropertiesListStore.Clear();//On vide le listestore
 
-			foreach(Project Pro in datamanagement.ListProject)//Pour chaque projet de la liste
+			foreach(Project Pro in datamanagement.ListProject.Values)//Pour chaque projet de la liste
 			{
 				if(Pro.Project_Id == Project_Id)//Si l'id du projet est celui choisit
 				{						
@@ -675,7 +675,7 @@ namespace xPLduinoManager
 					ChildDHCPSelect = (bool) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("PP_TVChild_OpNode_PositionDHCP")); //Nous récuperons la valeur que nous stockons
 					ChildIDSelect = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("PP_TVChild_OpNode_PositionID")); //Nous récuperons la valeur que nous stockons
 					
-					foreach(Project Pro in datamanagement.ListProject) //Pour chaque projet 
+					foreach(Project Pro in datamanagement.ListProject.Values) //Pour chaque projet 
 					{
 						foreach(Node node in Pro.ReturnListNode()) //pour chaque noeud
 						{
@@ -704,14 +704,12 @@ namespace xPLduinoManager
 			//Init and update OptionTreeView
 			OptionNameColumn.Title = param.ParamT("PP_TVOpt_NameLabel");
 			UpdateOptionsTreeView();
-			
-			foreach(Project Pro in datamanagement.ListProject) //Pour chaque projet de la liste
+
+			Project Pro = datamanagement.GetProjet(Project_Id);
+			if(Pro != null)//Si l'id du projet est égale à l'id de la liste
 			{
-				if(Pro.Project_Id == Project_Id)//Si l'id du projet est égale à l'id de la liste
-				{
-					TextViewNote.Buffer.Text = Pro.Project_Note;//On affiche les note dans la textview			
-				}
-			}			
+				TextViewNote.Buffer.Text = Pro.Project_Note;//On affiche les note dans la textview			
+			}
 			
 			if (OptionName == null || OptionName == "")
 			{
@@ -783,12 +781,11 @@ namespace xPLduinoManager
 		//Fcontion peremettant de saoir si un widget est correct, si il nous retourne de la data
 		public bool WidgetIsCorrect()
 		{
-			foreach(Project Pro in datamanagement.ListProject)//Pour chaque projet de la liste
-			{	
-				if(Pro.Project_Id == Project_Id)//si un projet est égale à l'id project mis en paramètre
-				{
-					return true;
-				}
+			Project Pro = datamanagement.GetProjet(Project_Id);
+
+			if(Pro != null)//si un projet est égale à l'id project mis en paramètre
+			{
+				return true;
 			}
 			return false;
 		}
@@ -840,7 +837,7 @@ namespace xPLduinoManager
 				IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("PP_TVChild_OpNode_PositionID")); //Nous retournons l'id de l'instance		
 			}				
 			
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach (Node node in pro.ReturnListNode()) {
 					if (IdSelected != "") {
@@ -874,7 +871,7 @@ namespace xPLduinoManager
 				IdSelected = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("PP_TVChild_OpNode_PositionID")); //Nous retournons l'id de l'instance		
 			}	
 			
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{

@@ -90,9 +90,9 @@ namespace xPLduinoManager
 		public Param param;
 		public Preference pref;
 		
-		public List<Project> ListProject;
+		public Dictionary<int, Project> ListProject;
 		
-		public List<List<Project>> CopyListProject;
+		public List<Dictionary<int, Project>> CopyListProject;
 		public int CountCopy;
 		public int ViewCopy;		
 		
@@ -174,19 +174,19 @@ namespace xPLduinoManager
 		{
 			this.param = _param;
 			this.pref = _pref;
-			ListProject = new List<Project>();	//Création de la liste des projets
+			ListProject = new Dictionary<int, Project>();	//Création de la liste des projets
 			ListBoards = new List<Boards>(); //Création de la liste des cartes I2C
 			ListMenuTextEditor = new List<MenuTextEditor>(); //Creation de la liste des élément du menu texteditor
 			ListMenuTextEditorScenario = new List<MenuTextEditorScenario>(); //Création des éléments du menu texteditor
 			ListMenuTextEditorFunction = new List<MenuTextEditorFunction>(); //Création des éléments du menu texteditor
 			
-			CopyListProject = new List<List<Project>>();
+			CopyListProject = new List<Dictionary<int, Project>>();
 			
 			CountCopy = 0;
 			ViewCopy = 0;
 			for(int i=0;i<pref.NumberOfProjectCopy;i++)
 			{
-				CopyListProject.Add(new List<Project>());
+				CopyListProject.Add(new Dictionary<int, Project>());
 			}
 			AddBoards(); 
 			AddElementInListMenuTextEditor();
@@ -278,7 +278,7 @@ namespace xPLduinoManager
 		//	string _ProjectAuthor : Nom de l'auteur
 		public bool CreateNewProject(string _ProjectName, string _ProjectAuthor,string _DirectoryPath)
 		{	
-			ListProject.Add(new Project(Project_Id,_ProjectName,_ProjectAuthor,_DirectoryPath,param,pref)); //Ajout d'un nouveau projet dans la liste
+			ListProject.Add(Project_Id, new Project(Project_Id,_ProjectName,_ProjectAuthor,_DirectoryPath,param,pref)); //Ajout d'un nouveau projet dans la liste
 			CurrentProjectId = Project_Id;
 			Project_Id++; //Incrémentation de l'id project
 			mainwindow.UpdateEplorerTreeView(); //Mise à jour de l'explorer projet
@@ -288,7 +288,19 @@ namespace xPLduinoManager
 			CopyProject("HTNewProject",_ProjectName);
 			return true;
 		}
-			
+
+//####### Méthode permettant la récuération d'un projet en fonction de son ID ##################	
+		public Project GetProjet(int ProjectNumber)
+		{
+			if (this.ListProject.ContainsKey(ProjectNumber))
+			{
+				return 	this.ListProject[ProjectNumber];
+			}
+			else
+			{
+				return null;
+			}
+		}
 //################Fonction permettant la création des instances ################################	
 		
 		//Fonction AddNodeInProject
@@ -300,9 +312,9 @@ namespace xPLduinoManager
 		//	bool : Correct si la création est réussit
 		public bool AddNodeInProject(string _Name, Int32 _Project_Id)
 		{ 	
-			foreach(Project Pro in ListProject) //Dans la liste des projets
-			{
-				if(Pro.Project_Id == _Project_Id) //Si le projet porte l'id que nous avons passé en paramètre
+			Project Pro = GetProjet(_Project_Id);
+
+				if(Pro != null) //Si le projet porte l'id que nous avons passé en paramètre
 				{			
 					_Name = ReturnCorrectName(_Name);
 					Pro.AddNodeInProject(_Name,Node_Id); //Nous ajoutons un nouveau noeud au projet
@@ -326,7 +338,6 @@ namespace xPLduinoManager
 					mainwindow.UpdateComboboxSelectUsb();
 					return true;
 				}
-			}
 			return false;
 		}		
 		
@@ -339,7 +350,7 @@ namespace xPLduinoManager
 		//	bool : Correct si la création est réussit		
 		public bool AddNetworkInNode(string _Type,Int32 _Node_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{				
 				foreach (Node node in Pro.ReturnListNode())	//Pour chaque noeud présent
 				{		
@@ -371,7 +382,7 @@ namespace xPLduinoManager
 		//Fonction permettant l'ajout d'une instance à un noeud
 		public bool AddInstanceInNode(string _Type,string _Name,Int32 _Node_Id)
 		{
-			foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+			foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 			{				
 				foreach (Node node in Pro.ReturnListNode())	//Pour chaque noeud présent
 				{		
@@ -406,7 +417,7 @@ namespace xPLduinoManager
 		//	bool : Correct si la création est réussit
 		public bool AddBoardInNetwork(string _Type, string _Name,Int32 _Network_Id)
 		{
-			foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+			foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 			{			
 				foreach (Node node in Pro.ReturnListNode())	//Pour chaque noeud présent						
 				{	
@@ -439,7 +450,7 @@ namespace xPLduinoManager
 		//	Int32 _Board_Id : Id de la carte où nous devons ajouter des broches
 		public bool AddPinsInBoard(string _Type, Int32 _Board_Id)
 		{
-			foreach (Project Pro in ListProject)//Pour chaque projet de la liste
+			foreach (Project Pro in ListProject.Values)//Pour chaque projet de la liste
 			{
 				foreach (Node node in Pro.ReturnListNode()) //Pour chaque noeud de la liste des noeud
 				{
@@ -478,7 +489,7 @@ namespace xPLduinoManager
 		//Fonction permettant de lire les paramètres de debbugage dans le fichier xml
 		public bool AddDebudInNode(Int32 _NodeId)
 		{
-			foreach(Project Pro in ListProject)
+			foreach(Project Pro in ListProject.Values)
 			{
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -513,7 +524,7 @@ namespace xPLduinoManager
 		public bool AddCustomerInNode(string _Name, Int32 _NodeId, bool ActivateCopyProject)
 		{
 			bool _DefaultUse = false;
-			foreach(Project Pro in ListProject)
+			foreach(Project Pro in ListProject.Values)
 			{
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -560,7 +571,7 @@ namespace xPLduinoManager
 		//Fonction permettant d'ajouter un scénario dans la liste des scénario d'un noeud
 		public bool AddScenarioInNode(string _Name, Int32 _NodeId, bool ActivateCopyProject)
 		{
-			foreach(Project Pro in ListProject)
+			foreach(Project Pro in ListProject.Values)
 			{
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -600,7 +611,7 @@ namespace xPLduinoManager
 			//Fonction permettant d'ajouter une variable à un scenario
 			public bool AddVariableInScenario(string _Name, string _Type, Int32 _ScenarioId)
 			{
-				foreach(Project Pro in ListProject)
+			foreach(Project Pro in ListProject.Values)
 				{
 					foreach(Node node in Pro.ReturnListNode())
 					{			
@@ -628,7 +639,7 @@ namespace xPLduinoManager
 			//Fonction permettant d'ajouter une fonction dans un scénario
 			public bool AddFunctionInScenario(string _Name, string _TypeReturn, Int32 _ScenarioId)
 			{
-				foreach(Project Pro in ListProject)
+			foreach(Project Pro in ListProject.Values)
 				{
 					foreach(Node node in Pro.ReturnListNode())
 					{			
@@ -659,22 +670,21 @@ namespace xPLduinoManager
 		//	Int32 _Project_Id : Id du projet à supprimer
 		public bool DeleteProject(Int32 _Project_Id)
 		{
-			foreach(Project Pro in ListProject) //Pour chaque projet de la liste
-			{
-				if(Pro.Project_Id == _Project_Id) //Si le numéro du projet est celui que nous avons passé en paramètre
-				{			
-					string NameProject = Pro.Project_Name;
-					ListProject.Remove(Pro);//Nous supprimons le projet de la liste
-					mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
-					mainwindow.CloseTabInCaseOfDelete();//Permet d'enlever le tab si celui-ci est ouvert							
-					UpdateInstanceUsed();
-					mainwindow.UpdateEplorerTreeView(); //On fait la mise à jour de l'explorer treeview
-					mainwindow.Sensitive = true; //Activation de la fenetre principale	
-					CopyProject("HTDeleteProject",NameProject);
-					CurrentProjectId = 0;
-					mainwindow.UpdateStatusBar();
-					return true;
-				}
+			Project Pro = GetProjet(_Project_Id);
+
+			if(Pro != null) //Si le numéro du projet est celui que nous avons passé en paramètre
+			{			
+				string NameProject = Pro.Project_Name;
+				ListProject.Remove(_Project_Id);//Nous supprimons le projet de la liste
+				mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
+				mainwindow.CloseTabInCaseOfDelete();//Permet d'enlever le tab si celui-ci est ouvert							
+				UpdateInstanceUsed();
+				mainwindow.UpdateEplorerTreeView(); //On fait la mise à jour de l'explorer treeview
+				mainwindow.Sensitive = true; //Activation de la fenetre principale	
+				CopyProject("HTDeleteProject",NameProject);
+				CurrentProjectId = 0;
+				mainwindow.UpdateStatusBar();
+				return true;
 			}
 			return false;
 		}
@@ -687,7 +697,7 @@ namespace xPLduinoManager
 		//	bool : Vrai si réussit
 		public bool DeleteNodeInProject(Int32 _Node_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{		
 				foreach (Node node in  Pro.ReturnListNode()) //Pour chaque noeud de la liste des noeud
 				{		
@@ -718,7 +728,7 @@ namespace xPLduinoManager
 		//	bool : Vrai si réussit		
 		public bool DeleteNetworkInNode(Int32 _Network_Id)
 		{
-			foreach(Project Pro in ListProject)
+			foreach(Project Pro in ListProject.Values)
 			{
 				foreach (Node node in Pro.ReturnListNode()) //Pour chaque noeud de la liste des noeud
 				{
@@ -752,7 +762,7 @@ namespace xPLduinoManager
 		//	bool : Vrai si réussit		
 		public bool DeleteBoardInNetwork(Int32 _Board_Id)
 		{		
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{			
 				foreach (Node node in Pro.ReturnListNode()) //Pour chaque noeud de la liste des noeud
 				{
@@ -786,7 +796,7 @@ namespace xPLduinoManager
 		//Fonction permettant de supprimer une instance dans un noeud
 		public bool DeleteInstanceInNode(Int32 _Instance_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{			
 				foreach (Node node in Pro.ReturnListNode()) //Pour chaque noeud de la liste des noeud
 				{
@@ -828,7 +838,7 @@ namespace xPLduinoManager
 		//Fonction permettant de supprimer un customer
 		public bool DeleteCustomerInNode(Int32 _CustomerId)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{			
 				foreach (Node node in Pro.ReturnListNode()) //Pour chaque noeud de la liste des noeud
 				{
@@ -865,7 +875,7 @@ namespace xPLduinoManager
 		//Fonction permettant de supprimer un scenario dans un noeud
 		public bool DeleteScenarioInNode(Int32 _ScenarioId)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{			
 				foreach (Node node in Pro.ReturnListNode()) //Pour chaque noeud de la liste des noeud
 				{
@@ -902,7 +912,7 @@ namespace xPLduinoManager
 		//Fonction permettant de supprimer une variable dans un scénario
 		public bool DeleteVariableInScenario(Int32 _VariableId)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{			
 				foreach (Node node in Pro.ReturnListNode()) //Pour chaque noeud de la liste des noeud
 				{
@@ -935,7 +945,7 @@ namespace xPLduinoManager
 		//Fonction permettant de supprimer une fonction
 		public bool DeleteFunctionInScenario(Int32 _FunctionId)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{			
 				foreach (Node node in Pro.ReturnListNode()) //Pour chaque noeud de la liste des noeud
 				{
@@ -978,100 +988,99 @@ namespace xPLduinoManager
 		//	bool : Vrai si réussit	
 		public bool ModifyProject(string _Text, int _Choice, Int32 _Project_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			Project Pro = GetProjet(_Project_Id);
+
+			if(Pro != null) //Si un id de projet est égale au Project ID que nous avons passé en paramètre
 			{
-				if(Pro.Project_Id == _Project_Id) //Si un id de projet est égale au Project ID que nous avons passé en paramètre
+				if(_Choice == param.ParamI("MoPo_ChoiceName")) //Dans le cas où nous mettons à jour le nom du projet, nous verifions qu'il n'éxiste pas un projet du même nom avec le même chemin de sauvegarde
 				{
-					if(_Choice == param.ParamI("MoPo_ChoiceName")) //Dans le cas où nous mettons à jour le nom du projet, nous verifions qu'il n'éxiste pas un projet du même nom avec le même chemin de sauvegarde
+					if(Pro.Project_Name != _Text) //Dans le cas d'un double clic involotaire, on filtre
 					{
-						if(Pro.Project_Name != _Text) //Dans le cas d'un double clic involotaire, on filtre
+						foreach(Project Pro_ in ListProject.Values) //dans cette boucle nous allons verifier que nous avons pas de doublons entre le nom et le chemin des projets
 						{
-							foreach(Project Pro_ in ListProject) //dans cette boucle nous allons verifier que nous avons pas de doublons entre le nom et le chemin des projets
+							if(Pro_.Project_Name == _Text.Replace(" ","_") && Pro_.Project_SavePath == Pro.Project_SavePath) //Dans le cas où le nom et le chemin du projet sont identique 
 							{
-								if(Pro_.Project_Name == _Text.Replace(" ","_") && Pro_.Project_SavePath == Pro.Project_SavePath) //Dans le cas où le nom et le chemin du projet sont identique 
-								{
-									mainwindow.AddLineOutput(param.ParamI("OutputError"),"IdemProject");//Nous affichons un petit message d'erreur
-									return false;
-								}
-								else if(File.Exists(Pro.Project_SavePath +  "/" + _Text.Replace(" ","_") + param.ParamP("ExtensionFile")))//Nous vérifions que le fichier existe pas
-								{
-									mainwindow.AddLineOutput(param.ParamI("OutputError"),"ProjectExistInPath");//Nous affichons un petit message d'erreur
-									return false;
-								}
+								mainwindow.AddLineOutput(param.ParamI("OutputError"),"IdemProject");//Nous affichons un petit message d'erreur
+								return false;
 							}
-							string OldProjectName = Pro.Project_Name;
-							Pro.Project_Name = _Text.Replace(" ","_"); //On fait la mise à jour du nom du projet	
-							mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
-							mainwindow.UpdateMainNoteBook();
-							CopyProject("HTModifyProjectName",OldProjectName + " => " + Pro.Project_Name);
-							Pro.ProjectIsSave = false;
-							mainwindow.UpdateStatusBar();	
-							return true;
-						}						
-					}
-					else if(_Choice == param.ParamI("MoPo_ChoiceAuthor")) //Dans le cas où nous voulons modifier l'auteur
-					{
-						string OldProjectAuthor = Pro.Project_Author;
-						if(OldProjectAuthor != _Text)
-						{
-							Pro.Project_Author = _Text;
-							CopyProject("HTModifyProjectAuthor",Pro.Project_Name + " (" + OldProjectAuthor + " => " + Pro.Project_Author + ")");
-							mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
-							Pro.ProjectIsSave = false;
-							mainwindow.UpdateStatusBar();																						
-							return true;
-						}
-					}
-					else if(_Choice == param.ParamI("MoPo_ChoicePath")) //Dans le cas où nous mettons à jour le chemin du projet
-					{
-						if(Pro.Project_SavePath != _Text) //Dans le cas d'un double clic involotaire, on filtre
-						{
-							foreach(Project Pro_ in ListProject) //dans cette boucle nous allons verifier que nous avons pas de doublons entre le nom et le chemin des projets
+							else if(File.Exists(Pro.Project_SavePath +  "/" + _Text.Replace(" ","_") + param.ParamP("ExtensionFile")))//Nous vérifions que le fichier existe pas
 							{
-								if(Pro_.Project_Name == Pro.Project_Name && Pro_.Project_SavePath == _Text) //Dans le cas où le nom et le chemin du projet sont identique 
-								{
-									mainwindow.AddLineOutput(param.ParamI("OutputError"),"IdemProject");//Nous affichons un petit message d'erreur
-									return false;
-								}
-								else if(File.Exists(_Text +  "/" + Pro.Project_Name + param.ParamP("ExtensionFile"))) //Nous vérifions que le fichier existe pas
-								{
-									mainwindow.AddLineOutput(param.ParamI("OutputError"),"ProjectExistInPath"); //Nous affichons un petit message d'erreur
-									return false;
-								}								
+								mainwindow.AddLineOutput(param.ParamI("OutputError"),"ProjectExistInPath");//Nous affichons un petit message d'erreur
+								return false;
 							}
-							string OldProjectPath = Pro.Project_SavePath;
-							Pro.Project_SavePath = _Text; //Nous sauvegardons la nouvelle valeur du chemin
-							CopyProject("HTModifyProjectPath",Pro.Project_Name + " (" + OldProjectPath + " => " + Pro.Project_SavePath + ")");	
-							Pro.ProjectIsSave = false;
-							mainwindow.UpdateStatusBar();																						
-							return true;
-						}						
-					}
-					else if(_Choice == param.ParamI("MoPo_ChoiceNote")) //Dans le cas de la mise à jour des commentaires
-					{
-						if(Pro.Project_Note != _Text)
-						{
-							Pro.Project_Note = _Text; //On fait la mise à jour des commentaires
-							CopyProject("HTModifyProjectNote",Pro.Project_Name);
-							mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
-							Pro.ProjectIsSave = false;
-							mainwindow.UpdateStatusBar();																						
-							return true;
 						}
-					}
-					else if(_Choice == param.ParamI("MoPo_ChoicePassword")) //Dans le cas de la mise à jour des commentaires
-					{
-						if(Pro.Project_Password != _Text)
-						{
-							Pro.Project_Password = _Text; //On fait la mise à jour du mot de passe
-							CopyProject("HTModifyProjectPassword",Pro.Project_Name);
-							mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab		
-							Pro.ProjectIsSave = false;
-							mainwindow.UpdateStatusBar();																						
-							return true;
-						}
-					}					
+						string OldProjectName = Pro.Project_Name;
+						Pro.Project_Name = _Text.Replace(" ","_"); //On fait la mise à jour du nom du projet	
+						mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
+						mainwindow.UpdateMainNoteBook();
+						CopyProject("HTModifyProjectName",OldProjectName + " => " + Pro.Project_Name);
+						Pro.ProjectIsSave = false;
+						mainwindow.UpdateStatusBar();	
+						return true;
+					}						
 				}
+				else if(_Choice == param.ParamI("MoPo_ChoiceAuthor")) //Dans le cas où nous voulons modifier l'auteur
+				{
+					string OldProjectAuthor = Pro.Project_Author;
+					if(OldProjectAuthor != _Text)
+					{
+						Pro.Project_Author = _Text;
+						CopyProject("HTModifyProjectAuthor",Pro.Project_Name + " (" + OldProjectAuthor + " => " + Pro.Project_Author + ")");
+						mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
+						Pro.ProjectIsSave = false;
+						mainwindow.UpdateStatusBar();																						
+						return true;
+					}
+				}
+				else if(_Choice == param.ParamI("MoPo_ChoicePath")) //Dans le cas où nous mettons à jour le chemin du projet
+				{
+					if(Pro.Project_SavePath != _Text) //Dans le cas d'un double clic involotaire, on filtre
+					{
+						foreach(Project Pro_ in ListProject.Values) //dans cette boucle nous allons verifier que nous avons pas de doublons entre le nom et le chemin des projets
+						{
+							if(Pro_.Project_Name == Pro.Project_Name && Pro_.Project_SavePath == _Text) //Dans le cas où le nom et le chemin du projet sont identique 
+							{
+								mainwindow.AddLineOutput(param.ParamI("OutputError"),"IdemProject");//Nous affichons un petit message d'erreur
+								return false;
+							}
+							else if(File.Exists(_Text +  "/" + Pro.Project_Name + param.ParamP("ExtensionFile"))) //Nous vérifions que le fichier existe pas
+							{
+								mainwindow.AddLineOutput(param.ParamI("OutputError"),"ProjectExistInPath"); //Nous affichons un petit message d'erreur
+								return false;
+							}								
+						}
+						string OldProjectPath = Pro.Project_SavePath;
+						Pro.Project_SavePath = _Text; //Nous sauvegardons la nouvelle valeur du chemin
+						CopyProject("HTModifyProjectPath",Pro.Project_Name + " (" + OldProjectPath + " => " + Pro.Project_SavePath + ")");	
+						Pro.ProjectIsSave = false;
+						mainwindow.UpdateStatusBar();																						
+						return true;
+					}						
+				}
+				else if(_Choice == param.ParamI("MoPo_ChoiceNote")) //Dans le cas de la mise à jour des commentaires
+				{
+					if(Pro.Project_Note != _Text)
+					{
+						Pro.Project_Note = _Text; //On fait la mise à jour des commentaires
+						CopyProject("HTModifyProjectNote",Pro.Project_Name);
+						mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab
+						Pro.ProjectIsSave = false;
+						mainwindow.UpdateStatusBar();																						
+						return true;
+					}
+				}
+				else if(_Choice == param.ParamI("MoPo_ChoicePassword")) //Dans le cas de la mise à jour des commentaires
+				{
+					if(Pro.Project_Password != _Text)
+					{
+						Pro.Project_Password = _Text; //On fait la mise à jour du mot de passe
+						CopyProject("HTModifyProjectPassword",Pro.Project_Name);
+						mainwindow.UpdateWidgetInTab(); //Mise à jour des widget dans les tab		
+						Pro.ProjectIsSave = false;
+						mainwindow.UpdateStatusBar();																						
+						return true;
+					}
+				}					
 			}
 			return false;
 		}
@@ -1080,7 +1089,7 @@ namespace xPLduinoManager
 		//Fonction permettan de modifier les paramètre d'un noeud
 		public bool ModifyNode(string _Text, int _Choice, Int32 _Node_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -1089,7 +1098,7 @@ namespace xPLduinoManager
 						if(_Choice == param.ParamI("MoNo_ChoiceName")) //Dans le cas où nous voulons modifier le nom d'un noeud
 						{
 							_Text = ReturnCorrectName(_Text);	
-							foreach(Project _Pro in ListProject) //Nous allons vérifier que le nom exite pas déjà dans la liste des projet
+							foreach(Project _Pro in ListProject.Values) //Nous allons vérifier que le nom exite pas déjà dans la liste des projet
 							{		
 								foreach(Node _node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 								{	
@@ -1304,7 +1313,7 @@ namespace xPLduinoManager
 		//Fonction permettant de modifier un  debug dans un node
 		public bool ModifyNodeDebug(bool _DebugValue, string _DebugName, Int32 _Node_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -1335,7 +1344,7 @@ namespace xPLduinoManager
 		//Fonction permettant de modifier un réseau
 		public bool ModifyNetwork(string _Text, int _Choice, Int32 _Network_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -1365,7 +1374,7 @@ namespace xPLduinoManager
 		//Fonction permettant de faire la mise à jour des cartes
 		public bool ModifyBoard(string _Text, int _Choice, Int32 _Board_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -1378,23 +1387,22 @@ namespace xPLduinoManager
 								if(_Choice == param.ParamI("MoBo_ChoiceName")) //Dans le cas où nous voulons modifier le nom de la carte
 								{
 									_Text = ReturnCorrectName(_Text);	
-									foreach(Project _Pro in ListProject) //Nous allons vérifier que le nom exite pas déjà dans la liste des projet
-									{		
-										foreach(Node _node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
-										{	
-											foreach(Network _net in _node.ReturnListNetwork()) //Pour chaque réseau de la liste des réseau propre au noeud
+										
+									foreach(Node _node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
+									{	
+										foreach(Network _net in _node.ReturnListNetwork()) //Pour chaque réseau de la liste des réseau propre au noeud
+										{
+											foreach(Board _boa in _net.ReturnListBoard()) //Pour chaque carte de la liste des cartes propre au réseau
 											{
-												foreach(Board _boa in _net.ReturnListBoard()) //Pour chaque carte de la liste des cartes propre au réseau
+												if(_boa.Board_Name == _Text.Replace(" ","_"))//Si le nom de la carte est égale au texte que nous avons mis en paramètre
 												{
-													if(_boa.Board_Name == _Text.Replace(" ","_"))//Si le nom de la carte est égale au texte que nous avons mis en paramètre
-													{
-														mainwindow.AddLineOutput(param.ParamI("OutputError"),"BoardExist"); //dans ce cas nous affichons un message d'erreur
-														return false;	
-													}
+													mainwindow.AddLineOutput(param.ParamI("OutputError"),"BoardExist"); //dans ce cas nous affichons un message d'erreur
+													return false;	
 												}
 											}
 										}
 									}
+
 									string OldBoardName = boa.Board_Name;
 									boa.Board_Name = _Text.Replace(" ","_"); //on modifie le nom de la carte
 									mainwindow.UpdateMainNoteBook();
@@ -1511,7 +1519,7 @@ namespace xPLduinoManager
 		//Fcontion permettant de modifier une instance
 		public bool ModifyInstance(string _Text, int _Choice, Int32 _Instance_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -1522,7 +1530,7 @@ namespace xPLduinoManager
 							if(_Choice == param.ParamI("MoIn_ChoiceName")) //Dans le cas où nous voulons modifier le nom de la carte
 							{		
 								_Text = ReturnCorrectName(_Text);								
-								foreach(Project _Pro in ListProject) //Dans la liste des projets
+								foreach(Project _Pro in ListProject.Values) //Dans la liste des projets
 								{
 									foreach(Node _node in _Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 									{
@@ -1738,7 +1746,7 @@ namespace xPLduinoManager
 		//Fonction permettant de modifier les fichier customer
 		public bool ModifyCustomer(string _Text, int _Choice, Int32 _Customer_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -1868,7 +1876,7 @@ namespace xPLduinoManager
 		//Fonction permettant de modifier un scénario
 		public bool ModifyScenario(string _Text, int _Choice, Int32 _Scenario_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -1934,7 +1942,7 @@ namespace xPLduinoManager
 		//Fonction permettant de modifier les variables
 		public bool ModifyVariable(string _Text, int _Choice, Int32 _Variable_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -2116,7 +2124,7 @@ namespace xPLduinoManager
 		//Fonction permettant de modifier les fonctions
 		public bool ModifyFunction(string _Text, int _Choice, Int32 _Function_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -2430,7 +2438,7 @@ namespace xPLduinoManager
 		//Fonction permettant de modifier les pin d'une carte
 		public bool ModifyInstancePinInBoard(Int32 _Texte, Int32 _Pin_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -2476,7 +2484,7 @@ namespace xPLduinoManager
 		//Fonction permettant de modifier les broches d'une carte I2C
 		public bool ModifyPin(string _Text, int _Choice, Int32 _Pin_Id)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -2532,7 +2540,7 @@ namespace xPLduinoManager
 		//Fonction permettant de savoir si une instance est posé sur une carte
 		public void UpdateInstanceUsed()
 		{
-			foreach(Project pro in ListProject) //Dans la liste des projets
+			foreach(Project pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in pro.ReturnListNode()) //Dans la liste des noeud propre à un projet
 				{
@@ -2544,7 +2552,7 @@ namespace xPLduinoManager
 						ins.Pin_Id_0 = 0;
 						ins.Pin_Id_1 = 0;
 						ins.Pin_Id_2 = 0;
-						foreach(Project _pro in ListProject) //Dans la liste des projet
+						foreach(Project _pro in ListProject.Values) //Dans la liste des projet
 						{
 							foreach(Node _node in _pro.ReturnListNode()) //Dans la liste des noeud propre au projet
 							{
@@ -2698,7 +2706,7 @@ namespace xPLduinoManager
 		//Fonction permettant de modifier les actions dans les scénarios et les fonctions 
 		public void UpdateActionInScenarioAndFunction(string _OldTexte, string _NewText)
 		{
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -2833,7 +2841,7 @@ namespace xPLduinoManager
 			
 			
 				bool AddSeparatorLineOneWire = false;
-				foreach(Project Pro in ListProject) //Dans la liste des projets
+				foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 				{
 					foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 					{
@@ -2868,7 +2876,7 @@ namespace xPLduinoManager
 				bool SwitchOK = false;
 				bool ShutterOK = false;
 			
-				foreach(Project Pro in ListProject) //Dans la liste des projets
+				foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 				{
 					foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 					{
@@ -2945,7 +2953,7 @@ namespace xPLduinoManager
 			
 			AddOneElementInLMTES(1,0,false,"SeparatorMenuItem","","");
 			bool CountVariableOK = true;
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -2963,7 +2971,7 @@ namespace xPLduinoManager
 			}								
 			
 			IdParentColumn1Scenario = AddOneElementInLMTES(1,0,CountVariableOK,param.ParamT("CRM_Variable"),"","");
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -2982,7 +2990,7 @@ namespace xPLduinoManager
 			
 			
 			bool CountFunctionOK = true;
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -3000,7 +3008,7 @@ namespace xPLduinoManager
 			}								
 			
 			IdParentColumn1Scenario = AddOneElementInLMTES(1,0,CountFunctionOK,param.ParamT("CRM_Function"),"","");
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -3089,7 +3097,7 @@ namespace xPLduinoManager
 					AddOneElementInLMTEF(3,IdParentColumn2Function,true,"xor","^","");
 			
 				bool AddSeparatorLineOneWire = false;
-				foreach(Project Pro in ListProject) //Dans la liste des projets
+				foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 				{
 					foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 					{
@@ -3122,7 +3130,7 @@ namespace xPLduinoManager
 				bool SwitchOK = false;
 				bool ShutterOK = false;
 			
-				foreach(Project Pro in ListProject) //Dans la liste des projets
+				foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 				{
 					foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 					{
@@ -3199,7 +3207,7 @@ namespace xPLduinoManager
 			
 			AddOneElementInLMTEF(1,0,false,"SeparatorMenuItem","","");							
 			
-			foreach(Project Pro in ListProject) //Dans la liste des projets
+			foreach(Project Pro in ListProject.Values) //Dans la liste des projets
 			{
 				foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 				{
@@ -3273,7 +3281,7 @@ namespace xPLduinoManager
 			bool NameOK = true; //NameOK est un booléan nous retournant si le nom existe
 			bool FlagOK = true; //Flag permettant de sortir d'une boucle
 				
-			foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+			foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 			{			
 				if(Pro.Project_Name == _ProjectName) //Dans la liste des projet on verifie que le nom existe
 				{
@@ -3286,7 +3294,7 @@ namespace xPLduinoManager
 				while (!NameOK) //Tant que le nom existe
 	        	{
 					FlagOK = true; //A chaque tour on met le flag à true
-					foreach(Project Pro in ListProject)
+					foreach(Project Pro in ListProject.Values)
 					{			
 						if(Pro.Project_Name == _ProjectName + Count) //On recherche un nouveau nom et on verifie si il existe
 						{
@@ -3317,38 +3325,32 @@ namespace xPLduinoManager
 			Int32 Count = 0;	//On initialise un compteur
 			bool NameOK = true; //NameOK est un booléan nous retournant si le nom existe
 			bool FlagOK = true; //Flag permettant de sortir d'une boucle
-				
-			foreach(Project Pro in ListProject) //Pour chaque projet de la liste
-			{	
-				if(Pro.Project_Id == _Project_Id) //On cherche celui qui a l'id mis en paramètre
+
+			Project Pro = GetProjet(_Project_Id);
+
+			if(Pro != null) //On cherche celui qui a l'id mis en paramètre
+			{
+				foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 				{
-					foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
+					if(Nod.Node_Name == _NodeName) // on recherche si il existe un noeud avec le meme nom
 					{
-						if(Nod.Node_Name == _NodeName) // on recherche si il existe un noeud avec le meme nom
-						{
-							NameOK = false; //Dans la liste des projet on verifie que le nom existe
-						}
+						NameOK = false; //Dans la liste des projet on verifie que le nom existe
 					}
 				}
-			}			
+			}
 			
 			if(!NameOK) //Si le nom existe
 			{
 				while (!NameOK) //Tant que le nom existe
 	        	{
 					FlagOK = true; //A chaque tour on met le flag à true
-					foreach(Project Pro in ListProject)	//Pour chaque projet de la liste
-					{		
-						if(Pro.Project_Id == _Project_Id) //On cherche celui qui a l'id mis en paramètre
-						{						
-							foreach(Node Nod in Pro.ReturnListNode())	//On boucle sur les noeuds
-							{						
-								if(Nod.Node_Name == _NodeName + Count) //On recherche un nouveau nom et on verifie si il existe
-								{
-									FlagOK = false; //Si le nouveau nom existe, on remet le flag en bas
-									Count++; //On incremente le compteur du nouveau nom
-								}
-							}
+
+					foreach(Node Nod in Pro.ReturnListNode())	//On boucle sur les noeuds
+					{						
+						if(Nod.Node_Name == _NodeName + Count) //On recherche un nouveau nom et on verifie si il existe
+						{
+							FlagOK = false; //Si le nouveau nom existe, on remet le flag en bas
+							Count++; //On incremente le compteur du nouveau nom
 						}
 					}
 					
@@ -3376,7 +3378,7 @@ namespace xPLduinoManager
 			bool NameOK = true; //NameOK est un booléan nous retournant si le nom existe
 			bool FlagOK = true; //Flag permettant de sortir d'une boucle
 				
-			foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+			foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 			{	
 				foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 				{
@@ -3401,7 +3403,7 @@ namespace xPLduinoManager
 				while (!NameOK) //Tant que le nom existe
 	        	{
 					FlagOK = true; //A chaque tour on met le flag à true
-					foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+					foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 					{	
 						foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 						{
@@ -3441,7 +3443,7 @@ namespace xPLduinoManager
 			bool NameOK = true; //NameOK est un booléan nous retournant si le nom existe
 			bool FlagOK = true; //Flag permettant de sortir d'une boucle
 				
-			foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+			foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 			{	
 				foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 				{
@@ -3463,7 +3465,7 @@ namespace xPLduinoManager
 				while (!NameOK) //Tant que le nom existe
 	        	{
 					FlagOK = true; //A chaque tour on met le flag à true
-					foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+					foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 					{	
 						foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 						{
@@ -3514,7 +3516,7 @@ namespace xPLduinoManager
 		
 			SizeString =  _CustomerName.Length;
 			
-			foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+			foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 			{	
 				foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 				{
@@ -3536,7 +3538,7 @@ namespace xPLduinoManager
 				while (!NameOK) //Tant que le nom existe
 	        	{
 					FlagOK = true; //A chaque tour on met le flag à true
-					foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+					foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 					{	
 						foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 						{
@@ -3570,7 +3572,7 @@ namespace xPLduinoManager
 			bool NameOK = true; //NameOK est un booléan nous retournant si le nom existe
 			bool FlagOK = true; //Flag permettant de sortir d'une boucle			
 					
-			foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+			foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 			{	
 				foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 				{
@@ -3592,7 +3594,7 @@ namespace xPLduinoManager
 				while (!NameOK) //Tant que le nom existe
 	        	{
 					FlagOK = true; //A chaque tour on met le flag à true
-					foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+					foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 					{	
 						foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 						{
@@ -3626,7 +3628,7 @@ namespace xPLduinoManager
 			bool NameOK = true; //NameOK est un booléan nous retournant si le nom existe
 			bool FlagOK = true; //Flag permettant de sortir d'une boucle			
 					
-			foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+			foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 			{	
 				foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 				{
@@ -3651,7 +3653,7 @@ namespace xPLduinoManager
 				while (!NameOK) //Tant que le nom existe
 	        	{
 					FlagOK = true; //A chaque tour on met le flag à true
-					foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+					foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 					{	
 						foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 						{
@@ -3688,7 +3690,7 @@ namespace xPLduinoManager
 			bool NameOK = true; //NameOK est un booléan nous retournant si le nom existe
 			bool FlagOK = true; //Flag permettant de sortir d'une boucle			
 					
-			foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+			foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 			{	
 				foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 				{
@@ -3713,7 +3715,7 @@ namespace xPLduinoManager
 				while (!NameOK) //Tant que le nom existe
 	        	{
 					FlagOK = true; //A chaque tour on met le flag à true
-					foreach(Project Pro in ListProject) //Pour chaque projet de la liste
+					foreach(Project Pro in ListProject.Values) //Pour chaque projet de la liste
 					{	
 						foreach(Node Nod in Pro.ReturnListNode()) //On boucle sur les noeuds
 						{
@@ -4005,9 +4007,9 @@ namespace xPLduinoManager
 				if(CountCopy!=pref.NumberOfProjectCopy)
 				{
 					i = 0;
-					foreach(Project Pro in ListProject)
+					foreach(Project Pro in ListProject.Values)
 					{
-						CopyListProject[CountCopy].Add(new Project());
+						CopyListProject[CountCopy].Add(Pro.Project_Id, new Project());
 						CopyProject(Pro,CopyListProject[CountCopy][i]);
 						
 						j = 0;
@@ -4103,9 +4105,9 @@ namespace xPLduinoManager
 						mainwindow.ListHistoricTreeview[i].HistoricTreeviewTextParam = mainwindow.ListHistoricTreeview[i+1].HistoricTreeviewTextParam;
 						
 						CopyListProject[i].Clear();
-						foreach(Project Pro in CopyListProject[i+1])
+						foreach(Project Pro in CopyListProject[i+1].Values)
 						{					
-							CopyListProject[i].Add(Pro);
+							CopyListProject[i].Add(Pro.Project_Id, Pro);
 						}
 					}
 					mainwindow.ListHistoricTreeview[pref.NumberOfProjectCopy-1].HistoricTreeviewTextExt = _TextExt;
@@ -4114,9 +4116,9 @@ namespace xPLduinoManager
 					
 					CopyListProject[CountCopy-1].Clear();
 					i = 0;
-					foreach(Project Pro in ListProject)
+					foreach(Project Pro in ListProject.Values)
 					{
-						CopyListProject[CountCopy-1].Add(new Project());
+						CopyListProject[CountCopy-1].Add(Pro.Project_Id, new Project());
 						CopyProject(Pro,CopyListProject[CountCopy-1][i]);
 						
 						j = 0;
@@ -4210,9 +4212,9 @@ namespace xPLduinoManager
 				CountCopy = ViewCopy+1;
 				
 					i = 0;
-					foreach(Project Pro in ListProject)
+					foreach(Project Pro in ListProject.Values)
 					{
-						CopyListProject[CountCopy].Add(new Project());
+						CopyListProject[CountCopy].Add(Pro.Project_Id, new Project());
 						CopyProject(Pro,CopyListProject[CountCopy][i]);
 						
 						j = 0;
@@ -4450,9 +4452,9 @@ namespace xPLduinoManager
 				ListProject.Clear ();
 				
 				int i=0;
-				foreach(Project Pro in CopyListProject[ViewCopy])
+				foreach(Project Pro in CopyListProject[ViewCopy].Values)
 				{
-					ListProject.Add(new Project());
+					ListProject.Add(Pro.Project_Id, new Project());
 					CopyProject(Pro,ListProject[i]);
 					
 					int j = 0;
@@ -4565,9 +4567,9 @@ namespace xPLduinoManager
 				ListProject.Clear ();
 				
 				int i=0;
-				foreach(Project Pro in CopyListProject[ViewCopy])
+				foreach(Project Pro in CopyListProject[ViewCopy].Values)
 				{
-					ListProject.Add(new Project());
+					ListProject.Add(Pro.Project_Id, new Project());
 					CopyProject(Pro,ListProject[i]);
 					
 					int j = 0;
@@ -4679,9 +4681,9 @@ namespace xPLduinoManager
 			ListProject.Clear ();
 			ViewCopy = _ViewCopy;
 			int i=0;
-			foreach(Project Pro in CopyListProject[ViewCopy])
+			foreach(Project Pro in CopyListProject[ViewCopy].Values)
 			{
-				ListProject.Add(new Project());
+				ListProject.Add(Pro.Project_Id, new Project());
 				CopyProject(Pro,ListProject[i]);
 				
 				int j = 0;
@@ -4791,7 +4793,7 @@ namespace xPLduinoManager
 		public bool SaveProject(bool SaveAll, Int32 _Project_Id)
 		{			
 			bool SaveOneOk = false;		
-			foreach(Project pro in ListProject)
+			foreach(Project pro in ListProject.Values)
 			{
 				SaveOneOk = false;
 				string TempUnzip = pro.Project_SavePath + "/UnZip";
@@ -5516,7 +5518,7 @@ namespace xPLduinoManager
 			string _FilePath  = "";
 			
 			
-			foreach(Project pro in ListProject)
+			foreach(Project pro in ListProject.Values)
 			{
 				if(pro.Project_SavePath + "/" + pro.Project_Name + ".dom" == _Path)
 				{
@@ -5564,7 +5566,7 @@ namespace xPLduinoManager
 //####################################################################  PROJECT #################################################################				
 				
 				Pro = new Project(Project_Id,param,pref);
-				ListProject.Add(Pro); //Ajout d'un nouveau projet dans la liste
+				ListProject.Add(Pro.Project_Id, Pro); //Ajout d'un nouveau projet dans la liste
 				CurrentProjectId = Project_Id;
 				Project_Id++; //Incrémentation de l'id project	
 			    while (ReaderProject.Read()) //Lecture total du fichier
@@ -6128,7 +6130,7 @@ namespace xPLduinoManager
 			string StringVariable = "";
 			string StringFunction = "";
 			
-			foreach(Project Pro in ListProject)
+			foreach(Project Pro in ListProject.Values)
 			{
 				if(Pro.Project_Id == ProjectId)
 				{
@@ -6571,7 +6573,7 @@ namespace xPLduinoManager
 			ProjectLibraries.Add("/DS1307new");
 			ProjectLibraries.Add("/DS2482");	
 			
-			foreach(Project pro in ListProject)
+			foreach(Project pro in ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -6826,7 +6828,7 @@ namespace xPLduinoManager
 				string Filename = "";
 				string ExtensionFile = "";
 				
-				foreach(Project pro in ListProject)
+				foreach(Project pro in ListProject.Values)
 				{
 					foreach(Node node in pro.ReturnListNode())
 					{
@@ -7171,7 +7173,7 @@ namespace xPLduinoManager
 				string ShellCommande = "";
 				string ShellArgument = "";
 				
-				foreach(Project pro in ListProject)
+				foreach(Project pro in ListProject.Values)
 				{
 					foreach(Node node in pro.ReturnListNode())
 					{

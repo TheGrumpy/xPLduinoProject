@@ -1,37 +1,20 @@
-﻿<Properties>
+﻿<Properties StartupItem="xPLduino-Manager\xPLduino-Manager.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="xPLduino-Manager/Document/DebugTextMarker.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="xPLduino-Manager\Class\DataManagement.cs">
     <Files>
-      <File FileName="xPLduino-Manager/Class/DataManagement.cs" Line="4791" Column="3" />
-      <File FileName="xPLduino-Manager/Widgets/ProjectProperties.cs" Line="863" Column="4" />
-      <File FileName="xPLduino-Manager/Document/DebugTextMarker.cs" Line="38" Column="42" />
+      <File FileName="xPLduino-Manager\Class\DataManagement.cs" Line="169" Column="13" />
+      <File FileName="xPLduino-Manager\Class\Project.cs" Line="1" Column="1" />
+      <File FileName="xPLduino-Manager\MainWindow.cs" Line="531" Column="6" />
+      <File FileName="xPLduino-Manager\Windows\NewProject.cs" Line="1" Column="1" />
+      <File FileName="xPLduino-Manager\Widgets\ProjectProperties.cs" Line="1" Column="1" />
+      <File FileName="xPLduino-Manager\Widgets\NodeProperties.cs" Line="1" Column="1" />
+      <File FileName="xPLduino-Manager\Widgets\I2CProperties.cs" Line="1" Column="1" />
+      <File FileName="xPLduino-Manager\Widgets\OneWireProperties.cs" Line="1" Column="1" />
+      <File FileName="xPLduino-Manager\Widgets\BoardI2CProperties.cs" Line="1" Column="1" />
+      <File FileName="xPLduino-Manager\Widgets\InstanceProperties.cs" Line="1" Column="1" />
+      <File FileName="xPLduino-Manager\Widgets\CustomerEdit.cs" Line="451" Column="60" />
+      <File FileName="xPLduino-Manager\Widgets\ScenarioEdit.cs" Line="1843" Column="60" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="xPLduino-Manager" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="Class" expanded="True" />
-            <Node name="Document" expanded="True" />
-            <Node name="Widgets" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>zipEntry.IsFile</Value>
-          <Value>zipEntry</Value>
-          <Value>Directory.Exists(pro.Project_SavePath)</Value>
-          <Value>pro.Project_Id</Value>
-          <Value>CurrentProjectId</Value>
-          <Value>ListProject</Value>
-          <Value>pro.ProjectIsSave</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

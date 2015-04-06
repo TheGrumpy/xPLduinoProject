@@ -71,7 +71,7 @@ namespace xPLduinoManager
 			TextEditor1.KeyReleaseEvent += OnTextEditor1NoteKeyReleaseEvent;
 		
 			//Permet de retourner l'id du projet
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -112,7 +112,7 @@ namespace xPLduinoManager
 		//Fonction permettant de mettre à jour le widget	
 		public void UpdateWidget()
 		{	
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -157,7 +157,7 @@ namespace xPLduinoManager
 			
 			TextEditor1.Options = OptionsTextEditor1;
 			
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -373,7 +373,7 @@ namespace xPLduinoManager
 				TextEditor1.Insert(PositionInTextView,ReadValueType);
 			
 				datamanagement.ModifyCustomer(TextEditor1.Document.Text,param.ParamI("MoCu_ChoiceData"),CustomerId);	
-				foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 				{
 					foreach(Node node in pro.ReturnListNode())
 					{
@@ -430,7 +430,7 @@ namespace xPLduinoManager
 		//Fcontion peremettant de saoir si un widget est correct, si il nous retourne de la data
 		public bool WidgetIsCorrect()
 		{
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -448,7 +448,7 @@ namespace xPLduinoManager
 	
 		public void ReturnId()
 		{
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node nod in Pro.ReturnListNode())
 				{

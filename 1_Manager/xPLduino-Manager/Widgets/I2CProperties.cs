@@ -101,7 +101,7 @@ namespace xPLduinoManager
 			OptionTreeView.ButtonReleaseEvent += new ButtonReleaseEventHandler(OptionsTreeViewButtonRelease);
 			
 			//Permet de retourner l'id du projet
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -129,7 +129,7 @@ namespace xPLduinoManager
 					
 			hpaned1.Position = (datamanagement.mainwindow.ReturnHpanedPosition() * param.ParamI("NoteHPanedPurcent") / 100);			
 			
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -311,7 +311,7 @@ namespace xPLduinoManager
 		{
 			PropertiesListStore.Clear();
 
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -476,7 +476,7 @@ namespace xPLduinoManager
 			Child_Board_ListStore.Clear();
 			if(!DisplayUnit)
 			{
-				foreach(Project Pro in datamanagement.ListProject)
+				foreach(Project Pro in datamanagement.ListProject.Values)
 				{	
 					foreach(Node node in Pro.ReturnListNode())
 					{
@@ -761,7 +761,7 @@ namespace xPLduinoManager
 		//Fcontion peremettant de saoir si un widget est correct, si il nous retourne de la data
 		public bool WidgetIsCorrect()
 		{
-			foreach(Project Pro in datamanagement.ListProject)//Pour chaque projet de la liste
+			foreach(Project Pro in datamanagement.ListProject.Values)//Pour chaque projet de la liste
 			{	
 				foreach(Node nod in Pro.ReturnListNode())
 				{

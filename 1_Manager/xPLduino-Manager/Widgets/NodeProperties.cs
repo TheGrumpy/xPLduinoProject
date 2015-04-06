@@ -151,7 +151,7 @@ namespace xPLduinoManager
 			OptionTreeView.ButtonReleaseEvent += new ButtonReleaseEventHandler(OptionsTreeViewButtonRelease);
 			
 			//Permet de retourner l'id du projet
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -173,7 +173,7 @@ namespace xPLduinoManager
 			vpaned3.Position = 0;
 			hpaned2.Position = (datamanagement.mainwindow.ReturnHpanedPosition() * param.ParamI("NoteHPanedPurcent")) / 100;
 			
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -396,7 +396,7 @@ namespace xPLduinoManager
 		public void UpdateChildTreeView_Properties()
 		{
 			PropertiesListStore.Clear();
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -591,7 +591,7 @@ namespace xPLduinoManager
 		public void UpdateChildTreeView_Debug()
 		{
 			Child_Debug_ListStore.Clear();
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -727,7 +727,7 @@ namespace xPLduinoManager
 		{
 			string LinkScenario = "";
 			CustomerListStore.Clear();
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -761,7 +761,7 @@ namespace xPLduinoManager
 				Gtk.TreeIter iter;
 				if (CustomerListStore.GetIter (out iter, new Gtk.TreePath(args.Path))) 
 				{
-					foreach(Project Pro in datamanagement.ListProject) //Pour chaque projet 
+				foreach(Project Pro in datamanagement.ListProject.Values) //Pour chaque projet 
 					{
 						foreach(Node node in Pro.ReturnListNode()) //pour chaque noeud
 						{
@@ -923,7 +923,7 @@ namespace xPLduinoManager
 		public void UpdateChildTreeView_Scenario()
 		{
 			ScenarioListStore.Clear();
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -1060,7 +1060,7 @@ namespace xPLduinoManager
 		{
 			OptionListStore.Clear();
 
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -1155,7 +1155,7 @@ namespace xPLduinoManager
 					ChildDebugValueSelect = (bool) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("NP_TVChild_OpDebug_PositionValue")); //Nous récuperons la valeur que nous stockons
 					ChildDebugNameSelect = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("NP_TVChild_OpDebug_PositionType")); //Nous récuperons la valeur que nous stockons
 					
-					foreach(Project Pro in datamanagement.ListProject) //Pour chaque projet 
+					foreach(Project Pro in datamanagement.ListProject.Values) //Pour chaque projet 
 					{
 						foreach(Node node in Pro.ReturnListNode()) //pour chaque noeud
 						{
@@ -1214,7 +1214,7 @@ namespace xPLduinoManager
 					UseValueSelect = (bool) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("NP_TVChild_OpCustomer_PositionUse")); //Nous récuperons la valeur que nous stockons
 					UseIdSelect = (string) TreeModelChildTreeView.GetValue (IterChild, param.ParamI("NP_TVChild_OpCustomer_PositionId")); //Nous récuperons la valeur que nous stockons
 					
-					foreach(Project Pro in datamanagement.ListProject) //Pour chaque projet 
+					foreach(Project Pro in datamanagement.ListProject.Values) //Pour chaque projet 
 					{
 						foreach(Node node in Pro.ReturnListNode()) //pour chaque noeud
 						{
@@ -1258,7 +1258,7 @@ namespace xPLduinoManager
 			OptionNameColumn.Title = param.ParamT("NP_TVParam_NameLabel");
 			UpdateOptionsTreeView();
 		
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -1374,7 +1374,7 @@ namespace xPLduinoManager
 		//Fcontion peremettant de saoir si un widget est correct, si il nous retourne de la data
 		public bool WidgetIsCorrect()
 		{
-			foreach(Project Pro in datamanagement.ListProject)//Pour chaque projet de la liste
+			foreach(Project Pro in datamanagement.ListProject.Values)//Pour chaque projet de la liste
 			{	
 				foreach(Node nod in Pro.ReturnListNode())
 				{

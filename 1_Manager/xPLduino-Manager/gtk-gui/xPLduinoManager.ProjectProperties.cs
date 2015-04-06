@@ -5,23 +5,41 @@ namespace xPLduinoManager
 	public partial class ProjectProperties
 	{
 		private global::Gtk.HPaned hpaned1;
+		
 		private global::Gtk.ScrolledWindow scrolledwindow1;
+		
 		private global::Gtk.TreeView OptionTreeView;
+		
 		private global::Gtk.VPaned vpaned2;
+		
 		private global::Gtk.VBox vbox1;
+		
 		private global::Gtk.HBox hbox3;
+		
 		private global::Gtk.Label LabelChildTreeView;
+		
 		private global::Gtk.Button ButtonAddNode;
+		
 		private global::Gtk.VSeparator vseparator1;
+		
 		private global::Gtk.Button ButtonDeleteNode;
+		
 		private global::Gtk.VSeparator vseparator2;
+		
 		private global::Gtk.Button ButtonGenerateOneNode;
+		
 		private global::Gtk.Button ButtonLoadOneNode;
+		
 		private global::Gtk.ScrolledWindow scrolledwindow3;
+		
 		private global::Gtk.TreeView ChildTreeView;
+		
 		private global::Gtk.VBox vbox2;
+		
 		private global::Gtk.Label NoteLabel;
+		
 		private global::Gtk.ScrolledWindow scrolledwindow2;
+		
 		private global::Gtk.TextView TextViewNote;
 
 		protected virtual void Build ()

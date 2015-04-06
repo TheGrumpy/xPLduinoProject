@@ -524,7 +524,7 @@ namespace xPLduinoManager
 		{
 			string HeaderProjectName = "";
 			ExplorerListStore.Clear(); //On efface EplorerTreeView
-			foreach(Project Pro in datamanagement.ListProject) //Pour chaque Projet de la liste des projets
+			foreach(Project Pro in datamanagement.ListProject.Values) //Pour chaque Projet de la liste des projets
 			{
 				IterProject = ExplorerListStore.AppendValues(PngProject,Pro.Project_Name + " (Version : " + Pro.Project_Version + ")",param.ParamP("ExTVTypeProject"),Pro.Project_Name,Pro.Project_Id.ToString()); //On affiche les projets
 				if(Pro.ReturnListNode().Count > 0) //Dans le cas où le nombre de noeud par projet et supérieur à 0
@@ -1356,18 +1356,17 @@ namespace xPLduinoManager
 			{
 				if(not.SelectType == param.ParamP("ExTVTypeProject"))
 				{
-					foreach(Project Pro in datamanagement.ListProject)
+					if (datamanagement.ListProject.ContainsKey(int.Parse(not.SelectID)))
 					{
-						if(Pro.Project_Id.ToString() == not.SelectID)
-						{	
-							not.CreateLayout(Pro.Project_Name.Replace("_",param.ParamP("ReplaceUnderscor")) + " (Version " + Pro.Project_Version + ")");
-							MainNoteBook.SetTabLabel(not.widget,not.TabLayout);
-						}
+						Project Pro = datamanagement.ListProject[int.Parse(not.SelectID)];
+						
+						not.CreateLayout(Pro.Project_Name.Replace("_",param.ParamP("ReplaceUnderscor")) + " (Version " + Pro.Project_Version + ")");
+						MainNoteBook.SetTabLabel(not.widget,not.TabLayout);					
 					}
 				}
 				else if(not.SelectType == param.ParamP("ExTVTypeNode"))
 				{
-					foreach(Project Pro in datamanagement.ListProject)
+					foreach(Project Pro in datamanagement.ListProject.Values)
 					{
 						foreach(Node nod in Pro.ReturnListNode())
 						{
@@ -1381,7 +1380,7 @@ namespace xPLduinoManager
 				}
 				else if(not.SelectType == param.ParamP("Customer"))
 				{
-					foreach(Project Pro in datamanagement.ListProject)
+					foreach(Project Pro in datamanagement.ListProject.Values)
 					{
 						foreach(Node nod in Pro.ReturnListNode())
 						{
@@ -1398,7 +1397,7 @@ namespace xPLduinoManager
 				}
 				else if(not.SelectType == param.ParamP("Scenario"))
 				{
-					foreach(Project Pro in datamanagement.ListProject)
+					foreach(Project Pro in datamanagement.ListProject.Values)
 					{
 						foreach(Node nod in Pro.ReturnListNode())
 						{
@@ -1415,7 +1414,7 @@ namespace xPLduinoManager
 				}				
 				else if(not.SelectType == param.ParamP("ExTVTypeNetworkI2C") || not.SelectType == param.ParamP("ExTVTypeNetwork1Wire"))
 				{
-					foreach(Project Pro in datamanagement.ListProject)
+					foreach(Project Pro in datamanagement.ListProject.Values)
 					{
 						foreach(Node nod in Pro.ReturnListNode())
 						{	
@@ -1436,7 +1435,7 @@ namespace xPLduinoManager
 					{
 						if(not.SelectType == boards.Type) 
 						{		
-							foreach(Project Pro in datamanagement.ListProject)
+							foreach(Project Pro in datamanagement.ListProject.Values)
 							{
 								foreach(Node nod in Pro.ReturnListNode())
 								{	
@@ -1458,7 +1457,7 @@ namespace xPLduinoManager
 					
 					if(not.SelectType == param.ParamP("InstLightingName") || not.SelectType == param.ParamP("InstSwitchName") || not.SelectType == param.ParamP("InstShutterName"))
 					{
-						foreach(Project Pro in datamanagement.ListProject)
+						foreach(Project Pro in datamanagement.ListProject.Values)
 						{
 							foreach(Node nod in Pro.ReturnListNode())
 							{	
@@ -2017,7 +2016,7 @@ namespace xPLduinoManager
 			else if(TreeViewEplorerValCol2 == param.ParamP("ExTVTypeNode")) //Dans le cas où la cellule 2 est de type projet
 			{
 				LabelButton.Visible = true;
-				foreach(Project Pro in datamanagement.ListProject)
+				foreach(Project Pro in datamanagement.ListProject.Values)
 				{
 					foreach(Node node in Pro.ReturnListNode())
 					{
@@ -2037,7 +2036,7 @@ namespace xPLduinoManager
 			else if(TreeViewEplorerValCol3 == param.ParamP("ExTVTypeNetwork")) //Dans le cas où la cellule 2 est de type projet
 			{
 				LabelButton.Visible = true;
-				foreach(Project Pro in datamanagement.ListProject)
+				foreach(Project Pro in datamanagement.ListProject.Values)
 				{
 					foreach(Node node in Pro.ReturnListNode())
 					{
@@ -2606,7 +2605,7 @@ namespace xPLduinoManager
 		//Fonction permettant d'enregistrer les projets sur fermeture
 		public void CloseProject()
 		{
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				if(!pro.ProjectIsSave)
 				{
@@ -2647,17 +2646,16 @@ namespace xPLduinoManager
 		public void UpdateStatusBar()
 		{	
 			string ProjectRecord = "";
-			foreach(Project pro in datamanagement.ListProject)
+
+			Project pro = datamanagement.GetProjet(datamanagement.CurrentProjectId);
+			if( pro != null)
 			{
-				if( pro.Project_Id == datamanagement.CurrentProjectId )
+				if(!pro.ProjectIsSave)
 				{
-					if(!pro.ProjectIsSave)
-					{
-						ProjectRecord = "*";
-					}
-					LabelInfoProject.Markup = "  " + param.ParamT("CurrentProject") + "<b>" + pro.Project_Name + "</b>" + " " + ProjectRecord;
-					LabelPathProject.Markup = param.ParamT("PathCurrentProject") + "<b>" + pro.Project_SavePath + "</b>";				
+					ProjectRecord = "*";
 				}
+				LabelInfoProject.Markup = "  " + param.ParamT("CurrentProject") + "<b>" + pro.Project_Name + "</b>" + " " + ProjectRecord;
+				LabelPathProject.Markup = param.ParamT("PathCurrentProject") + "<b>" + pro.Project_SavePath + "</b>";				
 			}
 			if(datamanagement.CurrentProjectId == 0)
 			{

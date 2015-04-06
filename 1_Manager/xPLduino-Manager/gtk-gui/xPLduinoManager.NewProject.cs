@@ -5,17 +5,29 @@ namespace xPLduinoManager
 	public partial class NewProject
 	{
 		private global::Gtk.VBox vbox2;
+		
 		private global::Gtk.HBox hbox1;
+		
 		private global::Gtk.Label LabelProjectName;
+		
 		private global::Gtk.Entry EntryNameProject;
+		
 		private global::Gtk.HBox hbox2;
+		
 		private global::Gtk.Label LabelAuhorName;
+		
 		private global::Gtk.Entry EntryAuthorProject;
+		
 		private global::Gtk.HBox hbox3;
+		
 		private global::Gtk.Label LabelPath;
+		
 		private global::Gtk.FileChooserButton ButtonChooseFolder;
+		
 		private global::Gtk.Label LabelError;
+		
 		private global::Gtk.Button buttonCancel;
+		
 		private global::Gtk.Button buttonOk;
 
 		protected virtual void Build ()

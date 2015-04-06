@@ -5,16 +5,27 @@ namespace xPLduinoManager
 	public partial class ScenarioEdit
 	{
 		private global::Gtk.VPaned vpaned3;
+		
 		private global::Gtk.HPaned hpaned3;
+		
 		private global::Gtk.ScrolledWindow ScrolledWindowScenario;
+		
 		private global::Gtk.ScrolledWindow ScrolledWindowFonction;
+		
 		private global::Gtk.HPaned hpaned2;
+		
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
+		
 		private global::Gtk.TreeView TreeviewVariable;
+		
 		private global::Gtk.HPaned hpaned4;
+		
 		private global::Gtk.ScrolledWindow GtkScrolledWindow1;
+		
 		private global::Gtk.TreeView TreeviewFunction;
+		
 		private global::Gtk.ScrolledWindow GtkScrolledWindow2;
+		
 		private global::Gtk.TreeView TreeviewArgsFunction;
 
 		protected virtual void Build ()

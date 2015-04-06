@@ -116,7 +116,7 @@ namespace xPLduinoManager
 			InitWidget();
 			
 			//Permet de retourner l'id du projet
-			foreach(Project pro in datamanagement.ListProject)
+			foreach(Project pro in datamanagement.ListProject.Values)
 			{
 				foreach(Node node in pro.ReturnListNode())
 				{
@@ -255,7 +255,7 @@ namespace xPLduinoManager
 			string PathPin = "";
 
 			Child_Instance_ListStore.Clear();
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -265,7 +265,7 @@ namespace xPLduinoManager
 						{
 							if(ins.Instance_Type == TypeInstance)
 							{
-								foreach(Project _Pro in datamanagement.ListProject)
+								foreach(Project _Pro in datamanagement.ListProject.Values)
 								{	
 									foreach(Node _node in _Pro.ReturnListNode())
 									{	
@@ -502,7 +502,7 @@ namespace xPLduinoManager
 			string PathPin = "";
 
 			Child_Instance_ListStore.Clear();
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -512,7 +512,7 @@ namespace xPLduinoManager
 						{
 							if(ins.Instance_Type == TypeInstance)
 							{
-								foreach(Project _Pro in datamanagement.ListProject)
+								foreach(Project _Pro in datamanagement.ListProject.Values)
 								{	
 									foreach(Node _node in _Pro.ReturnListNode())
 									{	
@@ -772,7 +772,7 @@ namespace xPLduinoManager
 			string TypeShutter = "";
 
 			Child_Instance_ListStore.Clear();
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
@@ -782,7 +782,7 @@ namespace xPLduinoManager
 						{
 							if(ins.Instance_Type == TypeInstance)
 							{
-								foreach(Project _Pro in datamanagement.ListProject)
+								foreach(Project _Pro in datamanagement.ListProject.Values)
 								{	
 									foreach(Node _node in _Pro.ReturnListNode())
 									{	
@@ -971,7 +971,7 @@ namespace xPLduinoManager
 				//Dans le cas ou le nouveau texte est différent de l'ancien
 				if(NumberofOutputSelected != args.NewText)
 				{
-					foreach(Project Pro in datamanagement.ListProject) //Dans la liste des projets
+				foreach(Project Pro in datamanagement.ListProject.Values) //Dans la liste des projets
 					{
 						foreach(Node node in Pro.ReturnListNode()) //Dans la liste des noeud de chaque projet
 						{
@@ -1139,7 +1139,7 @@ namespace xPLduinoManager
 				
 				if(IdSelected != "")
 				{
-					foreach(Project pro in datamanagement.ListProject)
+					foreach(Project pro in datamanagement.ListProject.Values)
 					{
 						foreach(Node nod in pro.ReturnListNode())
 						{
@@ -1173,7 +1173,7 @@ namespace xPLduinoManager
 				//Mise à jour du TextViewNote lors d'un clic sur l'instance
 				if(IdSelected != "")
 				{
-					foreach(Project pro in datamanagement.ListProject)
+					foreach(Project pro in datamanagement.ListProject.Values)
 					{
 						foreach(Node nod in pro.ReturnListNode())
 						{
@@ -1202,7 +1202,7 @@ namespace xPLduinoManager
 				
 				if(IdSelected != "")
 				{
-					foreach(Project pro in datamanagement.ListProject)
+					foreach(Project pro in datamanagement.ListProject.Values)
 					{
 						foreach(Node nod in pro.ReturnListNode())
 						{
@@ -1337,7 +1337,7 @@ namespace xPLduinoManager
 		//Fcontion peremettant de saoir si un widget est correct, si il nous retourne de la data
 		public bool WidgetIsCorrect()
 		{
-			foreach(Project Pro in datamanagement.ListProject)
+			foreach(Project Pro in datamanagement.ListProject.Values)
 			{	
 				foreach(Node node in Pro.ReturnListNode())
 				{
